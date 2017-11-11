@@ -35,6 +35,11 @@ Task("dotnet test")
     .WithCriteria(() => Settings.XUnit.Enabled)
     .IsDependeeOf("dotnet")
     .IsDependentOn("dotnet build")
+    .Does(() => {
+        EnsureDirectoryExists(Artifact("test"));
+        EnsureDirectoryExists(Artifact("coverage"));
+        EnsureDirectoryExists(Artifact("report"));
+    })
     .DoesForEach(GetFiles("test/*/*.csproj"), (file) => {
         var unitTestReport = new FilePath(Artifact($"test/{file.GetFilename().ToString()}.xml")).MakeAbsolute(Context.Environment).FullPath;
 
@@ -50,27 +55,23 @@ Task("dotnet test")
                     EnvironmentVariables = Settings.Environment,
                 });
             },
-            new FilePath(Artifact($"test/{file.GetFilename().ToString()}.dcvr")).MakeAbsolute(Context.Environment),
-            new DotCoverCoverSettings() {
+            new FilePath(Artifact($"coverage/{file.GetFilename().ToString()}.dcvr")).MakeAbsolute(Context.Environment),
+            Settings.Coverage.Apply(new DotCoverCoverSettings() {
                 TargetWorkingDir = file.GetDirectory(),
                 EnvironmentVariables = Settings.Environment,
-            }
-            .WithAttributeFilter("System.Runtime.CompilerServices.CompilerGeneratedAttribute")
-            .WithAttributeFilter("System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute")
-            .WithFilter("+:Rocket.*")
-            .WithFilter("-:*.Tests")
+            })
         );
     })
     .Finally(() => {
         if (!GetFiles("test/*/*.csproj").Any()) return;
-        var coverageReport = Artifact("test/solution.dcvr");
+        var coverageReport = Artifact("coverage/solution.dcvr");
 
         try {
-            DotCoverMerge(GetArtifacts("test/*.dcvr"), coverageReport);
+            DotCoverMerge(GetArtifacts("coverage/*.dcvr"), coverageReport);
         } catch {
             // Sometimes we come into this method so hot that dotcover is still working!
             System.Threading.Thread.Sleep(2);
-            DotCoverMerge(GetArtifacts("test/*.dcvr"), coverageReport);
+            DotCoverMerge(GetArtifacts("coverage/*.dcvr"), coverageReport);
         }
 
         DotCoverReport(
@@ -82,19 +83,19 @@ Task("dotnet test")
 
         DotCoverReport(
             coverageReport,
-            Artifact("report/coverage/index.xml"),
+            Artifact("coverage/index.xml"),
             new DotCoverReportSettings {
                 ReportType = DotCoverReportType.DetailedXML
             });
 
         ReportUnit(Artifact("test"), Artifact("report/xunit"));
 
-        var covered = XmlPeek(Artifact("report/coverage/index.xml"), "/Root/@CoveredStatements");
-        var total =  XmlPeek(Artifact("report/coverage/index.xml"), "/Root/@TotalStatements");
+        var covered = XmlPeek(Artifact("coverage/index.xml"), "/Root/@CoveredStatements");
+        var total =  XmlPeek(Artifact("coverage/index.xml"), "/Root/@TotalStatements");
         var coverage = double.Parse(covered) / double.Parse(total);
         Information($"Code coverage: {coverage.ToString("P2")}");
 
-        CleanBom(Artifact("report/coverage/index.xml"));
+        CleanBom(Artifact("coverage/index.xml"));
     });
 
 Task("dotnet pack")
