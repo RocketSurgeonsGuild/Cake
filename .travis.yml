@@ -10,9 +10,7 @@ cache:
     - tools
 before_cache:
   - rm -f tools/packages.config
-git:
-  depth: 1000
 script:
-  - git fetch --all
+  - git fetch --unshallow
   - chmod 755 ./build.sh
   - ./build.sh --verbosity Diagnostic
