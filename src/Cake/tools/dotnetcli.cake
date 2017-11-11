@@ -43,7 +43,8 @@ Task("dotnet test")
     .DoesForEach(
         GetFiles("test/*/*.csproj"),
         (file) => {
-            var unitTestReport = new FilePath(Artifact($"test/{file.GetFilenameWithoutExtension().ToString()}.xml")).MakeAbsolute(Context.Environment).FullPath;
+            var unitTestReport = ArtifactFilePath($"test/{file.GetFilenameWithoutExtension().ToString()}.xml")
+                .MakeAbsolute(Context.Environment).FullPath.Replace("/", "\\");
 
             var process = new ProcessArgumentBuilder()
                         .AppendSwitchQuoted("-xml", unitTestReport);
@@ -52,22 +53,19 @@ Task("dotnet test")
             if (!Settings.XUnit.Build) process.Append("-nobuild");
 
             DotCoverCover(tool => {
-                tool.DotNetCoreTool(
-                    file,
-                    "xunit",
-                    new ProcessArgumentBuilder()
-                        .AppendSwitchQuoted("-xml", unitTestReport),
-                    new DotNetCoreToolSettings() {
-                        EnvironmentVariables = Settings.Environment,
-                        WorkingDirectory = file.GetDirectory()
-                    });
-                },
-                new FilePath(Artifact($"coverage/{file.GetFilenameWithoutExtension().ToString()}.dcvr")).MakeAbsolute(Context.Environment),
-                Settings.Coverage.Apply(new DotCoverCoverSettings() {
-                    TargetWorkingDir = file.GetDirectory(),
+            tool.DotNetCoreTool(
+                file,
+                "xunit",
+                process,
+                new DotNetCoreToolSettings() {
                     EnvironmentVariables = Settings.Environment,
-                })
-            );
+                });
+            },
+            new FilePath(Artifact($"coverage/{file.GetFilenameWithoutExtension().ToString()}.dcvr")).MakeAbsolute(Context.Environment),
+            new DotCoverCoverSettings() {
+                TargetWorkingDir = file.GetDirectory(),
+                EnvironmentVariables = Settings.Environment,
+            });
         })
         .Finally(() => {
             if (!GetFiles("test/*/*.csproj").Any()) return;
@@ -83,14 +81,14 @@ Task("dotnet test")
 
             DotCoverReport(
                 coverageReport,
-                Artifact("report/coverage/index.html"),
+                ArtifactFilePath("report/coverage/index.html"),
                 new DotCoverReportSettings {
                     ReportType = DotCoverReportType.HTML
                 });
 
             DotCoverReport(
                 coverageReport,
-                Artifact("coverage/solution.xml"),
+                ArtifactFilePath("coverage/solution.xml"),
                 new DotCoverReportSettings {
                     ReportType = DotCoverReportType.DetailedXML
                 });
