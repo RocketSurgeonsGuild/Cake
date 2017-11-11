@@ -77,6 +77,7 @@ Task("dotnet2 test")
             },
             new FilePath(Artifact($"coverage/{file.GetFilenameWithoutExtension().ToString()}.dcvr")).MakeAbsolute(Context.Environment),
             new DotCoverCoverSettings() {
+                WorkingDirectory = file.GetDirectory(),
                 TargetWorkingDir = file.GetDirectory(),
                 EnvironmentVariables = Settings.Environment,
             });
