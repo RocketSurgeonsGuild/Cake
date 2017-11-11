@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFrameworks>netstandard2.0;net461;net46</TargetFrameworks>
+    </PropertyGroup>
+    <ItemGroup>
+        <None Include="tools\*.*" Pack="true" PackagePath="tools\" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="semver" Version="2.0.4" />
+        <PackageReference Include="Cake.Common" Version="$(Cake_Version)" />
+        <PackageReference Include="Cake.Core" Version="$(Cake_Version)" />
+    </ItemGroup>
+	<!--
+    <ItemGroup Condition="'$(TargetFramework)'=='netstandard2.0' or '$(TargetFramework)'=='net461'">
+    </ItemGroup>
+    <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.3' or '$(TargetFramework)'=='net451'">
+        <PackageReference Include="System.ValueTuple" Version="4.3.0" />
+    </ItemGroup>
+	-->
+</Project>
