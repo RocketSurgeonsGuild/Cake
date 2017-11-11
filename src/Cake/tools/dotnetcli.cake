@@ -1,6 +1,8 @@
 #tool "nuget:?package=JetBrains.dotCover.CommandLineTools"
 #tool "nuget:?package=ReportUnit"
 
+Task("dotnet");
+
 Task("[dotnet] Restore")
     .IsDependeeOf("dotnet")
     .Does(() => {
