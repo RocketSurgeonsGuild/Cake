@@ -51,6 +51,7 @@ namespace Rocket.Surgery.Cake
                 {
                     settings.WithFilter(filter);
                 }
+                return settings;
             }
         }
 
