@@ -45,7 +45,27 @@ Task("dotnet2 build")
         }));
     });
 
+
 Task("dotnet2 test")
+    .WithCriteria(IsRunningOnUnix)
+    .WithCriteria(() => Settings.XUnit.Enabled)
+    .IsDependentOn("dotnet2 build")
+    .Does(() => {
+        EnsureDirectoryExists(Artifact("test"));
+    })
+    .DoesForEach(GetFiles("test/*/*.csproj"), (testProject) =>
+{
+    DotNetCoreTest(
+        testProject.GetDirectory().FullPath,
+        new DotNetCoreTestSettings() {
+            NoBuild = true,
+            Framework = "netcoreapp2.0",
+            EnvironmentVariables = Settings.Environment,
+    });
+});
+
+Task("dotnet2 test w/coverage")
+    .WithCriteria(IsRunningOnWindows)
     .WithCriteria(() => Settings.XUnit.Enabled)
     .IsDependeeOf("dotnet2")
     .IsDependentOn("dotnet2 build")
