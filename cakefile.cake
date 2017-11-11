@@ -15,34 +15,44 @@ Task("PinVersion")
         }
     });
 
+MSBuildSettings GoBuild(string target)
+{
+    return new MSBuildSettings {
+        Targets = { target },
+        EnvironmentVariables = Settings.Environment,
+        Configuration = Configuration,
+        DetailedSummary = true,
+        FileLoggers = {
+            new MSBuildFileLogger {
+                AppendToLogFile = false,
+                LogFile = Artifact($"logs/{target.ToLower()}.log"),
+                ShowTimestamp = true,
+                Verbosity = Verbosity.Diagnostic,
+                PerformanceSummaryEnabled = true,
+                SummaryDisabled = false,
+            }
+        },
+        BinaryLogger = new MSBuildBinaryLogSettings {
+            Enabled = true,
+            FileName = Artifact($"logs/{target.ToLower()}.binlog"),
+            Imports = MSBuildBinaryLogImports.Embed,
+        }
+    };
+}
+
 Task("dotnet2");
 
 Task("dotnet2 restore")
     .IsDependeeOf("dotnet2")
-    .Does(() => {
-        DotNetCoreRestore(new DotNetCoreRestoreSettings () {
-            NoCache = !BuildSystem.IsLocalBuild,
-            EnvironmentVariables = Settings.Environment
-        });
+    .DoesForEach(GetFiles("*.sln"), (solution) => {
+        MSBuild(solution, GoBuild("Restore").SetVerbosity(Verbosity.Minimal));
     });
 
 Task("dotnet2 build")
     .IsDependeeOf("dotnet2")
     .IsDependentOn("dotnet2 restore")
-    .Does(() => {
-        DotNetCoreMSBuild(new DotNetCoreMSBuildSettings() {
-            EnvironmentVariables = Settings.Environment,
-            DetailedSummary = true,
-        }
-        .SetConfiguration(Configuration)
-        .WithTarget("Build")
-        .AddFileLogger(new MSBuildFileLoggerSettings() {
-            AppendToLogFile = false,
-            ForceNoAlign = true,
-            LogFile = Artifact("logs/msbuild.log"),
-            ShowTimestamp = true,
-            Verbosity = DotNetCoreVerbosity.Detailed
-        }));
+    .DoesForEach(GetFiles("*.sln"), (solution) => {
+        MSBuild(solution, GoBuild("Build").SetVerbosity(Verbosity.Minimal));
     });
 
 
@@ -54,15 +64,15 @@ Task("dotnet2 test")
         EnsureDirectoryExists(Artifact("test"));
     })
     .DoesForEach(GetFiles("test/*/*.csproj"), (testProject) =>
-{
-    DotNetCoreTest(
-        testProject.GetDirectory().FullPath,
-        new DotNetCoreTestSettings() {
-            NoBuild = true,
-            Framework = "netcoreapp2.0",
-            EnvironmentVariables = Settings.Environment,
+    {
+        DotNetCoreTest(
+            testProject.GetDirectory().FullPath,
+            new DotNetCoreTestSettings() {
+                NoBuild = true,
+                Framework = "netcoreapp2.0",
+                EnvironmentVariables = Settings.Environment,
+        });
     });
-});
 
 Task("dotnet2 test w/coverage")
     .WithCriteria(IsRunningOnWindows)
@@ -142,19 +152,16 @@ Task("dotnet2 pack")
     .WithCriteria(() => Settings.Pack.Enabled)
     .IsDependeeOf("dotnet2")
     .IsDependentOn("dotnet2 build")
-    .Does(() => {
-        foreach (var project in GetFiles("src/*/*.csproj")
-            .Where(z => !Settings.Pack.ExcludePaths.Any(x => !z.FullPath.Contains(x)))
-        ) {
-            DotNetCorePack(project.GetDirectory().FullPath, new DotNetCorePackSettings() {
-                OutputDirectory = Artifact("nuget"),
-                Configuration = Configuration,
-                NoBuild = !Settings.Pack.Build,
-                IncludeSymbols = Settings.Pack.IncludeSymbols,
-                IncludeSource = Settings.Pack.IncludeSource,
-                EnvironmentVariables = Settings.Environment
-            });
-        }
+    .DoesForEach(
+        () => GetFiles("src/*/*.csproj").Where(z => !Settings.Pack.ExcludePaths.Any(x => !z.FullPath.Contains(x))),
+        (project) => {
+        MSBuild(project, GoBuild("Pack")
+            .WithProperty("RestoreNoCache", BuildSystem.IsLocalBuild.ToString())
+            .WithProperty("RestoreForce", BuildSystem.IsLocalBuild.ToString())
+            .WithProperty("IncludeSymbols", Settings.Pack.IncludeSymbols.ToString())
+            .WithProperty("IncludeSource", Settings.Pack.IncludeSource.ToString())
+            .WithProperty("PackageOutputPath", Artifact("nuget"))
+        );
     });
 
 
