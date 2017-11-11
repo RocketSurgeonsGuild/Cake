@@ -20,12 +20,14 @@ namespace Rocket.Surgery.Cake
 
         public class XUnitSettings
         {
+            public bool Enabled { get; set; } = true;
             public bool Build { get; set; }
             public bool Shadow { get; set; }
         }
 
         public class PackSettings
         {
+            public bool Enabled { get; set; } = true;
             public bool Build { get; set; }
             public bool IncludeSymbols { get; set; } = true;
             public bool IncludeSource { get; set; } = true;

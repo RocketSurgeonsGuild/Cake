@@ -3,7 +3,7 @@
 
 Task("dotnet");
 
-Task("[dotnet] Restore")
+Task("dotnet restore")
     .IsDependeeOf("dotnet")
     .Does(() => {
         DotNetCoreRestore(new DotNetCoreRestoreSettings () {
@@ -12,9 +12,9 @@ Task("[dotnet] Restore")
         });
     });
 
-Task("[dotnet] Build")
+Task("dotnet build")
     .IsDependeeOf("dotnet")
-    .IsDependentOn("[dotnet] Restore")
+    .IsDependentOn("dotnet restore")
     .Does(() => {
         DotNetCoreMSBuild(new DotNetCoreMSBuildSettings() {
             EnvironmentVariables = Settings.Environment,
@@ -31,9 +31,10 @@ Task("[dotnet] Build")
         }));
     });
 
-Task("[dotnet] Test")
+Task("dotnet test")
+    .WithCriteria(() => Settings.XUnit.Enabled)
     .IsDependeeOf("dotnet")
-    .IsDependentOn("[dotnet] Build")
+    .IsDependentOn("dotnet build")
     .DoesForEach(GetFiles("test/*/*.csproj"), (file) => {
         var unitTestReport = new FilePath(Artifact($"test/{file.GetFilename().ToString()}.xml")).MakeAbsolute(Context.Environment).FullPath;
 
@@ -96,9 +97,10 @@ Task("[dotnet] Test")
         CleanBom(Artifact("report/coverage/index.xml"));
     });
 
-Task("[dotnet] Pack")
+Task("dotnet pack")
+    .WithCriteria(() => Settings.Pack.Enabled)
     .IsDependeeOf("dotnet")
-    .IsDependentOn("[dotnet] Build")
+    .IsDependentOn("dotnet build")
     .Does(() => {
         foreach (var project in GetFiles("src/*/*.csproj")
             .Where(z => !Settings.Pack.ExcludePaths.Any(x => !z.FullPath.Contains(x)))
