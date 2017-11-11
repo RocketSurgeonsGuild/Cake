@@ -45,18 +45,18 @@ Task("dotnet test")
         (file) => {
             var unitTestReport = new FilePath(Artifact($"test/{file.GetFilenameWithoutExtension().ToString()}.xml")).MakeAbsolute(Context.Environment).FullPath;
 
-            var process = new ProcessArgumentBuilder()
-                        .AppendSwitchQuoted("-xml", unitTestReport);
+            var process = new ProcessArgumentBuilder();
 
             if (!Settings.XUnit.Shadow) process.Append("-noshadow");
             if (!Settings.XUnit.Build) process.Append("-nobuild");
+
+            process.AppendSwitchQuoted("-xml", unitTestReport);
 
             DotCoverCover(tool => {
                 tool.DotNetCoreTool(
                     file,
                     "xunit",
-                    new ProcessArgumentBuilder()
-                        .AppendSwitchQuoted("-xml", unitTestReport),
+                    process,
                     new DotNetCoreToolSettings() {
                         EnvironmentVariables = Settings.Environment,
                         WorkingDirectory = file.GetDirectory()
