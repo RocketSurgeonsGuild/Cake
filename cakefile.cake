@@ -61,7 +61,8 @@ Task("dotnet2 test")
                 .MakeAbsolute(Context.Environment).FullPath.Replace("/", "\\");
 
             var process = new ProcessArgumentBuilder()
-                        .AppendSwitchQuoted("-xml", unitTestReport);
+                        .AppendSwitchQuoted("-xml", unitTestReport)
+                        .AppendSwitchQuoted("-configuration", Configuration);
 
             if (!Settings.XUnit.Shadow) process.Append("-noshadow");
             if (!Settings.XUnit.Build) process.Append("-nobuild");
