@@ -10,12 +10,6 @@ namespace Rocket.Surgery.Cake
 
     public static class CommonCakeAliases
     {
-        [CakeMethodAlias]
-        public static IEnumerable<FilePath> GetArtifacts(this ICakeContext context, string glob)
-        {
-            return context.GetFiles($"{context.ArtifactsPath()}/{glob}");
-        }
-
         private static readonly string ByteOrderMarkUtf8 = Encoding.UTF8.GetString(Encoding.UTF8.GetPreamble());
 
         [CakeMethodAlias]

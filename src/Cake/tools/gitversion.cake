@@ -1,6 +1,7 @@
 #tool "nuget:?package=GitVersion.CommandLine&prerelease"
 
 Task("GitVersion")
+    .IsDependeeOf("Default")
     .WithCriteria(!BuildSystem.IsLocalBuild)
     .WithCriteria(FileExists("GitVersion.yml"))
     .Does(() =>{

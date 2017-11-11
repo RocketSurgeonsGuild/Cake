@@ -1,25 +1,21 @@
 #tool "nuget:?package=JetBrains.dotCover.CommandLineTools"
 #tool "nuget:?package=ReportUnit"
 
-Task("DotnetCore")
-    .IsDependentOn("DotnetCoreRestore")
-    .IsDependentOn("DotnetCoreBuild")
-    .IsDependentOn("DotnetCoreTest")
-    .IsDependentOn("DotnetCorePack");
-
-Task("DotnetCoreRestore")
+Task("[dotnet] Restore")
+    .IsDependeeOf("dotnet")
     .Does(() => {
         DotNetCoreRestore(new DotNetCoreRestoreSettings () {
             NoCache = !BuildSystem.IsLocalBuild,
-            EnvironmentVariables = GitVersionEnvironmentVariables()
+            EnvironmentVariables = Settings.Environment
         });
     });
 
-Task("DotnetCoreBuild")
-    .IsDependentOn("DotnetCoreRestore")
+Task("[dotnet] Build")
+    .IsDependeeOf("dotnet")
+    .IsDependentOn("[dotnet] Restore")
     .Does(() => {
         DotNetCoreMSBuild(new DotNetCoreMSBuildSettings() {
-            EnvironmentVariables = GitVersionEnvironmentVariables(),
+            EnvironmentVariables = Settings.Environment,
             DetailedSummary = true,
         }
         .SetConfiguration(Configuration)
@@ -33,8 +29,9 @@ Task("DotnetCoreBuild")
         }));
     });
 
-Task("DotnetCoreTest")
-    .IsDependentOn("DotnetCoreBuild")
+Task("[dotnet] Test")
+    .IsDependeeOf("dotnet")
+    .IsDependentOn("[dotnet] Build")
     .DoesForEach(GetFiles("test/*/*.csproj"), (file) => {
         var unitTestReport = new FilePath(Artifact($"test/{file.GetFilename().ToString()}.xml")).MakeAbsolute(Context.Environment).FullPath;
 
@@ -44,15 +41,16 @@ Task("DotnetCoreTest")
                 "xunit",
                 new ProcessArgumentBuilder()
                     .AppendSwitchQuoted("-xml", unitTestReport)
-                    .Append("-noshadow"),
+                    .Append(Settings.XUnit.Shadow ? "" : "-noshadow")
+                    .Append(Settings.XUnit.Build ? "" : "-nobuild"),
                 new DotNetCoreToolSettings() {
-                    EnvironmentVariables = GitVersionEnvironmentVariables(),
+                    EnvironmentVariables = Settings.Environment,
                 });
             },
             new FilePath(Artifact($"test/{file.GetFilename().ToString()}.dcvr")).MakeAbsolute(Context.Environment),
             new DotCoverCoverSettings() {
                 TargetWorkingDir = file.GetDirectory(),
-                EnvironmentVariables = GitVersionEnvironmentVariables(),
+                EnvironmentVariables = Settings.Environment,
             }
             .WithAttributeFilter("System.Runtime.CompilerServices.CompilerGeneratedAttribute")
             .WithAttributeFilter("System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute")
@@ -96,17 +94,20 @@ Task("DotnetCoreTest")
         CleanBom(Artifact("report/coverage/index.xml"));
     });
 
-Task("DotnetCorePack")
-    .IsDependentOn("DotnetCoreBuild")
+Task("[dotnet] Pack")
+    .IsDependeeOf("dotnet")
+    .IsDependentOn("[dotnet] Build")
     .Does(() => {
-        foreach (var project in GetFiles("src/*/*.csproj").Where(z => !z.FullPath.Contains(".Functions"))) {
+        foreach (var project in GetFiles("src/*/*.csproj")
+            .Where(z => !Settings.Pack.ExcludePaths.Any(x => !z.FullPath.Contains(x)))
+        ) {
             DotNetCorePack(project.GetDirectory().FullPath, new DotNetCorePackSettings() {
                 OutputDirectory = Artifact("nuget"),
                 Configuration = Configuration,
-                NoBuild = true,
-                IncludeSymbols = true,
-                IncludeSource = true,
-                EnvironmentVariables = GitVersionEnvironmentVariables()
+                NoBuild = !Settings.Pack.Build,
+                IncludeSymbols = Settings.Pack.IncludeSymbols,
+                IncludeSource = Settings.Pack.IncludeSource,
+                EnvironmentVariables = Settings.Environment
             });
         }
     });
