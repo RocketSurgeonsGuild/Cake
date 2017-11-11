@@ -1,11 +1,8 @@
-#addin "nuget:?package=Rocket.Surgery.Build.Cake&version=1.0.3"
-#load "nuget:?package=Rocket.Surgery.Build.Cake&version=1.0.3";
+#load "nuget:?package=Rocket.Surgery.Cake.Library&version=0.1.1-beta0006";
 
 Task("Default")
-    .IsDependentOn("GitVersion")
-    .IsDependentOn("CleanArtifacts")
     .IsDependentOn("PinVersion")
-    .IsDependentOn("DotnetCore");
+    .IsDependentOn("dotnet");
 
 Task("PinVersion")
     .WithCriteria(!BuildSystem.IsLocalBuild)
@@ -18,4 +15,4 @@ Task("PinVersion")
         }
     });
 
-RunTarget(target);
+RunTarget(Target);
