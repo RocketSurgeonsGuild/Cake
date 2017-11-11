@@ -43,7 +43,8 @@ Task("dotnet test")
     .DoesForEach(
         GetFiles("test/*/*.csproj"),
         (file) => {
-            var unitTestReport = new FilePath(Artifact($"test/{file.GetFilenameWithoutExtension().ToString()}.xml")).MakeAbsolute(Context.Environment).FullPath;
+            var unitTestReport = new FilePath(Artifact($"test/{file.GetFilenameWithoutExtension().ToString()}.xml"))
+                .MakeAbsolute(Context.Environment).FullPath.Replace("/", "\\");
 
             var process = new ProcessArgumentBuilder();
 
@@ -62,7 +63,8 @@ Task("dotnet test")
                         WorkingDirectory = file.GetDirectory()
                     });
                 },
-                new FilePath(Artifact($"coverage/{file.GetFilenameWithoutExtension().ToString()}.dcvr")).MakeAbsolute(Context.Environment),
+                new FilePath(Artifact($"coverage/{file.GetFilenameWithoutExtension().ToString()}.dcvr"))
+                    .MakeAbsolute(Context.Environment).FullPath.Replace("/", "\\"),
                 Settings.Coverage.Apply(new DotCoverCoverSettings() {
                     TargetWorkingDir = file.GetDirectory(),
                     EnvironmentVariables = Settings.Environment,
