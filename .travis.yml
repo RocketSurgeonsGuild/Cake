@@ -13,5 +13,6 @@ before_cache:
 git:
   depth: 1000
 script:
+  - git fetch --unshallow
   - chmod 755 ./build.sh
   - ./build.sh --verbosity Diagnostic
