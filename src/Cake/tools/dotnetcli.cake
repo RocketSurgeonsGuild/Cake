@@ -56,10 +56,12 @@ Task("dotnet test")
             testProject.GetDirectory().FullPath,
             new DotNetCoreTestSettings() {
                 NoBuild = true,
+                Configuration = Configuration,
                 Framework = "netcoreapp2.0",
                 EnvironmentVariables = Settings.Environment,
         });
-    });
+    })
+    .ContinueOnError();
 
 Task("dotnet test w/coverage")
     .WithCriteria(IsRunningOnWindows)
@@ -85,19 +87,21 @@ Task("dotnet test w/coverage")
             if (!Settings.XUnit.Build) process.Append("-nobuild");
 
             DotCoverCover(tool => {
-            tool.DotNetCoreTool(
-                file,
-                "xunit",
-                process,
-                new DotNetCoreToolSettings() {
+                tool.DotNetCoreTool(
+                    file,
+                    "xunit",
+                    process,
+                    new DotNetCoreToolSettings() {
+                        EnvironmentVariables = Settings.Environment,
+                    }
+                );
+                },
+                new FilePath(Artifact($"coverage/{file.GetFilenameWithoutExtension().ToString()}.dcvr")).MakeAbsolute(Context.Environment),
+                Settings.Coverage.Apply(new DotCoverCoverSettings() {
+                    TargetWorkingDir = file.GetDirectory(),
                     EnvironmentVariables = Settings.Environment,
-                });
-            },
-            new FilePath(Artifact($"coverage/{file.GetFilenameWithoutExtension().ToString()}.dcvr")).MakeAbsolute(Context.Environment),
-            new DotCoverCoverSettings() {
-                TargetWorkingDir = file.GetDirectory(),
-                EnvironmentVariables = Settings.Environment,
-            });
+                })
+            );
         })
         .Finally(() => {
             if (!GetFiles("test/*/*.csproj").Any()) return;
