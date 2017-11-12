@@ -5,6 +5,8 @@ mono: latest
 dotnet: 2.0.0
 os:
   - linux
+git:
+  depth: 1
 cache:
   directories:
     - tools
