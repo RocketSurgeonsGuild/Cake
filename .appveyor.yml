@@ -41,3 +41,7 @@ deploy:
     artifact: /.*\.nupkg/
     on:
       appveyor_repo_tag: true
+notifications:
+  - provider: Slack
+    incoming_webhook:
+      secure: cErsDOKvAGCX+565j5eJH2sKFl4cghV4cDeIWj9a0rKD+sNmZlet0ubxvgofDtPgCRTLbsrf+IaNyZdkvQmhr4A08+e5S8GZSrjz+FXSXBU=
