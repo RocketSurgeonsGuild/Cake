@@ -2,7 +2,8 @@
 
 Task("Default")
     .IsDependentOn("PinVersion")
-    .IsDependentOn("dotnet");
+    .IsDependentOn("dotnet")
+    .IsDependentOn("dotnet test");
 
 Task("PinVersion")
     .WithCriteria(!BuildSystem.IsLocalBuild)

@@ -45,6 +45,7 @@ Task("dotnet build")
 Task("dotnet test")
     .WithCriteria(IsRunningOnUnix)
     .WithCriteria(() => Settings.XUnit.Enabled)
+    .IsDependeeOf("dotnet")
     .IsDependentOn("dotnet build")
     .Does(() => {
         EnsureDirectoryExists(Artifact("test"));
