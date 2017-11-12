@@ -41,7 +41,6 @@ Task("dotnet build")
         MSBuild(solution, GoBuild("Build").SetVerbosity(Verbosity.Minimal));
     });
 
-
 Task("dotnet test")
     .WithCriteria(IsRunningOnUnix)
     .WithCriteria(() => Settings.XUnit.Enabled)
@@ -50,18 +49,33 @@ Task("dotnet test")
     .Does(() => {
         EnsureDirectoryExists(Artifact("test"));
     })
-    .DoesForEach(GetFiles("test/*/*.csproj"), (testProject) =>
-    {
-        DotNetCoreTest(
-            testProject.GetDirectory().FullPath,
-            new DotNetCoreTestSettings() {
-                NoBuild = true,
-                Configuration = Configuration,
-                Framework = "netcoreapp2.0",
-                EnvironmentVariables = Settings.Environment,
+    .DoesForEach(
+        GetFiles("test/*/*.csproj"), (file) => {
+            var unitTestReport = ArtifactFilePath($"test/{file.GetFilenameWithoutExtension().ToString()}.xml")
+                .MakeAbsolute(Context.Environment).FullPath.Replace("/", "\\");
+
+            var process = new ProcessArgumentBuilder()
+                        .AppendSwitchQuoted("-xml", unitTestReport)
+                        .AppendSwitchQuoted("-configuration", Configuration);
+
+            if (!Settings.XUnit.Shadow) process.Append("-noshadow");
+            if (!Settings.XUnit.Build) process.Append("-nobuild");
+
+            DotNetCoreTool(
+                file,
+                "xunit",
+                process,
+                new DotNetCoreToolSettings() {
+                    EnvironmentVariables = Settings.Environment,
+                }
+            );
+        })
+        .Finally(() => {
+            if (!GetFiles("test/*/*.csproj").Any()) return;
+
+            ReportUnit(Artifact("test"), Artifact("report/xunit"));
         });
-    })
-    .ContinueOnError();
+
 
 Task("dotnet test w/coverage")
     .WithCriteria(IsRunningOnWindows)
