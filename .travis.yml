@@ -10,6 +10,7 @@ git:
 cache:
   directories:
     - tools
+    - $HOME/.nuget/packages
 before_cache:
   - rm -f tools/packages.config
 script:
