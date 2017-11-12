@@ -19,3 +19,7 @@ script:
   - git branch -r
   - chmod 755 ./build.sh
   - ./build.sh --verbosity Diagnostic
+notifications:
+  slack:
+    secure:
+      "QabnQAkZg067pDaWv2uAYHzrv3QrYbxTawSU1O+eh+ZX7G560KCte6Nz/x22Qfr53T4r5XwRWswOIY6tcZpvhUCZVbOLlRNGIQ0m3UHtsqRJ7SqeOtUUu46HXIrrgaGY6lkRfe/oFG7PSEWBmf6a9JNJ+c2HoAtF2mMTZPJJ2Xnbb38OC9U6PTfffwQ2APUXugLEPJXNZThpNizr9paWuMec8TnEKOk6B+SjKmLh715t1sd8soi7OIrA7jxS9nnM6uca1fW17JxGgSLVPmpxxj4H6rjQEYFPMpfruT6ZpjqXjc+c3iU1cplp/+ZTy8Ku30K520YcCw942pd4u/y2LQkfxjrveYXeHH1IyXZQXYO4IJeDBcSK/wRmDfc0CsoItxIMALOntpgbBxidK+coRmY7z/wo1cTRwPJ5QAYjB3oo1h4pDMtrmeqrDg+p+6HdCA7j1TvVZA/Ikrk7g6kWuPMj0Gf+vXqj07RV0SMFVrrTGdX8v+3uzJKeZZJrCID/tC90DOw5Bzo19TTM4bllAIaAP1YbvAzsZbkzeygLHT63H5a4R/TXolWP8bpWeZIPlRtGVXZXNhfoqjRapwgmjH4Q7AQ5v7to83tKEsXYDx3q8M2b0VVGaJ/IuvEyMHmU6e8gLHT5ZZdS/1JOIZsoiilCIeYx6OMsc5MJ/H4/6Fw="
