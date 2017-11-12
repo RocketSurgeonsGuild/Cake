@@ -14,7 +14,6 @@ before_cache:
   - rm -f tools/packages.config
 script:
   - git fetch --unshallow
-  - git fetch origin master:refs/remotes/origin/master
   - git branch -r
   - chmod 755 ./build.sh
   - ./build.sh --verbosity Diagnostic
