@@ -152,15 +152,13 @@ Task("dotnet2 pack")
     .WithCriteria(() => Settings.Pack.Enabled)
     .IsDependeeOf("dotnet2")
     .IsDependentOn("dotnet2 build")
-    .DoesForEach(
-        () => GetFiles("src/*/*.csproj").Where(z => !Settings.Pack.ExcludePaths.Any(x => !z.FullPath.Contains(x))),
-        (project) => {
-        MSBuild(project, GoBuild("Pack")
+    .DoesForEach(GetFiles("*.sln"), (solution) => {
+        MSBuild(solution, GoBuild("Pack")
             .WithProperty("RestoreNoCache", BuildSystem.IsLocalBuild.ToString())
             .WithProperty("RestoreForce", BuildSystem.IsLocalBuild.ToString())
             .WithProperty("IncludeSymbols", Settings.Pack.IncludeSymbols.ToString())
             .WithProperty("IncludeSource", Settings.Pack.IncludeSource.ToString())
-            .WithProperty("PackageOutputPath", Artifact("nuget"))
+            .WithProperty("PackageOutputPath", ArtifactDirectoryPath("nuget").MakeAbsolute(Context.Environment).FullPath)
         );
     });
 
