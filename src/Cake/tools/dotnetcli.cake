@@ -140,6 +140,7 @@ Task("dotnet pack")
     .IsDependentOn("dotnet build")
     .DoesForEach(GetFiles("*.sln"), (solution) => {
         MSBuild(solution, GoBuild("Pack")
+            .WithProperty("NoBuild", (!Settings.Pack.Build).ToString())
             .WithProperty("RestoreNoCache", BuildSystem.IsLocalBuild.ToString())
             .WithProperty("RestoreForce", BuildSystem.IsLocalBuild.ToString())
             .WithProperty("IncludeSymbols", Settings.Pack.IncludeSymbols.ToString())
