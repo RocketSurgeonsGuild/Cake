@@ -11,7 +11,7 @@ cache:
 before_cache:
   - rm -f tools/packages.config
 script:
+  - git fetch --all
   - git branch -r
-  - git fetch --unshallow
   - chmod 755 ./build.sh
   - ./build.sh --verbosity Diagnostic
