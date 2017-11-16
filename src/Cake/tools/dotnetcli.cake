@@ -52,7 +52,7 @@ Task("dotnet test")
     .DoesForEach(
         GetFiles("test/*/*.csproj"), (file) => {
             var unitTestReport = ArtifactFilePath($"test/{file.GetFilenameWithoutExtension().ToString()}.xml")
-                .MakeAbsolute(Context.Environment).FullPath.Replace("/", "\\");
+                .MakeAbsolute(Context.Environment).FullPath;
 
             var process = new ProcessArgumentBuilder()
                         .AppendSwitchQuoted("-xml", unitTestReport)
@@ -91,7 +91,7 @@ Task("dotnet test w/coverage")
         GetFiles("test/*/*.csproj"),
         (file) => {
             var unitTestReport = ArtifactFilePath($"test/{file.GetFilenameWithoutExtension().ToString()}.xml")
-                .MakeAbsolute(Context.Environment).FullPath.Replace("/", "\\");
+                .MakeAbsolute(Context.Environment).FullPath;
 
             var process = new ProcessArgumentBuilder()
                         .AppendSwitchQuoted("-xml", unitTestReport)
