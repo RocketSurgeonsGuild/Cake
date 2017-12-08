@@ -72,7 +72,7 @@ namespace Rocket.Surgery.Cake
         [CakePropertyAlias(Cache = true)]
         public static DirectoryPath Artifacts(this ICakeContext context)
         {
-            return DirectoryPath.FromString("./artifacts");
+            return DirectoryPath.FromString(context.Argument("artifacts", "./artifacts"));
         }
 
         [CakeMethodAlias]
