@@ -51,6 +51,7 @@ namespace Rocket.Surgery.Cake
 
             // Compute the new values for the coverage attributes
             var longLinesValid = long.Parse(context.XmlPeek(xmlFile, "/Root/@TotalStatements"));
+            if (longLinesValid <= 0) longLinesValid = 1;
             var longLinesCovered = long.Parse(context.XmlPeek(xmlFile, "/Root/@CoveredStatements"));
             var decimalLineRate = ((decimal)longLinesCovered) / longLinesValid;
 
@@ -119,8 +120,10 @@ namespace Rocket.Surgery.Cake
 
             // Compute the new values for the coverage attributes
             var longLinesValid = coverages.Sum(x => long.Parse(x[linesValid]));
+            if (longLinesValid <= 0) longLinesValid = 1;
             var longLinesCovered = coverages.Sum(x => long.Parse(x[linesCovered]));
             var longBranchesValid = coverages.Sum(x => long.Parse(x[branchesValid]));
+            if (longBranchesValid <= 0) longBranchesValid = 1;
             var longBranchesCovered = coverages.Sum(x => long.Parse(x[branchesCovered]));
             var decimalLineRate = ((decimal)longLinesCovered) / longLinesValid;
             var decimalBranchRate = ((decimal)longBranchesCovered) / longBranchesValid;
