@@ -88,6 +88,24 @@ namespace Rocket.Surgery.Cake
         }
 
         [CakePropertyAlias(Cache = true)]
+        public static DirectoryPath Coverage(this ICakeContext context)
+        {
+            return DirectoryPath.FromString(context.Argument("coverage", "./coverage"));
+        }
+
+        [CakeMethodAlias]
+        public static FilePath CoverageFilePath(this ICakeContext context, string path)
+        {
+            return FilePath.FromString(Coverage(context) + "/" + path.TrimStart('/', '\\'));
+        }
+
+        [CakeMethodAlias]
+        public static DirectoryPath CoverageDirectoryPath(this ICakeContext context, string path)
+        {
+            return DirectoryPath.FromString(Coverage(context) + "/" + path.TrimStart('/', '\\'));
+        }
+
+        [CakePropertyAlias(Cache = true)]
         public static GitVersion GitVer(this ICakeContext context)
         {
             return context.GitVersion();
@@ -97,6 +115,12 @@ namespace Rocket.Surgery.Cake
         public static IEnumerable<FilePath> GetArtifacts(this ICakeContext context, string glob)
         {
             return context.GetFiles($"{context.Artifacts()}/{glob}");
+        }
+
+        [CakeMethodAlias]
+        public static IEnumerable<FilePath> GetCoverage(this ICakeContext context, string glob)
+        {
+            return context.GetFiles($"{context.Coverage()}/{glob}");
         }
     }
 }

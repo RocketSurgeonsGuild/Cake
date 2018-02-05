@@ -2,17 +2,52 @@
 
 Task("Default")
     .IsDependentOn("PinVersion")
-    .IsDependentOn("dotnet");
+    .IsDependentOn("dotnet")
+    .IsDependentOn("TestScripts");
 
 Task("PinVersion")
     .WithCriteria(!BuildSystem.IsLocalBuild)
     .Does(() => {
         foreach (var angel in GetFiles("./src/**/angel.cake")) {
-            var content = System.IO.File.ReadAllText(angel.FullPath);
-            if (content.IndexOf("{version}") > -1) {
-                System.IO.File.WriteAllText(angel.FullPath, content.Replace("{version}", GitVer.NuGetVersion));
-            }
+			PinVersion(angel, GitVer.NuGetVersion);
         }
     });
+
+void PinVersion(FilePath file, string version) {
+    var content = System.IO.File.ReadAllText(file.FullPath);
+    if (content.IndexOf("{version}") > -1) {
+        System.IO.File.WriteAllText(file.FullPath, content.Replace("{version}", version));
+    }
+}
+
+Task("TestScripts")
+    .IsDependentOn("dotnet")
+    .DoesForEach(GetFiles("src/**/*.cake"), (sourceFile) => {
+		var testFolder = Artifacts.Combine("testfolder");
+		CleanDirectory(testFolder);
+		EnsureDirectoryExists(testFolder);
+
+		var nugetConfig = testFolder.CombineWithFilePath("NuGet.config");
+		CopyFile("./NuGet.config", nugetConfig);
+		NuGetAddSource(
+			"testlocation",
+			ArtifactDirectoryPath("nuget").MakeAbsolute(Context.Environment).FullPath.Replace("/", "\\"),
+			new NuGetSourcesSettings() {
+				ConfigFile = nugetConfig,
+			});
+
+        var testFile = testFolder.CombineWithFilePath(sourceFile.GetFilename());
+        CopyFile(sourceFile, testFile);
+        PinVersion(testFile, GitVer.NuGetVersion);
+
+        CakeExecuteScript(testFolder.CombineWithFilePath(sourceFile.GetFilename()), new CakeSettings() {
+			Verbosity = Verbosity.Diagnostic,
+            WorkingDirectory = testFolder
+        });
+    })
+	.Does(() => {
+		var testFolder = Artifacts.Combine("testfolder");
+		CleanDirectory(testFolder);
+	});
 
 RunTarget(Target);
