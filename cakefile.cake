@@ -8,7 +8,7 @@ Task("Default")
 Task("PinVersion")
     .WithCriteria(!BuildSystem.IsLocalBuild)
     .Does(() => {
-        foreach (var angel in GetFiles("./src/**/angel.cake")) {
+        foreach (var angel in GetFiles("./src/**/*.cake")) {
 			PinVersion(angel, GitVer.NuGetVersion);
         }
     });
@@ -40,10 +40,20 @@ Task("TestScripts")
         CopyFile(sourceFile, testFile);
         PinVersion(testFile, GitVer.NuGetVersion);
 
-        CakeExecuteScript(testFolder.CombineWithFilePath(sourceFile.GetFilename()), new CakeSettings() {
-			Verbosity = Verbosity.Diagnostic,
-            WorkingDirectory = testFolder
-        });
+		try {
+			CakeExecuteScript(testFolder.CombineWithFilePath(sourceFile.GetFilename()), new CakeSettings() {
+				Verbosity = Verbosity.Diagnostic,
+				WorkingDirectory = testFolder
+			});
+		} catch {
+			foreach (var angel in GetFiles(testFolder.FullPath + "/**/*.cake")) {
+				PinVersion(angel, GitVer.NuGetVersion);
+			}
+			CakeExecuteScript(testFolder.CombineWithFilePath(sourceFile.GetFilename()), new CakeSettings() {
+				Verbosity = Verbosity.Diagnostic,
+				WorkingDirectory = testFolder
+			});
+		}
     })
 	.Does(() => {
 		var testFolder = Artifacts.Combine("testfolder");

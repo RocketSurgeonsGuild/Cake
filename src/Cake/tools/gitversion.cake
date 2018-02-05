@@ -1,3 +1,4 @@
+#addin "nuget:?package=Newtonsoft.Json"
 #addin "nuget:?package=Rocket.Surgery.Cake&version={version}"
 #tool "nuget:?package=GitVersion.CommandLine&prerelease"
 

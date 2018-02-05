@@ -1,3 +1,4 @@
+#addin "nuget:?package=Newtonsoft.Json"
 #addin "nuget:?package=Rocket.Surgery.Cake&version={version}"
 #tool "nuget:?package=JetBrains.dotCover.CommandLineTools"
 #tool "nuget:?package=ReportUnit"
@@ -23,7 +24,7 @@ MSBuildSettings GoBuild(string target)
         BinaryLogger = new MSBuildBinaryLogSettings {
             Enabled = true,
             FileName = Artifact($"logs/{target.ToLower()}.binlog"),
-            Imports = BuildSystem.IsBuild ? MSBuildBinaryLogImports.None : MSBuildBinaryLogImports.Embed,
+            Imports = BuildSystem.IsLocalBuild ? MSBuildBinaryLogImports.None : MSBuildBinaryLogImports.Embed,
         }
     };
 }
@@ -122,7 +123,7 @@ Task("dotnet test w/coverage")
         })
         .Finally(() => {
             if (!GetFiles("test/*/*.csproj").Any()) return;
-            var coverageReport = Coverage("solution.dcvr");
+            var coverageReport = CoverageFilePath("solution.dcvr");
 
             try {
                 DotCoverMerge(GetCoverage("*.dcvr"), coverageReport);
