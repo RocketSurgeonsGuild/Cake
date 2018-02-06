@@ -1,5 +1,3 @@
-#addin "nuget:?package=Newtonsoft.Json"
-#addin "nuget:?package=Rocket.Surgery.Cake&version={version}"
 #tool "nuget:?package=JetBrains.dotCover.CommandLineTools"
 #tool "nuget:?package=ReportUnit"
 
@@ -10,7 +8,7 @@ MSBuildSettings GoBuild(string target)
         EnvironmentVariables = Settings.Environment,
         Configuration = Configuration,
         DetailedSummary = false,
-		Verbosity = Verbosity.Minimal,
+        Verbosity = Verbosity.Minimal,
         FileLoggers = {
             new MSBuildFileLogger {
                 AppendToLogFile = false,

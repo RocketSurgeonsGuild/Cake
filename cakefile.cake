@@ -3,7 +3,8 @@
 Task("Default")
     .IsDependentOn("PinVersion")
     .IsDependentOn("dotnet")
-    .IsDependentOn("TestScripts");
+    //.IsDependentOn("TestScripts")
+    ;
 
 Task("PinVersion")
     .WithCriteria(!BuildSystem.IsLocalBuild)
