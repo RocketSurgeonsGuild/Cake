@@ -26,7 +26,7 @@ namespace Rocket.Surgery.Cake
             public bool Enabled { get; set; } = true;
             public bool Build { get; set; }
             public bool Shadow { get; set; }
-            public bool Verbose { get; set; };
+            public bool Verbose { get; set; }
         }
 
         public class CoverageSettings
