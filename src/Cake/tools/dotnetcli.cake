@@ -61,6 +61,7 @@ Task("dotnet test")
 
             if (!Settings.XUnit.Shadow) process.Append("-noshadow");
             if (!Settings.XUnit.Build) process.Append("-nobuild");
+            if (Settings.XUnit.Detailed) process.Append("-verbose");
 
             DotNetCoreTool(
                 file,
@@ -101,7 +102,7 @@ Task("dotnet test w/coverage")
 
             if (!Settings.XUnit.Shadow) process.Append("-noshadow");
             if (!Settings.XUnit.Build) process.Append("-nobuild");
-            if (Settings.XUnit.Verbose) process.Append("-verbose");
+            if (Settings.XUnit.Detailed) process.Append("-verbose");
 
             DotCoverCover(tool => {
                 tool.DotNetCoreTool(
