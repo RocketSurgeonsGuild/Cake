@@ -16,5 +16,6 @@
         <Autofac_FakeItEasy_Version>5.0.0</Autofac_FakeItEasy_Version>
         <Bogus_Version>22.1.2</Bogus_Version>
 		<RSG_Testing_Version>0.5.0</RSG_Testing_Version>
+        <XunitXml_TestLogger_Version>2.0.0</XunitXml_TestLogger_Version>
     </PropertyGroup>
 </Project>
