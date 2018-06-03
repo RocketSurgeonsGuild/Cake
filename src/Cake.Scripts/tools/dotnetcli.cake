@@ -56,22 +56,14 @@ Task("dotnet test")
             var unitTestReport = ArtifactFilePath($"test/{file.GetFilenameWithoutExtension().ToString()}.xml")
                 .MakeAbsolute(Context.Environment).FullPath;
 
-            var process = new ProcessArgumentBuilder()
-                        .AppendSwitchQuoted("-xml", unitTestReport)
-                        .AppendSwitchQuoted("-configuration", Configuration);
-
-            if (!Settings.XUnit.Shadow) process.Append("-noshadow");
-            if (!Settings.XUnit.Build) process.Append("-nobuild");
-            if (Settings.XUnit.Detailed) process.Append("-verbose");
-
-            DotNetCoreTool(
-                file,
-                "xunit",
-                process,
-                new DotNetCoreToolSettings() {
-                    EnvironmentVariables = Settings.Environment,
-                }
-            );
+            DotNetCoreTest(file.FullPath, new DotNetCoreTestSettings() {
+                Configuration = Configuration,
+                DiagnosticOutput = Settings.XUnit.Detailed,
+                NoBuild = !Settings.XUnit.Build,
+                NoRestore = !Settings.XUnit.Restore,
+                TestAdapterPath = ".",
+                Logger = $"\"xunit;LogFilePath={unitTestReport}\""
+            });
         })
         .Finally(() => {
             if (!GetFiles("test/*/*.csproj").Any()) return;
@@ -97,23 +89,15 @@ Task("dotnet test w/coverage")
             var unitTestReport = ArtifactFilePath($"test/{file.GetFilenameWithoutExtension().ToString()}.xml")
                 .MakeAbsolute(Context.Environment).FullPath;
 
-            var process = new ProcessArgumentBuilder()
-                        .AppendSwitchQuoted("-xml", unitTestReport)
-                        .AppendSwitchQuoted("-configuration", Configuration);
-
-            if (!Settings.XUnit.Shadow) process.Append("-noshadow");
-            if (!Settings.XUnit.Build) process.Append("-nobuild");
-            if (Settings.XUnit.Detailed) process.Append("-verbose");
-
             DotCoverCover(tool => {
-                tool.DotNetCoreTool(
-                    file,
-                    "xunit",
-                    process,
-                    new DotNetCoreToolSettings() {
-                        EnvironmentVariables = Settings.Environment,
-                    }
-                );
+                tool.DotNetCoreTest(file.FullPath, new DotNetCoreTestSettings() {
+                    Configuration = Configuration,
+                    DiagnosticOutput = Settings.XUnit.Detailed,
+                    NoBuild = !Settings.XUnit.Build,
+                    NoRestore = !Settings.XUnit.Restore,
+                    TestAdapterPath = ".",
+                    Logger = $"\"xunit;LogFilePath={unitTestReport}\""
+                });
                 },
                 CoverageFilePath($"{file.GetFilenameWithoutExtension().ToString()}.dcvr").MakeAbsolute(Context.Environment),
                 Settings.Coverage.Apply(new DotCoverCoverSettings() {

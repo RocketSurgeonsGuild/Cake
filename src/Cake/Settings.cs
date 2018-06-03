@@ -24,7 +24,8 @@ namespace Rocket.Surgery.Cake
         public class XUnitSettings
         {
             public bool Enabled { get; set; } = true;
-            public bool Build { get; set; }
+            public bool Build { get; set; } = false;
+            public bool Restore { get; set; } = false;
             public bool Shadow { get; set; }
             public bool Detailed { get; set; }
         }
@@ -59,7 +60,7 @@ namespace Rocket.Surgery.Cake
         public class PackSettings
         {
             public bool Enabled { get; set; } = true;
-            public bool Build { get; set; }
+            public bool Build { get; set; } = false;
             public bool IncludeSymbols { get; set; } = true;
             public bool IncludeSource { get; set; } = true;
             public List<string> ExcludePaths { get; set; } = new List<string>();
