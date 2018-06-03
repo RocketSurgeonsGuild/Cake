@@ -3,12 +3,9 @@
         <TargetFrameworks>netstandard2.0</TargetFrameworks>
     </PropertyGroup>
     <ItemGroup>
-        <None Include="tools\*.*" Pack="true" PackagePath="tools\" />
-    </ItemGroup>
-    <ItemGroup>
         <PackageReference Include="semver" Version="2.0.4" />
         <PackageReference Include="Cake.Common" Version="$(Cake_Version)" PrivateAssets="All" />
         <PackageReference Include="Cake.Core" Version="$(Cake_Version)" PrivateAssets="All" />
-        <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+        <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
     </ItemGroup>
 </Project>

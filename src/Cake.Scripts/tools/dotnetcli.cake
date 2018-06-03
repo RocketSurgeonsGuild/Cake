@@ -1,3 +1,4 @@
+#addin "nuget:?package=Rocket.Surgery.Cake&version={version}"
 #tool "nuget:?package=JetBrains.dotCover.CommandLineTools"
 #tool "nuget:?package=ReportUnit"
 
