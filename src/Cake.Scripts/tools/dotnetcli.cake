@@ -1,6 +1,5 @@
 #addin "nuget:?package=Rocket.Surgery.Cake&version={version}"
 #tool "nuget:?package=JetBrains.dotCover.CommandLineTools"
-#tool "nuget:?package=ReportUnit"
 
 MSBuildSettings GoBuild(string target)
 {
@@ -67,8 +66,6 @@ Task("dotnet test")
         })
         .Finally(() => {
             if (!GetFiles("test/*/*.csproj").Any()) return;
-
-            ReportUnit(Artifact("test"), Artifact("xunit"));
         });
 
 
@@ -131,8 +128,6 @@ Task("dotnet test w/coverage")
                 new DotCoverReportSettings {
                     ReportType = DotCoverReportType.DetailedXML
                 });
-
-            ReportUnit(Artifact("test"), Artifact("xunit"));
 
             var covered = XmlPeek(CoverageFilePath("solution.xml"), "/Root/@CoveredStatements");
             var total =  XmlPeek(CoverageFilePath("solution.xml"), "/Root/@TotalStatements");
