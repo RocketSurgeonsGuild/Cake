@@ -8,7 +8,7 @@
         <DebugSymbols>true</DebugSymbols>
 
         <CollectCoverage>true</CollectCoverage>
-        <CoverletOutputFormat>json,lcov,cobertura,opencover</CoverletOutputFormat>
+        <CoverletOutputFormat>json,lcov,cobertura</CoverletOutputFormat>
         <CoverletOutputDirectory>$([System.IO.Path]::GetDirectoryName($([MSBuild]::GetPathOfFileAbove('Common.Build.props', '$(MSBuildThisFileDirectory)../'))))/coverage/</CoverletOutputDirectory>
         <CoverletOutputName>$(MSBuildProjectName)-$(TargetFramework)</CoverletOutputName>
     </PropertyGroup>
