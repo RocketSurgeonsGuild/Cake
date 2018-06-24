@@ -71,7 +71,7 @@ Task("dotnet test")
 
             DotNetCoreExecute(
                 Context.Tools.Resolve("ReportGenerator.dll"),
-                $"-reports:coverage\\*.cobertura.xml -targetdir:coverage\\report -reporttypes:\"HTMLInline;HTMLSummary;TextSummary;Badges\"",
+                $"-reports:{Coverage.FullPath}\\*.cobertura.xml -targetdir:{Coverage.FullPath}\\report -reporttypes:\"HTMLInline;HTMLSummary;TextSummary;Badges\"",
                 new DotNetCoreExecuteSettings() {
                     WorkingDirectory = Context.Environment.WorkingDirectory
                 });
