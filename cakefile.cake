@@ -3,7 +3,7 @@
 Task("Default")
     .IsDependentOn("PinVersion")
     .IsDependentOn("dotnet")
-    //.IsDependentOn("TestScripts")
+    .IsDependentOn("TestScripts")
     ;
 
 Task("PinVersion")
@@ -27,6 +27,8 @@ Task("TestScripts")
         var testFolder = Artifacts.Combine("testfolder");
         CleanDirectory(testFolder);
         EnsureDirectoryExists(testFolder);
+
+        Information(sourceFile);
 
         var nugetConfig = testFolder.CombineWithFilePath("NuGet.config");
         CopyFile("./NuGet.config", nugetConfig);

@@ -129,9 +129,8 @@ namespace Rocket.Surgery.Cake
             var decimalBranchRate = ((decimal)longBranchesCovered) / longBranchesValid;
 
             // Set them on the new coverage
-            newCoverage.SetAttributeValue(timestamp, coverages.Max(x => x[timestamp]));
-            newCoverage.SetAttributeValue(complexity, coverages.Max(x => x[complexity]));
-            newCoverage.SetAttributeValue(version, coverages.Max(x => x[version]));
+            try { newCoverage.SetAttributeValue(timestamp, coverages.Max(x => x[timestamp])); } catch { }
+            try { newCoverage.SetAttributeValue(version, coverages.Max(x => x[version])); } catch { }
             newCoverage.SetAttributeValue(linesValid, longLinesValid);
             newCoverage.SetAttributeValue(linesCovered, longLinesCovered);
             newCoverage.SetAttributeValue(branchesValid, longBranchesValid);
@@ -236,7 +235,7 @@ namespace Rocket.Surgery.Cake
         private IEnumerable<DotCoverReportType> _reportTypes = Array.Empty<DotCoverReportType>();
         public IEnumerable<DotCoverReportType> ReportTypes
         {
-            get => _reportTypes.Concat(new[] {DotCoverReportType.XML}).Distinct();
+            get => _reportTypes.Concat(new[] { DotCoverReportType.XML }).Distinct();
             set => _reportTypes = value;
         }
     }

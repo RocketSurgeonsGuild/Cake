@@ -1,5 +1,5 @@
 #addin "nuget:?package=Rocket.Surgery.Cake&version={version}"
-#tool "nuget:?package=JetBrains.dotCover.CommandLineTools"
+#tool "nuget:?package=ReportGenerator&version=4.0.0-alpha12"
 
 MSBuildSettings GoBuild(string target)
 {
@@ -43,12 +43,13 @@ Task("dotnet build")
     });
 
 Task("dotnet test")
-    .WithCriteria(IsRunningOnUnix)
     .WithCriteria(() => Settings.XUnit.Enabled)
     .IsDependeeOf("dotnet")
     .IsDependentOn("dotnet build")
     .Does(() => {
         EnsureDirectoryExists(Artifact("test"));
+        EnsureDirectoryExists(Coverage);
+        EnsureDirectoryExists(CoverageDirectoryPath("report"));
     })
     .DoesForEach(
         GetFiles("test/*/*.csproj"), (file) => {
@@ -61,84 +62,23 @@ Task("dotnet test")
                 NoBuild = !Settings.XUnit.Build,
                 NoRestore = !Settings.XUnit.Restore,
                 TestAdapterPath = ".",
-                Logger = $"\"xunit;LogFilePath={unitTestReport}\""
+                Logger = $"\"xunit;LogFilePath={unitTestReport}\"",
+                ArgumentCustomization = args => args.Append("/p:CollectCoverage=true")
             });
         })
         .Finally(() => {
             if (!GetFiles("test/*/*.csproj").Any()) return;
-        });
 
-
-Task("dotnet test w/coverage")
-    .WithCriteria(IsRunningOnWindows)
-    .WithCriteria(() => Settings.XUnit.Enabled)
-    .IsDependeeOf("dotnet")
-    .IsDependentOn("dotnet build")
-    .Does(() => {
-        EnsureDirectoryExists(Artifact("test"));
-        EnsureDirectoryExists(Coverage);
-        EnsureDirectoryExists(CoverageDirectoryPath("report"));
-        EnsureDirectoryExists("xunit");
-    })
-    .DoesForEach(
-        GetFiles("test/*/*.csproj"),
-        (file) => {
-            var unitTestReport = ArtifactFilePath($"test/{file.GetFilenameWithoutExtension().ToString()}.xml")
-                .MakeAbsolute(Context.Environment).FullPath;
-
-            DotCoverCover(tool => {
-                tool.DotNetCoreTest(file.FullPath, new DotNetCoreTestSettings() {
-                    Configuration = Configuration,
-                    DiagnosticOutput = Settings.XUnit.Detailed,
-                    NoBuild = !Settings.XUnit.Build,
-                    NoRestore = !Settings.XUnit.Restore,
-                    TestAdapterPath = ".",
-                    Logger = $"\"xunit;LogFilePath={unitTestReport}\""
-                });
-                },
-                CoverageFilePath($"{file.GetFilenameWithoutExtension().ToString()}.dcvr").MakeAbsolute(Context.Environment),
-                Settings.Coverage.Apply(new DotCoverCoverSettings() {
-                    TargetWorkingDir = file.GetDirectory(),
-                    EnvironmentVariables = Settings.Environment,
-                })
-            );
-        })
-        .Finally(() => {
-            if (!GetFiles("test/*/*.csproj").Any()) return;
-            var coverageReport = CoverageFilePath("solution.dcvr");
-
-            try {
-                DotCoverMerge(GetCoverage("*.dcvr"), coverageReport);
-            } catch {
-                // Sometimes we come into this method so hot that dotcover is still working!
-                System.Threading.Thread.Sleep(2);
-                DotCoverMerge(GetCoverage("*.dcvr"), coverageReport);
-            }
-
-            DotCoverReport(
-                coverageReport,
-                CoverageFilePath("report/index.html"),
-                new DotCoverReportSettings {
-                    ReportType = DotCoverReportType.HTML
+            DotNetCoreExecute(
+                Context.Tools.Resolve("ReportGenerator.dll"),
+                $"-reports:coverage\\*.opencover.xml -targetdir:coverage\\report -reporttypes:\"HTMLInline;HTMLSummary;TextSummary;Badges\"",
+                new DotNetCoreExecuteSettings() {
+                    WorkingDirectory = Context.Environment.WorkingDirectory
                 });
 
-            DotCoverReport(
-                coverageReport,
-                CoverageFilePath("solution.xml"),
-                new DotCoverReportSettings {
-                    ReportType = DotCoverReportType.DetailedXML
-                });
-
-            var covered = XmlPeek(CoverageFilePath("solution.xml"), "/Root/@CoveredStatements");
-            var total =  XmlPeek(CoverageFilePath("solution.xml"), "/Root/@TotalStatements");
-            var coverage = double.Parse(covered) / double.Parse(total);
-            Information($"Code coverage: {coverage.ToString("P2")}");
-
-            CleanBom(CoverageFilePath("solution.xml"));
-
-            DotCoverToCoberturaSummary(
-                coverageReport.ChangeExtension("xml"),
-                coverageReport.ChangeExtension("cobertura"));
+            MergeCoberturaFiles(
+                GetCoverage("*.cobertura.xml"),
+                CoverageFilePath("solution.cobertura"));
         });
 
 Task("dotnet pack")
