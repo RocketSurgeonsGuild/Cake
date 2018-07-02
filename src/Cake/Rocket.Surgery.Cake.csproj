@@ -3,8 +3,8 @@
         <TargetFrameworks>netstandard2.0</TargetFrameworks>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Cake.Common" Version="$(Cake_Version)" PrivateAssets="All" />
-        <PackageReference Include="Cake.Core" Version="$(Cake_Version)" PrivateAssets="All" />
-        <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+        <PackageReference Include="Cake.Common" />
+        <PackageReference Include="Cake.Core" />
+        <PackageReference Include="Newtonsoft.Json" />
     </ItemGroup>
 </Project>
