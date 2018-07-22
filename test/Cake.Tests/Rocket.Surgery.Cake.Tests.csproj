@@ -4,6 +4,5 @@
     </PropertyGroup>
     <ItemGroup>
         <ProjectReference Include="..\..\src\Cake\Rocket.Surgery.Cake.csproj" />
-        <PackageReference Include="XunitXml.TestLogger" Version="2.0.0" />
     </ItemGroup>
 </Project>
