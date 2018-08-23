@@ -35,7 +35,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{F2329C11-7
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rocket.Surgery.Cake", "src\Cake\Rocket.Surgery.Cake.csproj", "{8A6AA3E2-E19F-4CF5-B06A-EBE16AB261B1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rocket.Surgery.Cake.Tests", "tests\Cake.Tests\Rocket.Surgery.Cake.Tests.csproj", "{997DDC30-398B-4157-B43A-DFF05AA18DE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rocket.Surgery.Cake.Tests", "test\Cake.Tests\Rocket.Surgery.Cake.Tests.csproj", "{997DDC30-398B-4157-B43A-DFF05AA18DE2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rocket.Surgery.Cake.Application", "src\Cake.Application\Rocket.Surgery.Cake.Application.csproj", "{066C7A0C-9969-4876-A8E2-876153BC3399}"
 EndProject
