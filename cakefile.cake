@@ -41,7 +41,7 @@ Task("TestScripts")
 
         var testFile = testFolder.CombineWithFilePath(sourceFile.GetFilename());
         CopyFile(sourceFile, testFile);
-        PinVersion(testFile, GitVer.NuGetVersion);
+        PinVersion(testFile, GitVer.SemVer);
 
         try {
             CakeExecuteScript(testFolder.CombineWithFilePath(sourceFile.GetFilename()), new CakeSettings() {
@@ -49,7 +49,7 @@ Task("TestScripts")
             });
         } catch {
             foreach (var angel in GetFiles(testFolder.FullPath + "/**/*.cake")) {
-                PinVersion(angel, GitVer.NuGetVersion);
+                PinVersion(angel, GitVer.SemVer);
             }
             CakeExecuteScript(testFolder.CombineWithFilePath(sourceFile.GetFilename()), new CakeSettings() {
                 WorkingDirectory = testFolder
