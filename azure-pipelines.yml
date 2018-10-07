@@ -26,7 +26,7 @@ jobs:
       - template: .pipelines/dotnet-core.yml
         parameters:
           CakeVersion: "$(CakeVersion)"
-          DotNetVersion: "$(DotNetVersion)"steps:
+          DotNetVersion: "$(DotNetVersion)"
       - task: RocketSurgeonsGuild.variable-tools.ShowVariables.ShowVariables@1
         displayName: 'Show Variables'
       - template: .pipelines/azure-build.yml
