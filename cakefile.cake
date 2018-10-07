@@ -14,7 +14,7 @@ Task("HasGitVer")
         Information($"GITVERSION_SEMVER: {EnvironmentVariable("GITVERSION_SEMVER")}");
         Information($"gitversion_semver: {EnvironmentVariable("gitversion_semver")}");
         Information($"GitVersion_SemVer: {EnvironmentVariable("GitVersion_SemVer")}");
-        foreach (var item in EnvironmentVaribles().OrderBy(x => x.Key))
+        foreach (var item in EnvironmentVariables().OrderBy(x => x.Key))
         {
             Information($"{item.Key}: {item.Value}");
         }
