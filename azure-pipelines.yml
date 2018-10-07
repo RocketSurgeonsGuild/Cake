@@ -1,0 +1,69 @@
+variables:
+  Configuration: Release
+  Verbosity: Normal
+  Coverage: "$(Agent.BuildDirectory)/c"
+  VstsCoverage: "$(Coverage)"
+  Artifacts: $(Build.ArtifactStagingDirectory)
+  VstsArtifacts: "$(Artifacts)"
+  # system.enableAccessToken: 'true'
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: "true"
+  DotNetVersion: "2.1.401"
+  NuGetVersion: "4.6.2"
+  CakeVersion: "0.30.0"
+jobs:
+  - job: GitVersion
+    pool:
+      vmImage: "VS2017-Win2016"
+    steps:
+      - template: .pipelines/dotnet-core.yml
+        parameters:
+          CakeVersion: "$(CakeVersion)"
+          DotNetVersion: "$(DotNetVersion)"
+      - script: $(Agent.ToolsDirectory)/dotnet-cake cakefile.cake --Target="GitVersion"
+        displayName: "get gitversion"
+      - template: gitversion-store.yml
+
+  - job: macOS
+    dependsOn: GitVersion
+    pool:
+      vmImage: "macOS-10.13"
+    steps:
+      - template: gitversion-restore.yml
+      - template: .pipelines/dotnet-core.yml
+        parameters:
+          CakeVersion: "$(CakeVersion)"
+          DotNetVersion: "$(DotNetVersion)"
+      - template: .pipelines/azure-build.yml
+        parameters:
+          Configuration: "$(Configuration)"
+          Verbosity: "$(Verbosity)"
+
+  - job: Linux
+    dependsOn: GitVersion
+    pool:
+      vmImage: "Ubuntu-16.04"
+    steps:
+      - template: gitversion-restore.yml
+      - template: .pipelines/dotnet-core.yml
+        parameters:
+          CakeVersion: "$(CakeVersion)"
+          DotNetVersion: "$(DotNetVersion)"
+      - template: .pipelines/azure-build.yml
+        parameters:
+          Configuration: "$(Configuration)"
+          Verbosity: "$(Verbosity)"
+
+  - job: Windows
+    dependsOn: GitVersion
+    pool:
+      vmImage: "VS2017-Win2016"
+    steps:
+      - template: gitversion-restore.yml
+      - template: .pipelines/dotnet-core.yml
+        parameters:
+          CakeVersion: "$(CakeVersion)"
+          DotNetVersion: "$(DotNetVersion)"
+      - template: .pipelines/azure-build.yml
+        parameters:
+          Configuration: "$(Configuration)"
+          Verbosity: "$(Verbosity)"

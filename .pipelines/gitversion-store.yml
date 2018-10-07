@@ -1,0 +1,13 @@
+parameters:
+  targetPath: "$(Build.ArtifactStagingDirectory)/gitversion/meta.json"
+
+steps:
+  - task: RocketSurgeonsGuild.variable-tools.SerializeVariables.SerializeVariables@1
+    displayName: "Serialize GitVersion Variables"
+    inputs:
+      filename: ${{ parameters.targetPath }}
+      prefixes: GITVERSION
+  - task: PublishPipelineArtifact@0
+    displayName: "Publish GitVersion Variables"
+    inputs:
+      targetPath: ${{ parameters.targetPath }}
