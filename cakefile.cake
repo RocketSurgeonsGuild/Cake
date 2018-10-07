@@ -11,10 +11,10 @@ Task("HasGitVer")
 .IsDependeeOf("Clean")
     .Does(() => {
         Information($"Has GitVersion: {HasGitVer}");
-        Information($"GITVERSION_SEMVER: {EnvironmentVarible("GITVERSION_SEMVER")}");
-        Information($"gitversion_semver: {EnvironmentVarible("gitversion_semver")}");
-        Information($"GitVersion_SemVer: {EnvironmentVarible("GitVersion_SemVer")}");
-        foreach (var item in GetEnvironmentVaribles().OrderBy(x => x.Key))
+        Information($"GITVERSION_SEMVER: {EnvironmentVariable("GITVERSION_SEMVER")}");
+        Information($"gitversion_semver: {EnvironmentVariable("gitversion_semver")}");
+        Information($"GitVersion_SemVer: {EnvironmentVariable("GitVersion_SemVer")}");
+        foreach (var item in EnvironmentVaribles().OrderBy(x => x.Key))
         {
             Information($"{item.Key}: {item.Value}");
         }
