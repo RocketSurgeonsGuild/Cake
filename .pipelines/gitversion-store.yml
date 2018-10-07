@@ -7,7 +7,7 @@ steps:
     displayName: "Get NuGet"
     inputs:
       versionSpec: 4.7.1
-  - script: nuget install GitVersion.CommandLine -Version $(VersionToInstall) -ExcludeVersion
+  - script: nuget install GitVersion.CommandLine -Version %VersionToInstall% -ExcludeVersion
     displayName: Install GitVersion
     env:
       VersionToInstall: ${{ parameters.version }}
