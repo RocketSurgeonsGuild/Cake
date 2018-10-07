@@ -136,12 +136,7 @@ namespace Rocket.Surgery.Cake
         [CakePropertyAlias(Cache = true)]
         public static bool HasGitVer(this ICakeContext context)
         {
-            var environmentVariables = context.Environment.GetEnvironmentVariables();
-            return environmentVariables.Keys.Join(
-                GitVersionKeys,
-                x => x,
-                x => x,
-                (a, b) => a, StringComparer.OrdinalIgnoreCase).Any();
+            return GitVersionKeys.Any(z => !string.IsNullOrWhiteSpace( context.EnvironmentVariable(z)));
         }
 
         internal static GitVersion _gitVersion;
