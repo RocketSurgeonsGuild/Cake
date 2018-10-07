@@ -11,8 +11,9 @@ steps:
     displayName: Install GitVersion
     env:
       VersionToInstall: ${{ parameters.targetPath }}
-  - ps: GitVersion.CommandLine/tools/GitVersion.exe /output buildserver
+  - script: GitVersion.exe /output buildserver
     displayName: Run GitVersion
+    workingDirectory: GitVersion.CommandLine/tools/
   - task: RocketSurgeonsGuild.variable-tools.SerializeVariables.SerializeVariables@1
     displayName: "Serialize GitVersion Variables"
     inputs:
