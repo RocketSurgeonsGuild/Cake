@@ -11,6 +11,10 @@ Task("HasGitVer")
 .IsDependeeOf("Clean")
     .Does(() => {
         Information($"Has GitVersion: {HasGitVer}");
+        foreach (var item in EnvironmentVariables())
+        {
+            Information($"{item.Key}: {item.Value}");
+        }
     });
 
 Task("PinVersion")
