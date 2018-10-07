@@ -7,7 +7,9 @@ steps:
     inputs:
       versionSpec: 4.7.1
   - script: nuget install GitVersion.CommandLine -Version 4.0.0-beta0012 -ExcludeVersion
-  - script: ./GitVersion.CommandLine/tools/GitVersion.exe /output buildserver
+    displayName: Install GitVersion
+  - script: GitVersion.CommandLine/tools/GitVersion.exe /output buildserver
+    displayName: Run GitVersion
   - task: RocketSurgeonsGuild.variable-tools.SerializeVariables.SerializeVariables@1
     displayName: "Serialize GitVersion Variables"
     inputs:
