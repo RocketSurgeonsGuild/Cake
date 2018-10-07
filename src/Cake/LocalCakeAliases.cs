@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Cake.Common;
 using Cake.Common.IO;
@@ -136,7 +137,11 @@ namespace Rocket.Surgery.Cake
         public static bool HasGitVer(this ICakeContext context)
         {
             var environmentVariables = context.Environment.GetEnvironmentVariables();
-            return environmentVariables.Keys.Join(GitVersionKeys, x => x, x => x, (a, b) => a).Count() > GitVersionKeys.Length / 2;
+            return environmentVariables.Keys.Join(
+                GitVersionKeys,
+                x => x,
+                x => x,
+                (a, b) => a, StringComparer.OrdinalIgnoreCase).Any();
         }
 
         internal static GitVersion _gitVersion;
