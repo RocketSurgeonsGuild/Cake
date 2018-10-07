@@ -11,7 +11,7 @@ steps:
   - task: RocketSurgeonsGuild.variable-tools.SerializeVariables.SerializeVariables@1
     displayName: "Serialize GitVersion Variables"
     inputs:
-      filename: ${{ parameters.targetPath }}/meta.json
+      filename: ${{ format('{0}/meta.json', parameters.targetPath) }}
       prefixes: GITVERSION
   - task: PublishPipelineArtifact@0
     displayName: "Publish GitVersion Variables"
