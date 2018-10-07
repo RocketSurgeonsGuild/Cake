@@ -26,9 +26,9 @@ jobs:
       - template: .pipelines/dotnet-core.yml
         parameters:
           CakeVersion: "$(CakeVersion)"
-          DotNetVersion: "$(DotNetVersion)"
-      - task: dutchworkz.DisplayAllVariables.DisplayAllVariables.DutchWorkzToolsAllVariables@1
-        displayName: 'Show all build variables in build output.'
+          DotNetVersion: "$(DotNetVersion)"steps:
+      - task: RocketSurgeonsGuild.variable-tools.ShowVariables.ShowVariables@1
+        displayName: 'Show Variables'
       - template: .pipelines/azure-build.yml
         parameters:
           Configuration: "$(Configuration)"
@@ -44,8 +44,8 @@ jobs:
         parameters:
           CakeVersion: "$(CakeVersion)"
           DotNetVersion: "$(DotNetVersion)"
-      - task: dutchworkz.DisplayAllVariables.DisplayAllVariables.DutchWorkzToolsAllVariables@1
-        displayName: 'Show all build variables in build output.'
+      - task: RocketSurgeonsGuild.variable-tools.ShowVariables.ShowVariables@1
+        displayName: 'Show Variables'
       - template: .pipelines/azure-build.yml
         parameters:
           Configuration: "$(Configuration)"
@@ -61,8 +61,8 @@ jobs:
         parameters:
           CakeVersion: "$(CakeVersion)"
           DotNetVersion: "$(DotNetVersion)"
-      - task: dutchworkz.DisplayAllVariables.DisplayAllVariables.DutchWorkzToolsAllVariables@1
-        displayName: 'Show all build variables in build output.'
+      - task: RocketSurgeonsGuild.variable-tools.ShowVariables.ShowVariables@1
+        displayName: 'Show Variables'
       - template: .pipelines/azure-build.yml
         parameters:
           Configuration: "$(Configuration)"
