@@ -28,7 +28,7 @@ jobs:
     pool:
       vmImage: "macOS-10.13"
     steps:
-      - template: gitversion-restore.yml
+      - template: .pipelines/gitversion-restore.yml
       - template: .pipelines/dotnet-core.yml
         parameters:
           CakeVersion: "$(CakeVersion)"
@@ -43,7 +43,7 @@ jobs:
     pool:
       vmImage: "Ubuntu-16.04"
     steps:
-      - template: gitversion-restore.yml
+      - template: .pipelines/gitversion-restore.yml
       - template: .pipelines/dotnet-core.yml
         parameters:
           CakeVersion: "$(CakeVersion)"
@@ -58,7 +58,7 @@ jobs:
     pool:
       vmImage: "VS2017-Win2016"
     steps:
-      - template: gitversion-restore.yml
+      - template: .pipelines/gitversion-restore.yml
       - template: .pipelines/dotnet-core.yml
         parameters:
           CakeVersion: "$(CakeVersion)"
