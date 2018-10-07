@@ -1,10 +1,17 @@
 #load "nuget:?package=Rocket.Surgery.Cake.Library&version=0.7.1-beta.23";
 
 Task("Default")
+    .IsDependentOn("HasGitVer")
     .IsDependentOn("PinVersion")
     .IsDependentOn("dotnet")
     .IsDependentOn("TestScripts")
     ;
+
+
+Task("HasGitVer")
+    .Does(() => {
+        Information($"Has GitVersion: {HasGitVer}");
+    });
 
 Task("PinVersion")
     .WithCriteria(!BuildSystem.IsLocalBuild)
