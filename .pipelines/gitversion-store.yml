@@ -1,14 +1,17 @@
 parameters:
   targetPath: "$(Build.ArtifactStagingDirectory)/gitversion/"
+  version: 4.0.0-beta0012
 
 steps:
   - task: NuGetToolInstaller@0
     displayName: "Get NuGet"
     inputs:
       versionSpec: 4.7.1
-  - script: nuget install GitVersion.CommandLine -Version 4.0.0-beta0012 -ExcludeVersion
+  - script: nuget install GitVersion.CommandLine -Version $(VersionToInstall) -ExcludeVersion
     displayName: Install GitVersion
-  - script: GitVersion.CommandLine/tools/GitVersion.exe /output buildserver
+    env:
+      VersionToInstall: ${{ parameters.targetPath }}
+  - ps: GitVersion.CommandLine/tools/GitVersion.exe /output buildserver
     displayName: Run GitVersion
   - task: RocketSurgeonsGuild.variable-tools.SerializeVariables.SerializeVariables@1
     displayName: "Serialize GitVersion Variables"
