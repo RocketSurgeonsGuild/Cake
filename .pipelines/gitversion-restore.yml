@@ -1,5 +1,5 @@
 parameters:
-  targetPath: "$(Build.ArtifactStagingDirectory)/gitversion/meta.json"
+  targetPath: "$(Build.ArtifactStagingDirectory)/gitversion/"
 
 steps:
   - task: DownloadPipelineArtifact@0
@@ -10,4 +10,4 @@ steps:
   - task: RocketSurgeonsGuild.variable-tools.DeserializeVariables.DeserializeVariables@1
     displayName: 'Deserialize GitVersion'
     inputs:
-      jsonfiles: ${{ parameters.targetPath }}
+      jsonfiles: ${{ parameters.targetPath }}/meta.json
