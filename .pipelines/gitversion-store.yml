@@ -19,7 +19,8 @@ steps:
     inputs:
       filename: ${{ format('{0}/meta.json', parameters.targetPath) }}
       prefixes: GITVERSION
-  - task: PublishPipelineArtifact@0
+  - task: PublishBuildArtifacts@1
     displayName: "Publish GitVersion Variables"
     inputs:
-      targetPath: ${{ parameters.targetPath }}
+      pathtoPublish: ${{ parameters.targetPath }}
+      artifactName: gitversion
