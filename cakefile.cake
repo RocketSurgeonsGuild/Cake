@@ -1,4 +1,4 @@
-#load "nuget:?package=Rocket.Surgery.Cake.Library&version=0.7.1-beta.19";
+#load "nuget:?package=Rocket.Surgery.Cake.Library&version=0.7.1-beta.21";
 
 Task("Default")
     .IsDependentOn("PinVersion")
@@ -13,6 +13,10 @@ Task("PinVersion")
             PinVersion(angel, GitVer.SemVer);
         }
     });
+// Task("HasGitVer")
+//     .Does(() => {
+//         Error(HasGitVer.ToString());
+//     });
 
 void PinVersion(FilePath file, string version) {
     var content = System.IO.File.ReadAllText(file.FullPath);
