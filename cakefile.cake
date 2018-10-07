@@ -1,4 +1,4 @@
-#load "nuget:?package=Rocket.Surgery.Cake.Library&version=0.7.1-beta.23";
+#load "nuget:?package=Rocket.Surgery.Cake.Library&version=0.7.1-beta.31";
 
 Task("Default")
     .IsDependentOn("PinVersion")
@@ -11,7 +11,10 @@ Task("HasGitVer")
 .IsDependeeOf("Clean")
     .Does(() => {
         Information($"Has GitVersion: {HasGitVer}");
-        foreach (var item in EnvironmentVariables())
+        Information($"GITVERSION_SEMVER: {EnvironmentVarible("GITVERSION_SEMVER")}");
+        Information($"gitversion_semver: {EnvironmentVarible("gitversion_semver")}");
+        Information($"GitVersion_SemVer: {EnvironmentVarible("GitVersion_SemVer")}");
+        foreach (var item in GetEnvironmentVaribles().OrderBy(x => x.Key))
         {
             Information($"{item.Key}: {item.Value}");
         }
