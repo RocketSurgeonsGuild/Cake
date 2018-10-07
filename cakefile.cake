@@ -10,7 +10,7 @@ Task("PinVersion")
     .WithCriteria(!BuildSystem.IsLocalBuild)
     .Does(() => {
         foreach (var angel in GetFiles("./src/**/*.cake")) {
-            PinVersion(angel, GitVer.NuGetVersion);
+            PinVersion(angel, GitVer.SemVer);
         }
     });
 
