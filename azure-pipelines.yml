@@ -21,7 +21,7 @@ jobs:
           DotNetVersion: "$(DotNetVersion)"
       - script: $(Agent.ToolsDirectory)/dotnet-cake cakefile.cake --Target="GitVersion"
         displayName: "get gitversion"
-      - template: gitversion-store.yml
+      - template: .pipelines/gitversion-store.yml
 
   - job: macOS
     dependsOn: GitVersion
