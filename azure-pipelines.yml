@@ -15,12 +15,6 @@ jobs:
     pool:
       vmImage: "VS2017-Win2016"
     steps:
-      - template: .pipelines/dotnet-core.yml
-        parameters:
-          CakeVersion: "$(CakeVersion)"
-          DotNetVersion: "$(DotNetVersion)"
-      - script: $(Agent.ToolsDirectory)/dotnet-cake cakefile.cake --Target="GitVersion"
-        displayName: "get gitversion"
       - template: .pipelines/gitversion-store.yml
 
   - job: macOS
