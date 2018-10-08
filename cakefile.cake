@@ -1,4 +1,4 @@
-#load "nuget:?package=Rocket.Surgery.Cake.Library&version=0.7.1";
+#load "nuget:?package=Rocket.Surgery.Cake.Library&version=0.7.2-beta1";
 
 Task("Default")
     .IsDependentOn("PinVersion")
