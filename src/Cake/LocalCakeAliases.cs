@@ -155,7 +155,7 @@ namespace Rocket.Surgery.Cake
                     PreReleaseTag = environmentVariables["GitVersion_PreReleaseTag"],
                     PreReleaseTagWithDash = environmentVariables["GitVersion_PreReleaseTagWithDash"],
                     PreReleaseLabel = environmentVariables["GitVersion_PreReleaseLabel"],
-                    PreReleaseNumber = int.Parse(environmentVariables["GitVersion_PreReleaseNumber"]),
+                    PreReleaseNumber = string.IsNullOrWhiteSpace(environmentVariables["GitVersion_PreReleaseNumber"]) ? null : int.Parse(environmentVariables["GitVersion_PreReleaseNumber"]) as int?,
                     BuildMetaData = environmentVariables["GitVersion_BuildMetaData"],
                     BuildMetaDataPadded = environmentVariables["GitVersion_BuildMetaDataPadded"],
                     FullBuildMetaData = environmentVariables["GitVersion_FullBuildMetaData"],
