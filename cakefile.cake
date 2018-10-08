@@ -46,12 +46,11 @@ Task("TestScripts")
 
         var nugetConfig = testFolder.CombineWithFilePath("NuGet.config");
         CopyFile("./NuGet.config", nugetConfig);
-        NuGetAddSource(
-            "testlocation",
-            ArtifactDirectoryPath("nuget").MakeAbsolute(Context.Environment).FullPath.Replace("/", "\\"),
-            new NuGetSourcesSettings() {
-                ConfigFile = nugetConfig,
-            });
+        var path = ArtifactDirectoryPath("nuget").MakeAbsolute(Context.Environment).FullPath;
+        if (IsRunningOnWindows()) {
+            path = path.Replace("/", "\\");
+        }
+        XmlPoke(nugetConfig, "/configuration/packageSources/add[@key='Cake']/@value", path);
 
         var testFile = testFolder.CombineWithFilePath(sourceFile.GetFilename());
         CopyFile(sourceFile, testFile);
