@@ -61,6 +61,10 @@ jobs:
         parameters:
           CakeVersion: "$(CakeVersion)"
           DotNetVersion: "$(DotNetVersion)"
+      - task: NuGetToolInstaller@0
+        displayName: "Get NuGet"
+        inputs:
+          versionSpec: 4.7.1
       - task: RocketSurgeonsGuild.variable-tools.ShowVariables.ShowVariables@1
         displayName: 'Show Variables'
       - template: .pipelines/azure-build.yml

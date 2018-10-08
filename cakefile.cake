@@ -6,20 +6,6 @@ Task("Default")
     .IsDependentOn("TestScripts")
     ;
 
-
-Task("HasGitVer")
-.IsDependeeOf("Clean")
-    .Does(() => {
-        Information($"Has GitVersion: {HasGitVer}");
-        Information($"GITVERSION_SEMVER: {EnvironmentVariable("GITVERSION_SEMVER")}");
-        Information($"gitversion_semver: {EnvironmentVariable("gitversion_semver")}");
-        Information($"GitVersion_SemVer: {EnvironmentVariable("GitVersion_SemVer")}");
-        foreach (var item in EnvironmentVariables().OrderBy(x => x.Key))
-        {
-            Information($"{item.Key}: {item.Value}");
-        }
-    });
-
 Task("PinVersion")
     .WithCriteria(!BuildSystem.IsLocalBuild)
     .Does(() => {
@@ -47,6 +33,7 @@ Task("TestScripts")
 
         var nugetConfig = testFolder.CombineWithFilePath("NuGet.config");
         CopyFile("./NuGet.config", nugetConfig);
+        // Todo update this to be cross platform
         NuGetAddSource(
             "testlocation",
             ArtifactDirectoryPath("nuget").MakeAbsolute(Context.Environment).FullPath.Replace("/", "\\"),
