@@ -10,10 +10,6 @@ variables:
   DotNetVersion: "2.1.401"
   NuGetVersion: "4.6.2"
   CakeVersion: "0.30.0"
-resources:
-  containers:
-    - container: sdk
-      image: microsoft/dotnet:2.1-sdk
 jobs:
   - job: GitVersion
     pool:
@@ -27,11 +23,6 @@ jobs:
       vmImage: "macOS-10.13"
     steps:
       - template: .pipelines/gitversion-restore.yml
-      - task: DotNetCoreInstaller@0
-        displayName: Install dotnet $(DotNetVersion)
-        inputs:
-          packageType: 'sdk'
-          version: ${{ parameters.DotNetVersion }}
       - template: .pipelines/dotnet-core.yml
         parameters:
           CakeVersion: "$(CakeVersion)"
@@ -45,7 +36,6 @@ jobs:
 
   - job: Linux
     dependsOn: GitVersion
-    container: sdk
     pool:
       vmImage: "Ubuntu-16.04"
     steps:
@@ -63,7 +53,6 @@ jobs:
 
   - job: Windows
     dependsOn: GitVersion
-    container: sdk
     pool:
       vmImage: "VS2017-Win2016"
     steps:
