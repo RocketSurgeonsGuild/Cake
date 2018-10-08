@@ -1,12 +1,13 @@
 parameters:
   targetPath: "$(Build.ArtifactStagingDirectory)/gitversion/"
   version: '4.0.0-beta0012'
+  NuGetVersion: ''
 
 steps:
   - task: NuGetToolInstaller@0
     displayName: "Get NuGet"
     inputs:
-      versionSpec: 4.7.1
+      versionSpec: ${{ parameters.NuGetVersion }}
   - script: nuget install GitVersion.CommandLine -Version %VersionToInstall% -ExcludeVersion
     displayName: Install GitVersion
     env:

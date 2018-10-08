@@ -8,7 +8,7 @@ variables:
   # system.enableAccessToken: 'true'
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: "true"
   DotNetVersion: "2.1.401"
-  NuGetVersion: "4.6.2"
+  NuGetVersion: "4.7.1"
   CakeVersion: "0.30.0"
 jobs:
   - job: GitVersion
@@ -16,6 +16,8 @@ jobs:
       vmImage: "VS2017-Win2016"
     steps:
       - template: .pipelines/gitversion-store.yml
+        parameters:
+          NuGetVersion: "$(NuGetVersion)"
 
   - job: macOS
     dependsOn: GitVersion
@@ -64,7 +66,7 @@ jobs:
       - task: NuGetToolInstaller@0
         displayName: "Get NuGet"
         inputs:
-          versionSpec: 4.7.1
+          versionSpec: $(NuGetVersion)
       - task: RocketSurgeonsGuild.variable-tools.ShowVariables.ShowVariables@1
         displayName: 'Show Variables'
       - template: .pipelines/azure-build.yml
