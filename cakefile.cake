@@ -1,8 +1,8 @@
-#load "nuget:?package=Rocket.Surgery.Cake.Library&version=0.7.3";
+#load "nuget:?package=Rocket.Surgery.Cake.Library&version=0.8.0";
 
 Task("Default")
     .IsDependentOn("PinVersion")
-    .IsDependentOn("dotnet")
+    .IsDependentOn("dotnetcore")
     .IsDependentOn("TestScripts")
     ;
 
@@ -22,7 +22,7 @@ void PinVersion(FilePath file, string version) {
 }
 
 Task("TestScripts")
-    .IsDependentOn("dotnet")
+    .IsDependentOn("dotnetcore")
     .WithCriteria(IsRunningOnWindows)
     .DoesForEach(GetFiles("src/**/*.cake"), (sourceFile) => {
         var testFolder = Artifacts.Combine("testfolder");
