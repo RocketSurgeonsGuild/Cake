@@ -2,8 +2,7 @@
 #tool "nuget:?package=ReportGenerator&version=4.0.0-rc8"
 
 DotNetCoreMSBuildSettings CreateDotNetCoreMsBuildSettings(string target)
-{
-    return new DotNetCoreMSBuildSettings() {
+{    return new DotNetCoreMSBuildSettings() {
         DiagnosticOutput = Settings.Diagnostic,
         DetailedSummary = Settings.Diagnostic,
         EnvironmentVariables = Settings.Environment,
@@ -18,8 +17,11 @@ DotNetCoreMSBuildSettings CreateDotNetCoreMsBuildSettings(string target)
                 ShowCommandLine = Settings.Diagnostic,
             },
         },
-        ArgumentCustomization = a => a.Append($"/bl:{Artifact($"logs/{target.ToLower()}.binlog")};ProjectImports={(!BuildSystem.IsLocalBuild || Settings.Diagnostic ? MSBuildBinaryLogImports.Embed : MSBuildBinaryLogImports.None)}"),
     };
+}
+
+ProcessArgumentBuilder CreateBinLogger(ProcessArgumentBuilder a, string target) {
+    return a.Append($"/bl:{Artifact($"logs/{target.ToLower()}.binlog")};ProjectImports={(!BuildSystem.IsLocalBuild || Settings.Diagnostic ? MSBuildBinaryLogImports.Embed : MSBuildBinaryLogImports.None)}");
 }
 
 Task("dotnetcore");
@@ -45,6 +47,7 @@ Task("dotnetcore build")
                 Verbosity = Settings.DotNetCoreVerbosity,
                 Configuration = Settings.Configuration,
                 EnvironmentVariables = Settings.Environment,
+                ArgumentCustomization = a => CreateBinLogger(a, "build"),
                 MSBuildSettings = CreateDotNetCoreMsBuildSettings("build")
             }
         );
@@ -109,6 +112,7 @@ Task("dotnetcore pack")
                 NoRestore = !BuildSystem.IsLocalBuild,
                 NoBuild = !Settings.Pack.Build,
                 OutputDirectory = ArtifactDirectoryPath("nuget").MakeAbsolute(Context.Environment).FullPath,
+                ArgumentCustomization = a => CreateBinLogger(a, "build"),
                 MSBuildSettings = CreateDotNetCoreMsBuildSettings("pack").WithProperty("RestoreNoCache", BuildSystem.IsLocalBuild.ToString()),
             }
         );

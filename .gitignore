@@ -201,3 +201,4 @@ project.lock.json
 /tools/*.md5sum
 !tools/packages.config
 /scripts/
+src/Cake.Scripts/tools/tools/
