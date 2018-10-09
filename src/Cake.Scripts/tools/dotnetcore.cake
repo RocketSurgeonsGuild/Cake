@@ -6,16 +6,15 @@ DotNetCoreMSBuildSettings CreateDotNetCoreMsBuildSettings(string target)
     return new DotNetCoreMSBuildSettings() {
         DiagnosticOutput = Settings.Diagnostic,
         DetailedSummary = Settings.Diagnostic,
-
         EnvironmentVariables = Settings.Environment,
         FileLoggers = {
-            new MSBuildFileLogger {
+            new MSBuildFileLoggerSettings {
                 AppendToLogFile = false,
                 LogFile = Artifact($"logs/{target.ToLower()}.log"),
                 ShowTimestamp = true,
                 Verbosity = Settings.DotNetCoreVerbosity,
-                PerformanceSummaryEnabled = Settings.Diagnostic,
-                SummaryDisabled = Settings.Diagnostic,
+                PerformanceSummary = Settings.Diagnostic,
+                NoSummary = !Settings.Diagnostic,
                 ShowCommandLine = Settings.Diagnostic,
             },
         },
