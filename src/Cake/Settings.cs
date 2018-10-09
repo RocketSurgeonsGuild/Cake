@@ -6,6 +6,7 @@ using Cake.Common.Tools.DotNetCore;
 using Cake.Common.Tools.GitVersion;
 using Cake.Core.Diagnostics;
 using Cake.Core.IO;
+using Cake.Common.Tools.MSBuild;
 
 namespace Rocket.Surgery.Cake
 {
@@ -30,15 +31,45 @@ namespace Rocket.Surgery.Cake
         public GitVersion Version { get; }
         public Dictionary<string, string> Environment { get; }
         public string Configuration { get; }
-        public Verbosity Verbosity { get; set; }
-        public DotNetCoreVerbosity DotNetCoreVerbosity => Enum.TryParse<DotNetCoreVerbosity>(Verbosity.ToString(), out var dotNetCoreVerbosity) ? dotNetCoreVerbosity : DotNetCoreVerbosity.Minimal;
-
-        private bool? _diagnostic;
-        public bool Diagnostic
+        private Verbosity _verbosity;
+        public Verbosity Verbosity
         {
-            get => _diagnostic ?? Verbosity > Verbosity.Normal;
-            set => _diagnostic = value;
+            get
+            {
+                if (Diagnostic)
+                {
+                    if (_verbosity > Verbosity.Normal)
+                    {
+                        return _verbosity;
+                    }
+                    return Verbosity.Normal;
+                }
+
+                if (_verbosity > Verbosity.Normal)
+                {
+                    return Verbosity.Normal;
+                }
+                return Verbosity.Minimal;
+            }
+            set => _verbosity = value;
         }
+
+        public DotNetCoreVerbosity DotNetCoreVerbosity
+        {
+            get
+            {
+                switch (Verbosity)
+                {
+                    case Verbosity.Quiet: return DotNetCoreVerbosity.Quiet;
+                    case Verbosity.Minimal: return DotNetCoreVerbosity.Minimal;
+                    case Verbosity.Normal: return DotNetCoreVerbosity.Normal;
+                    case Verbosity.Verbose: return DotNetCoreVerbosity.Detailed;
+                    case Verbosity.Diagnostic: return DotNetCoreVerbosity.Diagnostic;
+                }
+                return DotNetCoreVerbosity.Normal;
+            }
+        }
+        public bool Diagnostic { get; set; }
 
         public class XUnitSettings
         {
