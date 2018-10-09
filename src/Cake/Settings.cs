@@ -2,16 +2,26 @@
 using System.Collections.Generic;
 using Cake.Common.Tools.DotCover;
 using Cake.Common.Tools.DotCover.Cover;
+using Cake.Common.Tools.DotNetCore;
 using Cake.Common.Tools.GitVersion;
+using Cake.Core.Diagnostics;
+using Cake.Core.IO;
 
 namespace Rocket.Surgery.Cake
 {
     public class Settings
     {
-        public Settings(GitVersion version, Dictionary<string, string> environment)
+        public Settings(
+            GitVersion version,
+            Dictionary<string, string> environment,
+            string configuration,
+            Verbosity verbosity
+        )
         {
             Version = version;
             Environment = environment;
+            Configuration = configuration;
+            Verbosity = verbosity;
         }
 
         public XUnitSettings XUnit { get; } = new XUnitSettings();
@@ -19,7 +29,16 @@ namespace Rocket.Surgery.Cake
         public CoverageSettings Coverage { get; } = new CoverageSettings();
         public GitVersion Version { get; }
         public Dictionary<string, string> Environment { get; }
+        public string Configuration { get; }
+        public Verbosity Verbosity { get; set; }
+        public DotNetCoreVerbosity DotNetCoreVerbosity => Enum.TryParse<DotNetCoreVerbosity>(Verbosity.ToString(), out var dotNetCoreVerbosity) ? dotNetCoreVerbosity : DotNetCoreVerbosity.Minimal;
 
+        private bool? _diagnostic;
+        public bool Diagnostic
+        {
+            get => _diagnostic ?? Verbosity > Verbosity.Normal;
+            set => _diagnostic = value;
+        }
 
         public class XUnitSettings
         {
@@ -27,7 +46,6 @@ namespace Rocket.Surgery.Cake
             public bool Build { get; set; } = false;
             public bool Restore { get; set; } = false;
             public bool Shadow { get; set; }
-            public bool Detailed { get; set; }
         }
 
         public class CoverageSettings

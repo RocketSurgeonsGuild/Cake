@@ -4,6 +4,7 @@ using Xunit.Abstractions;
 using Cake.Common.Tools.GitVersion;
 using Xunit;
 using System.Collections.Generic;
+using Cake.Core.Diagnostics;
 
 namespace Rocket.Surgery.Cake.Tests
 {
@@ -14,7 +15,7 @@ namespace Rocket.Surgery.Cake.Tests
         [Fact]
         public void ItConstructs()
         {
-            var settings = new Settings(new GitVersion(), new Dictionary<string, string>());
+            var settings = new Settings(new GitVersion(), new Dictionary<string, string>(), "Release", Verbosity.Normal);
 
             settings.Coverage.Should().NotBeNull();
             settings.Environment.Should().NotBeNull();

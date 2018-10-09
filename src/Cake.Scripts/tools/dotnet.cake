@@ -1,28 +1,29 @@
 #addin "nuget:?package=Rocket.Surgery.Cake&version={version}"
-#tool "nuget:?package=ReportGenerator&version=4.0.0-alpha12"
+#tool "nuget:?package=ReportGenerator&version=4.0.0-rc8"
 
-MSBuildSettings GoBuild(string target)
+MSBuildSettings CreateMSBuildSettings(string target)
 {
     return new MSBuildSettings {
         Targets = { target },
         EnvironmentVariables = Settings.Environment,
-        Configuration = Configuration,
-        DetailedSummary = false,
+        Configuration = Settings.Configuration,
+        DetailedSummary = Settings.Diagnostic,
         Verbosity = Verbosity.Minimal,
         FileLoggers = {
             new MSBuildFileLogger {
                 AppendToLogFile = false,
                 LogFile = Artifact($"logs/{target.ToLower()}.log"),
                 ShowTimestamp = true,
-                Verbosity = Verbosity.Diagnostic,
-                PerformanceSummaryEnabled = true,
-                SummaryDisabled = false,
+                Verbosity = Settings.Verbosity,
+                PerformanceSummaryEnabled = Settings.Diagnostic,
+                SummaryDisabled = Settings.Diagnostic,
+                ShowCommandLine = Settings.Diagnostic,
             }
         },
         BinaryLogger = new MSBuildBinaryLogSettings {
             Enabled = true,
             FileName = Artifact($"logs/{target.ToLower()}.binlog"),
-            Imports = BuildSystem.IsLocalBuild ? MSBuildBinaryLogImports.None : MSBuildBinaryLogImports.Embed,
+            Imports = BuildSystem.IsLocalBuild || Settings.Diagnostic ? MSBuildBinaryLogImports.Embed : MSBuildBinaryLogImports.None,
         }
     };
 }
@@ -32,14 +33,14 @@ Task("dotnet");
 Task("dotnet restore")
     .IsDependeeOf("dotnet")
     .DoesForEach(GetFiles("*.sln"), (solution) => {
-        MSBuild(solution, GoBuild("Restore").SetVerbosity(Verbosity.Minimal));
+        MSBuild(solution, CreateMSBuildSettings("Restore").SetVerbosity(Verbosity.Minimal));
     });
 
 Task("dotnet build")
     .IsDependeeOf("dotnet")
     .IsDependentOn("dotnet restore")
     .DoesForEach(GetFiles("*.sln"), (solution) => {
-        MSBuild(solution, GoBuild("Build").SetVerbosity(Verbosity.Minimal));
+        MSBuild(solution, CreateMSBuildSettings("Build").SetVerbosity(Verbosity.Minimal));
     });
 
 Task("dotnet test")
@@ -57,8 +58,8 @@ Task("dotnet test")
                 .MakeAbsolute(Context.Environment).FullPath;
 
             DotNetCoreTest(file.FullPath, new DotNetCoreTestSettings() {
-                Configuration = Configuration,
-                DiagnosticOutput = Settings.XUnit.Detailed,
+                Configuration = Settings.Configuration,
+                DiagnosticOutput = Settings.Diagnostic,
                 NoBuild = !Settings.XUnit.Build,
                 NoRestore = !Settings.XUnit.Restore,
                 TestAdapterPath = ".",
@@ -86,7 +87,7 @@ Task("dotnet pack")
     .IsDependeeOf("dotnet")
     .IsDependentOn("dotnet build")
     .DoesForEach(GetFiles("*.sln"), (solution) => {
-        MSBuild(solution, GoBuild("Pack")
+        MSBuild(solution, CreateMSBuildSettings("Pack")
             .WithProperty("NoBuild", (!Settings.Pack.Build).ToString())
             .WithProperty("RestoreNoCache", BuildSystem.IsLocalBuild.ToString())
             .WithProperty("RestoreForce", BuildSystem.IsLocalBuild.ToString())

@@ -23,7 +23,12 @@ namespace Rocket.Surgery.Cake
         {
             var gv = GitVer(context);
 
-            return new Settings(gv, GitVersionEnvironment(context, gv));
+            return new Settings(
+                gv,
+                GitVersionEnvironment(context, gv),
+                Configuration(context),
+                context.Log.Verbosity
+            );
         }
 
         private static Dictionary<string, string> GitVersionEnvironment(this ICakeContext context, GitVersion version)
