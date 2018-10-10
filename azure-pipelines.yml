@@ -67,3 +67,19 @@ jobs:
         parameters:
           Configuration: "$(Configuration)"
           Verbosity: "$(Verbosity)"
+      - task: NuGetCommand@2
+        displayName: 'Push NuGet packages to myget.org'
+        inputs:
+          command: push
+          nuGetFeedType: external
+          publishFeedCredentials: myget.org
+          verbosityPush: Normal
+        condition: and(succeeded(), or(startsWith(variables['Build.SourceBranch'], 'refs/tags/'), eq(variables['Build.SourceBranch'], 'refs/heads/master')))
+      - task: NuGetCommand@2
+        displayName: 'Push NuGet packages to nuget.org'
+        inputs:
+          command: push
+          nuGetFeedType: external
+          publishFeedCredentials: nuget.org
+          verbosityPush: Normal
+        condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/tags/v'))
