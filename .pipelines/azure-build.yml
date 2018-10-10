@@ -61,15 +61,7 @@ steps:
 
 - script: |
     pip install codecov
-    codecov
-      --file "$(Coverage)/solution.cobertura" \
-      --token $(Token) --name $(system.phaseName) \
-      --env SYSTEM_*,AGENT_*,TF*,BUILD* \
-      --commit $(Build.SourceVersion) \
-      --branch $(Build.SourceBranchName) \
-      --build $(Build.BuildId) \
-      --pr $(System.PullRequest.PullRequestNumber) \
-      --slug $(Build.Repository.Id)
+    codecov --file "$(Coverage)/solution.cobertura" --token $(Token) --name $(system.phaseName) --env SYSTEM_*,AGENT_*,TF*,BUILD* --commit $(Build.SourceVersion) --branch $(Build.SourceBranchName) --build $(Build.BuildId) --pr $(System.PullRequest.PullRequestNumber) --slug $(Build.Repository.Id)
   env:
     Coverage: ${{ parameters.Coverage }}
     Token: $(codecov.Authorization.password)
