@@ -18,6 +18,11 @@ jobs:
       - template: .pipelines/gitversion-store.yml
         parameters:
           NuGetVersion: "$(NuGetVersion)"
+      - task: RocketSurgeonsGuild.variable-tools.ExportServiceConnection.ExportServiceConnection@1
+        displayName: 'Export Service Connection codecov'
+        inputs:
+          name: 1b2c9b1d-dd47-4ac2-ae44-e10d72cdd2b0
+          prefix: codecov
 
   - job: macOS
     dependsOn: GitVersion
