@@ -52,27 +52,3 @@ steps:
 
 - task: UsePythonVersion@0
   displayName: 'Use Python 3.x'
-
-- task: RocketSurgeonsGuild.variable-tools.ExportServiceConnection.ExportServiceConnection@1
-  displayName: 'Export Service Connection codecov'
-  inputs:
-    name: 1b2c9b1d-dd47-4ac2-ae44-e10d72cdd2b0
-    prefix: codecov
-
-- script: |
-    pip install codecov
-    codecov --file "$COVERAGE/solution.cobertura" --token $TOKEN --name $SYSTEM_PHASENAME --env SYSTEM_*,AGENT_*,TF*,BUILD* --commit $BUILD_SOURCEVERSION --branch $BUILD_SOURCEBRANCHNAME --build $BUILD_BUILDID --slug $BUILD_REPOSITORY_ID
-  env:
-    COVERAGE: ${{ parameters.Coverage }}
-    TOKEN: $(codecov.Authorization.password)
-  condition: and(succeeded(), not(variables['System.PullRequest.PullRequestNumber']))
-
-- script: |
-    pip install codecov
-    codecov --file "$COVERAGE/solution.cobertura" --token $TOKEN --name $SYSTEM_PHASENAME --env SYSTEM_*,AGENT_*,TF*,BUILD* --commit $BUILD_SOURCEVERSION --branch $BUILD_SOURCEBRANCHNAME --build $BUILD_BUILDID --pr $SYSTEM_PULLREQUEST_PULLREQUESTNUMBER --slug $BUILD_REPOSITORY_ID
-  env:
-    COVERAGE: ${{ parameters.Coverage }}
-    TOKEN: $(codecov.Authorization.password)
-  condition: and(succeeded(), variables['System.PullRequest.PullRequestNumber'])
-
-# codecov.Authorization.password
