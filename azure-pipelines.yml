@@ -4,6 +4,7 @@ resources:
       type: github
       name: RocketSurgeonsGuild/AzureDevopsTemplates
       ref: refs/tags/v0.1.1
+      endpoint: github
 
 variables:
   Configuration: Release
