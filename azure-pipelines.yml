@@ -50,7 +50,6 @@ jobs:
           Verbosity: "$(Verbosity)"
 
   - job: Windows
-    dependsOn: GitVersion
     pool:
       vmImage: "VS2017-Win2016"
     steps:
