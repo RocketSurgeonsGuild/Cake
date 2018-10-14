@@ -3,7 +3,7 @@ resources:
     - repository: rsg
       type: github
       name: RocketSurgeonsGuild/AzureDevopsTemplates
-      ref: refs/heads/master
+      ref: refs/tags/v0.2.0
       endpoint: github
 
 variables:
@@ -33,7 +33,6 @@ jobs:
       vmImage: "macOS-10.13"
     steps:
       - template: gitversion/restore.yml@rsg
-      - template: devops/artifacts-nuget.yml@rsg
       - template: cake/install.yml@rsg
         parameters:
           CakeVersion: $(CakeVersion)
@@ -49,7 +48,6 @@ jobs:
       vmImage: "Ubuntu-16.04"
     steps:
       - template: gitversion/restore.yml@rsg
-      - template: devops/artifacts-nuget.yml@rsg
       - template: cake/install.yml@rsg
         parameters:
           CakeVersion: $(CakeVersion)
@@ -65,7 +63,6 @@ jobs:
       vmImage: "VS2017-Win2016"
     steps:
       - template: gitversion/restore.yml@rsg
-      - template: devops/artifacts-nuget.yml@rsg
       - template: cake/install.yml@rsg
         parameters:
           CakeVersion: $(CakeVersion)
@@ -79,6 +76,6 @@ jobs:
         parameters:
           Configuration: $(Configuration)
           Verbosity: $(Verbosity)
-      - template: standard/nuget.yml@rsg
+      - template: standard/dotnet-push.yml@rsg
         parameters:
           NuGetVersion: $(NuGetVersion)
