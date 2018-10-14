@@ -67,7 +67,6 @@ Task("dotnet test")
                 ArgumentCustomization = args => args
                     .AppendSwitchQuoted("/p:CollectCoverage", "=", "true")
                     .AppendSwitchQuoted("/p:CoverageDirectory", "=", Coverage.FullPath)
-                    .AppendSwitchQuoted("/p:CoverletOutputFormat", "=", "json,lcov,cobertura,opencover")
 
             });
         })

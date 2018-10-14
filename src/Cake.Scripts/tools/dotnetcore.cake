@@ -82,7 +82,6 @@ Task("dotnetcore test")
                     ArgumentCustomization = args => CreateBinLogger(args, $"test-{file.GetFilenameWithoutExtension()}")
                         .AppendSwitchQuoted("/p:CollectCoverage", "=", "true")
                         .AppendSwitchQuoted("/p:CoverageDirectory", "=", Coverage.FullPath)
-                        .AppendSwitchQuoted("/p:CoverletOutputFormat", "=", "json,lcov,cobertura,opencover")
                 }
             );
         })

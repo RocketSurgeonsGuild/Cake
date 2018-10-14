@@ -79,37 +79,37 @@ namespace Rocket.Surgery.Cake
         [CakePropertyAlias(Cache = true)]
         public static DirectoryPath Artifacts(this ICakeContext context)
         {
-            return DirectoryPath.FromString(context.Argument("artifacts", "./artifacts"));
+            return DirectoryPath.FromString(context.Argument("artifacts", "./artifacts")).MakeAbsolute(context.Environment);
         }
 
         [CakeMethodAlias]
         public static FilePath ArtifactFilePath(this ICakeContext context, string path)
         {
-            return FilePath.FromString(Artifacts(context) + "/" + path.TrimStart('/', '\\'));
+            return FilePath.FromString(Artifacts(context) + "/" + path.TrimStart('/', '\\')).MakeAbsolute(context.Environment);
         }
 
         [CakeMethodAlias]
         public static DirectoryPath ArtifactDirectoryPath(this ICakeContext context, string path)
         {
-            return DirectoryPath.FromString(Artifacts(context) + "/" + path.TrimStart('/', '\\'));
+            return DirectoryPath.FromString(Artifacts(context) + "/" + path.TrimStart('/', '\\')).MakeAbsolute(context.Environment);
         }
 
         [CakePropertyAlias(Cache = true)]
         public static DirectoryPath Coverage(this ICakeContext context)
         {
-            return DirectoryPath.FromString(context.Argument("coverage", "./coverage"));
+            return DirectoryPath.FromString(context.Argument("coverage", "./coverage")).MakeAbsolute(context.Environment);
         }
 
         [CakeMethodAlias]
         public static FilePath CoverageFilePath(this ICakeContext context, string path)
         {
-            return FilePath.FromString(Coverage(context) + "/" + path.TrimStart('/', '\\'));
+            return FilePath.FromString(Coverage(context) + "/" + path.TrimStart('/', '\\')).MakeAbsolute(context.Environment);
         }
 
         [CakeMethodAlias]
         public static DirectoryPath CoverageDirectoryPath(this ICakeContext context, string path)
         {
-            return DirectoryPath.FromString(Coverage(context) + "/" + path.TrimStart('/', '\\'));
+            return DirectoryPath.FromString(Coverage(context) + "/" + path.TrimStart('/', '\\')).MakeAbsolute(context.Environment);
         }
 
         private static readonly string[] GitVersionKeys = {
