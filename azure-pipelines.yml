@@ -27,35 +27,29 @@ jobs:
         parameters:
           NuGetVersion: $(NuGetVersion)
 
-  - job: macOS
-    dependsOn: GitVersion
-    pool:
-      vmImage: "macOS-10.13"
-    steps:
-      - template: gitversion/restore.yml@rsg
-      - template: cake/install.yml@rsg
-        parameters:
-          CakeVersion: $(CakeVersion)
-          DotNetVersion: $(DotNetVersion)
-      - template: cake/run.yml@rsg
-        parameters:
-          Configuration: $(Configuration)
-          Verbosity: $(Verbosity)
+  - template: pipeline/cake-job.yml@rsg
+      parameters:
+        name: 'macOS'
+        dependsOn: GitVersion
+        vmImage: "macOS-10.13"
+        pushNuget: false
+        Configuration: ${{ parameters.Configuration }}
+        Verbosity: ${{ parameters.Verbosity }}
+        CakeVersion: ${{ parameters.CakeVersion }}
+        DotNetVersion: ${{ parameters.DotNetVersion }}
+        NuGetVersion: ${{ parameters.NuGetVersion }}
 
-  - job: Linux
-    dependsOn: GitVersion
-    pool:
-      vmImage: "Ubuntu-16.04"
-    steps:
-      - template: gitversion/restore.yml@rsg
-      - template: cake/install.yml@rsg
-        parameters:
-          CakeVersion: $(CakeVersion)
-          DotNetVersion: $(DotNetVersion)
-      - template: cake/run.yml@rsg
-        parameters:
-          Configuration: $(Configuration)
-          Verbosity: $(Verbosity)
+  - template: pipeline/cake-job.yml@rsg
+      parameters:
+        name: 'Linux'
+        dependsOn: GitVersion
+        vmImage: "Ubuntu-16.04"
+        pushNuget: false
+        Configuration: ${{ parameters.Configuration }}
+        Verbosity: ${{ parameters.Verbosity }}
+        CakeVersion: ${{ parameters.CakeVersion }}
+        DotNetVersion: ${{ parameters.DotNetVersion }}
+        NuGetVersion: ${{ parameters.NuGetVersion }}
 
   - job: Windows
     dependsOn: GitVersion
@@ -76,6 +70,6 @@ jobs:
         parameters:
           Configuration: $(Configuration)
           Verbosity: $(Verbosity)
-      - template: standard/dotnet-push.yml@rsg
+      - template: standard/nuget-push.yml@rsg
         parameters:
           NuGetVersion: $(NuGetVersion)
