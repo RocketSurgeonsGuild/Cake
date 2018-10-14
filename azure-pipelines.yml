@@ -19,8 +19,6 @@ variables:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: "true"
 
 jobs:
-
-jobs:
   - job: GitVersion
     pool:
       vmImage: "VS2017-Win2016"
