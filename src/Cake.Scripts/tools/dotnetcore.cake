@@ -34,6 +34,8 @@ Task("dotnetcore restore")
             new DotNetCoreRestoreSettings() {
                 Verbosity = Settings.DotNetCoreVerbosity,
                 EnvironmentVariables = Settings.Environment,
+                ArgumentCustomization = a => CreateBinLogger(a, "restore"),
+                MSBuildSettings = CreateDotNetCoreMsBuildSettings("restore")
             });
     });
 
@@ -77,7 +79,10 @@ Task("dotnetcore test")
                     NoRestore = !Settings.XUnit.Restore,
                     TestAdapterPath = ".",
                     Logger = $"\"xunit;LogFilePath={unitTestReport}\"",
-                    ArgumentCustomization = args => args.Append("/p:CollectCoverage=true")
+                    ArgumentCustomization = args => CreateBinLogger(args, $"test-{file.GetFilenameWithoutExtension()}")
+                        .AppendSwitchQuoted("/p:CollectCoverage", "=", "true")
+                        .AppendSwitchQuoted("/p:CoverageDirectory", "=", Coverage.FullPath)
+                        .AppendSwitchQuoted("/p:CoverletOutputFormat", "=", "json,lcov,cobertura,opencover")
                 }
             );
         })
@@ -112,8 +117,9 @@ Task("dotnetcore pack")
                 NoRestore = !BuildSystem.IsLocalBuild,
                 NoBuild = !Settings.Pack.Build,
                 OutputDirectory = ArtifactDirectoryPath("nuget").MakeAbsolute(Context.Environment).FullPath,
-                ArgumentCustomization = a => CreateBinLogger(a, "build"),
-                MSBuildSettings = CreateDotNetCoreMsBuildSettings("pack").WithProperty("RestoreNoCache", BuildSystem.IsLocalBuild.ToString()),
+                ArgumentCustomization = a => CreateBinLogger(a, "pack"),
+                MSBuildSettings = CreateDotNetCoreMsBuildSettings("pack")
+                    .WithProperty("RestoreNoCache", BuildSystem.IsLocalBuild.ToString()),
             }
         );
     });

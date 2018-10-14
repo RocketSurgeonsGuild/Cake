@@ -64,7 +64,11 @@ Task("dotnet test")
                 NoRestore = !Settings.XUnit.Restore,
                 TestAdapterPath = ".",
                 Logger = $"\"xunit;LogFilePath={unitTestReport}\"",
-                ArgumentCustomization = args => args.Append("/p:CollectCoverage=true")
+                ArgumentCustomization = args => args
+                    .AppendSwitchQuoted("/p:CollectCoverage", "=", "true")
+                    .AppendSwitchQuoted("/p:CoverageDirectory", "=", Coverage.FullPath)
+                    .AppendSwitchQuoted("/p:CoverletOutputFormat", "=", "json,lcov,cobertura,opencover")
+
             });
         })
         .Finally(() => {
