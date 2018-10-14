@@ -13,9 +13,6 @@
         <PackageReference Include="XunitXml.TestLogger" />
     </ItemGroup>
     <ItemGroup>
-        <Content Include="xunit.runner.json">
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </Content>
         <PackageReference Include="Cake.Common" />
         <PackageReference Include="Cake.Core" />
     </ItemGroup>

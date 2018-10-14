@@ -1,0 +1,2997 @@
+{
+  "D:\\Development\\ReadySelect\\rocketsurgery\\Cake\\test\\Cake.Tests\\bin\\Release\\netcoreapp2.1\\Rocket.Surgery.Cake.dll": {
+    "D:\\Development\\ReadySelect\\rocketsurgery\\Cake\\src\\Cake\\CodeCoverageAliases.cs": {
+      "Rocket.Surgery.Cake.CodeCoverageAliases": {
+        "System.Void Rocket.Surgery.Cake.CodeCoverageAliases::ConvertLcovToCobertura(Cake.Core.ICakeContext,Cake.Core.IO.DirectoryPath,Cake.Core.IO.FilePath,Cake.Core.IO.FilePath)": {
+          "Lines": {
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0
+          },
+          "Branches": []
+        },
+        "System.Void Rocket.Surgery.Cake.CodeCoverageAliases::DotCoverToCoberturaSummary(Cake.Core.ICakeContext,Cake.Core.IO.FilePath,Cake.Core.IO.FilePath)": {
+          "Lines": {
+            "39": 0,
+            "40": 0,
+            "41": 0,
+            "45": 0,
+            "46": 0,
+            "47": 0,
+            "50": 0,
+            "53": 0,
+            "54": 0,
+            "55": 0,
+            "56": 0,
+            "59": 0,
+            "60": 0,
+            "61": 0,
+            "62": 0,
+            "63": 0,
+            "67": 0,
+            "70": 0,
+            "71": 0,
+            "72": 0,
+            "73": 0
+          },
+          "Branches": [
+            {
+              "Line": 54,
+              "Offset": 108,
+              "EndOffset": 110,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 54,
+              "Offset": 108,
+              "EndOffset": 114,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void Rocket.Surgery.Cake.CodeCoverageAliases::MergeCoberturaFiles(Cake.Core.ICakeContext,System.String,Cake.Core.IO.FilePath)": {
+          "Lines": {
+            "78": 0,
+            "79": 0
+          },
+          "Branches": []
+        },
+        "System.Void Rocket.Surgery.Cake.CodeCoverageAliases::MergeCoberturaFiles(Cake.Core.ICakeContext,System.Collections.Generic.IEnumerable`1<Cake.Core.IO.FilePath>,Cake.Core.IO.FilePath)": {
+          "Lines": {
+            "85": 0,
+            "90": 0,
+            "91": 0,
+            "92": 0,
+            "93": 0,
+            "95": 0,
+            "97": 0,
+            "102": 0,
+            "103": 0,
+            "104": 0,
+            "105": 0,
+            "106": 0,
+            "107": 0,
+            "108": 0,
+            "109": 0,
+            "110": 0,
+            "113": 0,
+            "114": 0,
+            "115": 0,
+            "116": 0,
+            "119": 0,
+            "122": 0,
+            "123": 0,
+            "124": 0,
+            "125": 0,
+            "126": 0,
+            "127": 0,
+            "128": 0,
+            "129": 0,
+            "132": 0,
+            "133": 0,
+            "134": 0,
+            "135": 0,
+            "136": 0,
+            "137": 0,
+            "138": 0,
+            "139": 0,
+            "142": 0,
+            "144": 0,
+            "146": 0,
+            "147": 0,
+            "149": 0,
+            "150": 0,
+            "151": 0,
+            "152": 0,
+            "153": 0
+          },
+          "Branches": [
+            {
+              "Line": 85,
+              "Offset": 13,
+              "EndOffset": 15,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 85,
+              "Offset": 13,
+              "EndOffset": 38,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 90,
+              "Offset": 71,
+              "EndOffset": 73,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 90,
+              "Offset": 71,
+              "EndOffset": 96,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 90,
+              "Offset": 107,
+              "EndOffset": 109,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 90,
+              "Offset": 107,
+              "EndOffset": 132,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 90,
+              "Offset": 143,
+              "EndOffset": 145,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 90,
+              "Offset": 143,
+              "EndOffset": 168,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 90,
+              "Offset": 312,
+              "EndOffset": 182,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 0
+            },
+            {
+              "Line": 95,
+              "Offset": 289,
+              "EndOffset": 222,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 0
+            },
+            {
+              "Line": 95,
+              "Offset": 289,
+              "EndOffset": 291,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 90,
+              "Offset": 312,
+              "EndOffset": 317,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 0
+            },
+            {
+              "Line": 113,
+              "Offset": 482,
+              "EndOffset": 484,
+              "Path": 0,
+              "Ordinal": 12,
+              "Hits": 0
+            },
+            {
+              "Line": 113,
+              "Offset": 482,
+              "EndOffset": 507,
+              "Path": 1,
+              "Ordinal": 13,
+              "Hits": 0
+            },
+            {
+              "Line": 123,
+              "Offset": 561,
+              "EndOffset": 563,
+              "Path": 0,
+              "Ordinal": 14,
+              "Hits": 0
+            },
+            {
+              "Line": 123,
+              "Offset": 561,
+              "EndOffset": 567,
+              "Path": 1,
+              "Ordinal": 15,
+              "Hits": 0
+            },
+            {
+              "Line": 126,
+              "Offset": 613,
+              "EndOffset": 615,
+              "Path": 0,
+              "Ordinal": 16,
+              "Hits": 0
+            },
+            {
+              "Line": 126,
+              "Offset": 613,
+              "EndOffset": 619,
+              "Path": 1,
+              "Ordinal": 17,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void Rocket.Surgery.Cake.CodeCoverageAliases::DotCoverCobertura(Cake.Core.ICakeContext,Cake.Core.IO.FilePath,Cake.Core.IO.DirectoryPath,System.Action`1<Cake.Core.ICakeContext>,Cake.Common.Tools.DotCover.Cover.DotCoverCoverSettings)": {
+          "Lines": {
+            "159": 0,
+            "161": 0,
+            "163": 0,
+            "164": 0,
+            "166": 0,
+            "167": 0
+          },
+          "Branches": [
+            {
+              "Line": 163,
+              "Offset": 48,
+              "EndOffset": 50,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 163,
+              "Offset": 48,
+              "EndOffset": 63,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void Rocket.Surgery.Cake.CodeCoverageAliases::DotCoverReports(Cake.Core.ICakeContext,System.String,Cake.Core.IO.DirectoryPath,Cake.Common.Tools.DotCover.DotCoverReportType[])": {
+          "Lines": {
+            "174": 0,
+            "175": 0,
+            "176": 0,
+            "177": 0,
+            "178": 0,
+            "179": 0
+          },
+          "Branches": []
+        },
+        "System.Void Rocket.Surgery.Cake.CodeCoverageAliases::DotCoverReports(Cake.Core.ICakeContext,System.Collections.Generic.IEnumerable`1<Cake.Core.IO.FilePath>,Cake.Core.IO.DirectoryPath,Cake.Common.Tools.DotCover.DotCoverReportType[])": {
+          "Lines": {
+            "186": 0,
+            "187": 0,
+            "188": 0,
+            "189": 0,
+            "190": 0,
+            "191": 0
+          },
+          "Branches": []
+        },
+        "System.Void Rocket.Surgery.Cake.CodeCoverageAliases::DotCoverReports(Cake.Core.ICakeContext,System.Collections.Generic.IEnumerable`1<Cake.Core.IO.FilePath>,Rocket.Surgery.Cake.DotCoverReportsSettings)": {
+          "Lines": {
+            "198": 0,
+            "199": 0,
+            "203": 0,
+            "204": 0,
+            "205": 0,
+            "208": 0,
+            "209": 0,
+            "210": 0,
+            "212": 0,
+            "214": 0,
+            "215": 0,
+            "216": 0,
+            "217": 0,
+            "218": 0,
+            "219": 0,
+            "220": 0,
+            "221": 0,
+            "224": 0,
+            "225": 0,
+            "226": 0,
+            "227": 0,
+            "228": 0
+          },
+          "Branches": [
+            {
+              "Line": 212,
+              "Offset": 141,
+              "EndOffset": 85,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 212,
+              "Offset": 141,
+              "EndOffset": 143,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "Rocket.Surgery.Cake.DotCoverReportsSettings": {
+        "Cake.Core.IO.DirectoryPath Rocket.Surgery.Cake.DotCoverReportsSettings::get_OutputDirectory()": {
+          "Lines": {
+            "233": 0
+          },
+          "Branches": []
+        },
+        "System.String Rocket.Surgery.Cake.DotCoverReportsSettings::get_ReportName()": {
+          "Lines": {
+            "234": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.IEnumerable`1<Cake.Common.Tools.DotCover.DotCoverReportType> Rocket.Surgery.Cake.DotCoverReportsSettings::get_ReportTypes()": {
+          "Lines": {
+            "238": 0
+          },
+          "Branches": []
+        },
+        "System.Void Rocket.Surgery.Cake.DotCoverReportsSettings::set_ReportTypes(System.Collections.Generic.IEnumerable`1<Cake.Common.Tools.DotCover.DotCoverReportType>)": {
+          "Lines": {
+            "239": 0
+          },
+          "Branches": []
+        },
+        "System.Void Rocket.Surgery.Cake.DotCoverReportsSettings::.ctor()": {
+          "Lines": {
+            "235": 0
+          },
+          "Branches": []
+        }
+      },
+      "Rocket.Surgery.Cake.CodeCoverageAliases/<>c": {
+        "System.Collections.Generic.Dictionary`2<System.Xml.Linq.XName,System.String> Rocket.Surgery.Cake.CodeCoverageAliases/<>c::<MergeCoberturaFiles>b__3_1(System.Xml.Linq.XElement)": {
+          "Lines": {},
+          "Branches": [
+            {
+              "Line": 115,
+              "Offset": 12,
+              "EndOffset": 14,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 115,
+              "Offset": 12,
+              "EndOffset": 37,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 115,
+              "Offset": 43,
+              "EndOffset": 45,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 115,
+              "Offset": 43,
+              "EndOffset": 68,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "D:\\Development\\ReadySelect\\rocketsurgery\\Cake\\src\\Cake\\CommonCakeAliases.cs": {
+      "Rocket.Surgery.Cake.CommonCakeAliases": {
+        "System.Void Rocket.Surgery.Cake.CommonCakeAliases::CleanBom(Cake.Core.ICakeContext,Cake.Core.IO.FilePath)": {
+          "Lines": {
+            "18": 0,
+            "19": 0,
+            "20": 0
+          },
+          "Branches": []
+        },
+        "System.Void Rocket.Surgery.Cake.CommonCakeAliases::CleanBom(Cake.Core.ICakeContext,System.String)": {
+          "Lines": {
+            "25": 0,
+            "26": 0
+          },
+          "Branches": []
+        },
+        "System.Void Rocket.Surgery.Cake.CommonCakeAliases::.cctor()": {
+          "Lines": {
+            "13": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Development\\ReadySelect\\rocketsurgery\\Cake\\src\\Cake\\LocalCakeAliases.cs": {
+      "Rocket.Surgery.Cake.LocalCakeAliases": {
+        "System.String Rocket.Surgery.Cake.LocalCakeAliases::Target(Cake.Core.ICakeContext)": {
+          "Lines": {
+            "18": 0
+          },
+          "Branches": []
+        },
+        "Rocket.Surgery.Cake.Settings Rocket.Surgery.Cake.LocalCakeAliases::Settings(Cake.Core.ICakeContext)": {
+          "Lines": {
+            "24": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.Dictionary`2<System.String,System.String> Rocket.Surgery.Cake.LocalCakeAliases::GitVersionEnvironment(Cake.Core.ICakeContext,Cake.Common.Tools.GitVersion.GitVersion)": {
+          "Lines": {
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0,
+            "47": 0,
+            "48": 0,
+            "49": 0,
+            "50": 0,
+            "51": 0,
+            "52": 0,
+            "53": 0,
+            "54": 0,
+            "55": 0,
+            "56": 0,
+            "57": 0,
+            "58": 0,
+            "59": 0,
+            "60": 0,
+            "61": 0,
+            "62": 0,
+            "63": 0,
+            "64": 0
+          },
+          "Branches": []
+        },
+        "System.String Rocket.Surgery.Cake.LocalCakeAliases::Configuration(Cake.Core.ICakeContext)": {
+          "Lines": {
+            "70": 0
+          },
+          "Branches": []
+        },
+        "System.String Rocket.Surgery.Cake.LocalCakeAliases::Artifact(Cake.Core.ICakeContext,System.String)": {
+          "Lines": {
+            "76": 0
+          },
+          "Branches": []
+        },
+        "Cake.Core.IO.DirectoryPath Rocket.Surgery.Cake.LocalCakeAliases::Artifacts(Cake.Core.ICakeContext)": {
+          "Lines": {
+            "82": 0
+          },
+          "Branches": []
+        },
+        "Cake.Core.IO.FilePath Rocket.Surgery.Cake.LocalCakeAliases::ArtifactFilePath(Cake.Core.ICakeContext,System.String)": {
+          "Lines": {
+            "88": 0
+          },
+          "Branches": []
+        },
+        "Cake.Core.IO.DirectoryPath Rocket.Surgery.Cake.LocalCakeAliases::ArtifactDirectoryPath(Cake.Core.ICakeContext,System.String)": {
+          "Lines": {
+            "94": 0
+          },
+          "Branches": []
+        },
+        "Cake.Core.IO.DirectoryPath Rocket.Surgery.Cake.LocalCakeAliases::Coverage(Cake.Core.ICakeContext)": {
+          "Lines": {
+            "100": 0
+          },
+          "Branches": []
+        },
+        "Cake.Core.IO.FilePath Rocket.Surgery.Cake.LocalCakeAliases::CoverageFilePath(Cake.Core.ICakeContext,System.String)": {
+          "Lines": {
+            "106": 0
+          },
+          "Branches": []
+        },
+        "Cake.Core.IO.DirectoryPath Rocket.Surgery.Cake.LocalCakeAliases::CoverageDirectoryPath(Cake.Core.ICakeContext,System.String)": {
+          "Lines": {
+            "112": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean Rocket.Surgery.Cake.LocalCakeAliases::HasGitVer(Cake.Core.ICakeContext)": {
+          "Lines": {
+            "144": 0
+          },
+          "Branches": []
+        },
+        "Cake.Common.Tools.GitVersion.GitVersion Rocket.Surgery.Cake.LocalCakeAliases::GitVer(Cake.Core.ICakeContext)": {
+          "Lines": {
+            "152": 0,
+            "153": 0,
+            "155": 0,
+            "156": 0,
+            "157": 0,
+            "158": 0,
+            "159": 0,
+            "160": 0,
+            "161": 0,
+            "162": 0,
+            "163": 0,
+            "164": 0,
+            "165": 0,
+            "166": 0,
+            "167": 0,
+            "168": 0,
+            "169": 0,
+            "170": 0,
+            "171": 0,
+            "172": 0,
+            "173": 0,
+            "174": 0,
+            "175": 0,
+            "176": 0,
+            "177": 0,
+            "178": 0,
+            "179": 0,
+            "180": 0,
+            "184": 0
+          },
+          "Branches": [
+            {
+              "Line": 153,
+              "Offset": 18,
+              "EndOffset": 23,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 155,
+              "Offset": 29,
+              "EndOffset": 34,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 155,
+              "Offset": 174,
+              "EndOffset": 176,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 155,
+              "Offset": 174,
+              "EndOffset": 199,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 155,
+              "Offset": 451,
+              "EndOffset": 453,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 155,
+              "Offset": 451,
+              "EndOffset": 476,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 155,
+              "Offset": 29,
+              "EndOffset": 530,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 153,
+              "Offset": 18,
+              "EndOffset": 531,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 184,
+              "Offset": 537,
+              "EndOffset": 539,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 184,
+              "Offset": 537,
+              "EndOffset": 552,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Collections.Generic.IEnumerable`1<Cake.Core.IO.FilePath> Rocket.Surgery.Cake.LocalCakeAliases::GetArtifacts(Cake.Core.ICakeContext,System.String)": {
+          "Lines": {
+            "191": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.IEnumerable`1<Cake.Core.IO.FilePath> Rocket.Surgery.Cake.LocalCakeAliases::GetCoverage(Cake.Core.ICakeContext,System.String)": {
+          "Lines": {
+            "197": 0
+          },
+          "Branches": []
+        },
+        "System.Void Rocket.Surgery.Cake.LocalCakeAliases::.cctor()": {
+          "Lines": {
+            "115": 0,
+            "116": 0,
+            "117": 0,
+            "118": 0,
+            "119": 0,
+            "120": 0,
+            "121": 0,
+            "122": 0,
+            "123": 0,
+            "124": 0,
+            "125": 0,
+            "126": 0,
+            "127": 0,
+            "128": 0,
+            "129": 0,
+            "130": 0,
+            "131": 0,
+            "132": 0,
+            "133": 0,
+            "134": 0,
+            "135": 0,
+            "136": 0,
+            "137": 0,
+            "138": 0,
+            "139": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Development\\ReadySelect\\rocketsurgery\\Cake\\src\\Cake\\Settings.cs": {
+      "Rocket.Surgery.Cake.Settings": {
+        "Rocket.Surgery.Cake.Settings/XUnitSettings Rocket.Surgery.Cake.Settings::get_XUnit()": {
+          "Lines": {
+            "28": 2
+          },
+          "Branches": []
+        },
+        "Rocket.Surgery.Cake.Settings/PackSettings Rocket.Surgery.Cake.Settings::get_Pack()": {
+          "Lines": {
+            "29": 2
+          },
+          "Branches": []
+        },
+        "Rocket.Surgery.Cake.Settings/CoverageSettings Rocket.Surgery.Cake.Settings::get_Coverage()": {
+          "Lines": {
+            "30": 2
+          },
+          "Branches": []
+        },
+        "Cake.Common.Tools.GitVersion.GitVersion Rocket.Surgery.Cake.Settings::get_Version()": {
+          "Lines": {
+            "31": 1
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.Dictionary`2<System.String,System.String> Rocket.Surgery.Cake.Settings::get_Environment()": {
+          "Lines": {
+            "32": 1
+          },
+          "Branches": []
+        },
+        "System.String Rocket.Surgery.Cake.Settings::get_Configuration()": {
+          "Lines": {
+            "33": 0
+          },
+          "Branches": []
+        },
+        "Cake.Core.Diagnostics.Verbosity Rocket.Surgery.Cake.Settings::get_Verbosity()": {
+          "Lines": {
+            "39": 0,
+            "41": 0,
+            "43": 0,
+            "45": 0,
+            "48": 0,
+            "50": 0,
+            "52": 0
+          },
+          "Branches": [
+            {
+              "Line": 39,
+              "Offset": 6,
+              "EndOffset": 8,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 41,
+              "Offset": 15,
+              "EndOffset": 17,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 41,
+              "Offset": 15,
+              "EndOffset": 24,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 39,
+              "Offset": 6,
+              "EndOffset": 26,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 48,
+              "Offset": 33,
+              "EndOffset": 35,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 48,
+              "Offset": 33,
+              "EndOffset": 37,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void Rocket.Surgery.Cake.Settings::set_Verbosity(Cake.Core.Diagnostics.Verbosity)": {
+          "Lines": {
+            "54": 1
+          },
+          "Branches": []
+        },
+        "Cake.Common.Tools.DotNetCore.DotNetCoreVerbosity Rocket.Surgery.Cake.Settings::get_DotNetCoreVerbosity()": {
+          "Lines": {
+            "61": 0,
+            "63": 0,
+            "64": 0,
+            "65": 0,
+            "66": 0,
+            "67": 0,
+            "69": 0
+          },
+          "Branches": [
+            {
+              "Line": 61,
+              "Offset": 8,
+              "EndOffset": 35,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 61,
+              "Offset": 8,
+              "EndOffset": 37,
+              "Path": 2,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 61,
+              "Offset": 8,
+              "EndOffset": 39,
+              "Path": 3,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 61,
+              "Offset": 8,
+              "EndOffset": 41,
+              "Path": 4,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 61,
+              "Offset": 8,
+              "EndOffset": 43,
+              "Path": 5,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 61,
+              "Offset": 8,
+              "EndOffset": 45,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Boolean Rocket.Surgery.Cake.Settings::get_Diagnostic()": {
+          "Lines": {
+            "72": 0
+          },
+          "Branches": []
+        },
+        "System.Void Rocket.Surgery.Cake.Settings::.ctor(Cake.Common.Tools.GitVersion.GitVersion,System.Collections.Generic.Dictionary`2<System.String,System.String>,System.String,Cake.Core.Diagnostics.Verbosity)": {
+          "Lines": {
+            "15": 1,
+            "16": 1,
+            "17": 1,
+            "18": 1,
+            "19": 1,
+            "20": 1,
+            "22": 1,
+            "23": 1,
+            "24": 1,
+            "25": 1,
+            "26": 1
+          },
+          "Branches": []
+        }
+      },
+      "Rocket.Surgery.Cake.Settings/XUnitSettings": {
+        "System.Boolean Rocket.Surgery.Cake.Settings/XUnitSettings::get_Enabled()": {
+          "Lines": {
+            "76": 1
+          },
+          "Branches": []
+        },
+        "System.Boolean Rocket.Surgery.Cake.Settings/XUnitSettings::get_Build()": {
+          "Lines": {
+            "77": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean Rocket.Surgery.Cake.Settings/XUnitSettings::get_Restore()": {
+          "Lines": {
+            "78": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean Rocket.Surgery.Cake.Settings/XUnitSettings::get_Shadow()": {
+          "Lines": {
+            "79": 0
+          },
+          "Branches": []
+        }
+      },
+      "Rocket.Surgery.Cake.Settings/CoverageSettings": {
+        "System.Collections.Generic.ISet`1<System.String> Rocket.Surgery.Cake.Settings/CoverageSettings::get_AttributeFilters()": {
+          "Lines": {
+            "84": 1
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.ISet`1<System.String> Rocket.Surgery.Cake.Settings/CoverageSettings::get_Filters()": {
+          "Lines": {
+            "90": 1
+          },
+          "Branches": []
+        },
+        "Cake.Common.Tools.DotCover.Cover.DotCoverCoverSettings Rocket.Surgery.Cake.Settings/CoverageSettings::Apply(Cake.Common.Tools.DotCover.Cover.DotCoverCoverSettings)": {
+          "Lines": {
+            "97": 0,
+            "99": 0,
+            "101": 0,
+            "103": 0,
+            "105": 0
+          },
+          "Branches": [
+            {
+              "Line": 97,
+              "Offset": 35,
+              "EndOffset": 14,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 97,
+              "Offset": 35,
+              "EndOffset": 37,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 101,
+              "Offset": 84,
+              "EndOffset": 63,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 101,
+              "Offset": 84,
+              "EndOffset": 86,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void Rocket.Surgery.Cake.Settings/CoverageSettings::.ctor()": {
+          "Lines": {
+            "85": 1,
+            "86": 1,
+            "87": 1,
+            "88": 1,
+            "91": 1,
+            "92": 1,
+            "93": 1
+          },
+          "Branches": []
+        }
+      },
+      "Rocket.Surgery.Cake.Settings/PackSettings": {
+        "System.Boolean Rocket.Surgery.Cake.Settings/PackSettings::get_Enabled()": {
+          "Lines": {
+            "111": 1
+          },
+          "Branches": []
+        },
+        "System.Boolean Rocket.Surgery.Cake.Settings/PackSettings::get_Build()": {
+          "Lines": {
+            "112": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean Rocket.Surgery.Cake.Settings/PackSettings::get_IncludeSymbols()": {
+          "Lines": {
+            "113": 1
+          },
+          "Branches": []
+        },
+        "System.Boolean Rocket.Surgery.Cake.Settings/PackSettings::get_IncludeSource()": {
+          "Lines": {
+            "114": 1
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.List`1<System.String> Rocket.Surgery.Cake.Settings/PackSettings::get_ExcludePaths()": {
+          "Lines": {
+            "115": 1
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Development\\ReadySelect\\rocketsurgery\\Cake\\src\\Cake\\TFBuildCakeAliases.cs": {
+      "Rocket.Surgery.Cake.TFBuildCakeAliases": {
+        "Rocket.Surgery.Cake.TFBuildPullRequestInfo Rocket.Surgery.Cake.TFBuildCakeAliases::PullRequest(Cake.Core.ICakeContext)": {
+          "Lines": {
+            "15": 0
+          },
+          "Branches": []
+        },
+        "System.String Rocket.Surgery.Cake.TFBuildCakeAliases::Tfs_SourceBranch(Cake.Core.ICakeContext)": {
+          "Lines": {
+            "21": 0
+          },
+          "Branches": [
+            {
+              "Line": 21,
+              "Offset": 17,
+              "EndOffset": 19,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 21,
+              "Offset": 17,
+              "EndOffset": 25,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Boolean Rocket.Surgery.Cake.TFBuildCakeAliases::Tfs_IsTag(Cake.Core.ICakeContext)": {
+          "Lines": {
+            "27": 0
+          },
+          "Branches": []
+        }
+      },
+      "Rocket.Surgery.Cake.TFBuildPullRequestInfo": {
+        "System.Boolean Rocket.Surgery.Cake.TFBuildPullRequestInfo::get_IsPullRequest()": {
+          "Lines": {
+            "39": 0
+          },
+          "Branches": []
+        },
+        "System.String Rocket.Surgery.Cake.TFBuildPullRequestInfo::get_TargetBranch()": {
+          "Lines": {
+            "40": 0
+          },
+          "Branches": []
+        },
+        "System.String Rocket.Surgery.Cake.TFBuildPullRequestInfo::get_SourceBranch()": {
+          "Lines": {
+            "41": 0
+          },
+          "Branches": []
+        },
+        "System.Void Rocket.Surgery.Cake.TFBuildPullRequestInfo::.ctor(Cake.Core.ICakeContext)": {
+          "Lines": {
+            "35": 0,
+            "37": 0,
+            "38": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Development\\ReadySelect\\rocketsurgery\\Cake\\src\\Cake\\TfsCakeAliases.cs": {
+      "Rocket.Surgery.Cake.TfsCakeAliases": {
+        "Rocket.Surgery.Cake.TfsTasks.Tfs Rocket.Surgery.Cake.TfsCakeAliases::Tfs(Cake.Core.ICakeContext)": {
+          "Lines": {
+            "14": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Development\\ReadySelect\\rocketsurgery\\Cake\\src\\Cake\\TfsTasks\\ReportCodeCoverageOptions.cs": {
+      "Rocket.Surgery.Cake.TfsTasks.ReportCodeCoverageOptions": {
+        "Rocket.Surgery.Cake.TfsTasks.CodeCoverageType Rocket.Surgery.Cake.TfsTasks.ReportCodeCoverageOptions::get_CodeCoverageType()": {
+          "Lines": {
+            "12": 0
+          },
+          "Branches": []
+        },
+        "Cake.Core.IO.FilePath Rocket.Surgery.Cake.TfsTasks.ReportCodeCoverageOptions::get_SummaryFile()": {
+          "Lines": {
+            "15": 0
+          },
+          "Branches": []
+        },
+        "Cake.Core.IO.DirectoryPath Rocket.Surgery.Cake.TfsTasks.ReportCodeCoverageOptions::get_ReportDirectory()": {
+          "Lines": {
+            "18": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.IEnumerable`1<Cake.Core.IO.FilePath> Rocket.Surgery.Cake.TfsTasks.ReportCodeCoverageOptions::get_AdditionalCodeCoverageFiles()": {
+          "Lines": {
+            "21": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Development\\ReadySelect\\rocketsurgery\\Cake\\src\\Cake\\TfsTasks\\ReportTestResultsOptions.cs": {
+      "Rocket.Surgery.Cake.TfsTasks.ReportTestResultsOptions": {
+        "Rocket.Surgery.Cake.TfsTasks.TestResultsType Rocket.Surgery.Cake.TfsTasks.ReportTestResultsOptions::get_Type()": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        },
+        "System.String Rocket.Surgery.Cake.TfsTasks.ReportTestResultsOptions::get_Title()": {
+          "Lines": {
+            "12": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.IEnumerable`1<Cake.Core.IO.FilePath> Rocket.Surgery.Cake.TfsTasks.ReportTestResultsOptions::get_Files()": {
+          "Lines": {
+            "14": 0
+          },
+          "Branches": []
+        },
+        "System.String Rocket.Surgery.Cake.TfsTasks.ReportTestResultsOptions::get_Configuration()": {
+          "Lines": {
+            "15": 0
+          },
+          "Branches": []
+        },
+        "System.String Rocket.Surgery.Cake.TfsTasks.ReportTestResultsOptions::get_Platform()": {
+          "Lines": {
+            "16": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean Rocket.Surgery.Cake.TfsTasks.ReportTestResultsOptions::get_MergeResults()": {
+          "Lines": {
+            "17": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean Rocket.Surgery.Cake.TfsTasks.ReportTestResultsOptions::get_PublishRunAttachments()": {
+          "Lines": {
+            "18": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Development\\ReadySelect\\rocketsurgery\\Cake\\src\\Cake\\TfsTasks\\Tfs.cs": {
+      "Rocket.Surgery.Cake.TfsTasks.Tfs": {
+        "System.Void Rocket.Surgery.Cake.TfsTasks.Tfs::UploadArtifacts(System.String,System.String,System.String)": {
+          "Lines": {
+            "35": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0
+          },
+          "Branches": []
+        },
+        "System.Void Rocket.Surgery.Cake.TfsTasks.Tfs::UploadArtifacts(System.String,System.String,Cake.Core.IO.DirectoryPath)": {
+          "Lines": {
+            "45": 0,
+            "46": 0,
+            "47": 0,
+            "48": 0,
+            "49": 0,
+            "50": 0,
+            "51": 0
+          },
+          "Branches": []
+        },
+        "System.Void Rocket.Surgery.Cake.TfsTasks.Tfs::UploadArtifacts(System.String,System.String,Cake.Core.IO.FilePath)": {
+          "Lines": {
+            "55": 0,
+            "56": 0,
+            "57": 0,
+            "58": 0,
+            "59": 0,
+            "60": 0,
+            "61": 0
+          },
+          "Branches": []
+        },
+        "System.Void Rocket.Surgery.Cake.TfsTasks.Tfs::UploadArtifacts(Rocket.Surgery.Cake.TfsTasks.UploadArtifactsOptions)": {
+          "Lines": {
+            "65": 0,
+            "67": 0,
+            "69": 0,
+            "72": 0,
+            "74": 0,
+            "78": 0,
+            "79": 0
+          },
+          "Branches": [
+            {
+              "Line": 65,
+              "Offset": 7,
+              "EndOffset": 9,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 65,
+              "Offset": 7,
+              "EndOffset": 13,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 65,
+              "Offset": 18,
+              "EndOffset": 20,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 67,
+              "Offset": 33,
+              "EndOffset": 35,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 67,
+              "Offset": 33,
+              "EndOffset": 58,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 72,
+              "Offset": 71,
+              "EndOffset": 73,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 65,
+              "Offset": 18,
+              "EndOffset": 96,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 72,
+              "Offset": 71,
+              "EndOffset": 96,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void Rocket.Surgery.Cake.TfsTasks.Tfs::AddSummaryItem(System.String,Cake.Core.IO.FilePath)": {
+          "Lines": {
+            "83": 0,
+            "84": 0
+          },
+          "Branches": []
+        },
+        "System.Void Rocket.Surgery.Cake.TfsTasks.Tfs::AddAttachment(System.String,System.String,Cake.Core.IO.FilePath)": {
+          "Lines": {
+            "88": 0,
+            "89": 0
+          },
+          "Branches": []
+        },
+        "System.Void Rocket.Surgery.Cake.TfsTasks.Tfs::ReportCodeCoverage(Cake.Core.IO.FilePath)": {
+          "Lines": {
+            "93": 0,
+            "94": 0,
+            "95": 0,
+            "96": 0,
+            "97": 0
+          },
+          "Branches": []
+        },
+        "System.Void Rocket.Surgery.Cake.TfsTasks.Tfs::ReportCodeCoverage(Cake.Core.IO.FilePath,Cake.Core.IO.DirectoryPath)": {
+          "Lines": {
+            "101": 0,
+            "102": 0,
+            "103": 0,
+            "104": 0,
+            "105": 0,
+            "106": 0
+          },
+          "Branches": []
+        },
+        "System.Void Rocket.Surgery.Cake.TfsTasks.Tfs::ReportCodeCoverage(Cake.Core.IO.FilePath,Cake.Core.IO.DirectoryPath,System.String)": {
+          "Lines": {
+            "111": 0,
+            "112": 0,
+            "113": 0,
+            "114": 0,
+            "115": 0,
+            "116": 0,
+            "117": 0
+          },
+          "Branches": []
+        },
+        "System.Void Rocket.Surgery.Cake.TfsTasks.Tfs::ReportCodeCoverage(Cake.Core.IO.FilePath,Cake.Core.IO.DirectoryPath,System.Collections.Generic.IEnumerable`1<Cake.Core.IO.FilePath>)": {
+          "Lines": {
+            "122": 0,
+            "123": 0,
+            "124": 0,
+            "125": 0,
+            "126": 0,
+            "127": 0,
+            "128": 0
+          },
+          "Branches": []
+        },
+        "System.Void Rocket.Surgery.Cake.TfsTasks.Tfs::ReportCodeCoverage(Cake.Core.IO.FilePath,Cake.Core.IO.DirectoryPath,System.Collections.Generic.IEnumerable`1<System.String>)": {
+          "Lines": {
+            "133": 0,
+            "134": 0,
+            "135": 0,
+            "136": 0,
+            "137": 0,
+            "138": 0,
+            "139": 0
+          },
+          "Branches": []
+        },
+        "System.Void Rocket.Surgery.Cake.TfsTasks.Tfs::ReportCodeCoverage(Rocket.Surgery.Cake.TfsTasks.ReportCodeCoverageOptions)": {
+          "Lines": {
+            "143": 0,
+            "145": 0,
+            "148": 0,
+            "150": 0,
+            "153": 0,
+            "155": 0,
+            "156": 0,
+            "159": 0,
+            "160": 0
+          },
+          "Branches": [
+            {
+              "Line": 143,
+              "Offset": 7,
+              "EndOffset": 9,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 143,
+              "Offset": 7,
+              "EndOffset": 13,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 143,
+              "Offset": 18,
+              "EndOffset": 20,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 143,
+              "Offset": 18,
+              "EndOffset": 48,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 148,
+              "Offset": 55,
+              "EndOffset": 57,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 148,
+              "Offset": 55,
+              "EndOffset": 61,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 148,
+              "Offset": 66,
+              "EndOffset": 68,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 148,
+              "Offset": 66,
+              "EndOffset": 96,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 153,
+              "Offset": 103,
+              "EndOffset": 105,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 153,
+              "Offset": 103,
+              "EndOffset": 109,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 0
+            },
+            {
+              "Line": 153,
+              "Offset": 114,
+              "EndOffset": 116,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 0
+            },
+            {
+              "Line": 153,
+              "Offset": 114,
+              "EndOffset": 145,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void Rocket.Surgery.Cake.TfsTasks.Tfs::ReportTestResults(Rocket.Surgery.Cake.TfsTasks.TestResultsType,System.String,System.String,System.String,System.String,System.Boolean,System.Boolean)": {
+          "Lines": {
+            "166": 0,
+            "168": 0,
+            "169": 0,
+            "170": 0,
+            "171": 0,
+            "172": 0,
+            "173": 0,
+            "174": 0,
+            "175": 0,
+            "176": 0,
+            "177": 0,
+            "178": 0
+          },
+          "Branches": [
+            {
+              "Line": 166,
+              "Offset": 2,
+              "EndOffset": 4,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 166,
+              "Offset": 2,
+              "EndOffset": 17,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void Rocket.Surgery.Cake.TfsTasks.Tfs::ReportTestResults(Rocket.Surgery.Cake.TfsTasks.TestResultsType,System.String,System.Collections.Generic.IEnumerable`1<Cake.Core.IO.FilePath>,System.String,System.String,System.Boolean,System.Boolean)": {
+          "Lines": {
+            "184": 0,
+            "186": 0,
+            "187": 0,
+            "188": 0,
+            "189": 0,
+            "190": 0,
+            "191": 0,
+            "192": 0,
+            "193": 0,
+            "194": 0,
+            "195": 0,
+            "196": 0
+          },
+          "Branches": [
+            {
+              "Line": 184,
+              "Offset": 2,
+              "EndOffset": 4,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 184,
+              "Offset": 2,
+              "EndOffset": 17,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void Rocket.Surgery.Cake.TfsTasks.Tfs::ReportTestResults(Rocket.Surgery.Cake.TfsTasks.TestResultsType,System.String,System.Collections.Generic.IEnumerable`1<System.String>,System.String,System.String,System.Boolean,System.Boolean)": {
+          "Lines": {
+            "202": 0,
+            "204": 0,
+            "205": 0,
+            "206": 0,
+            "207": 0,
+            "208": 0,
+            "209": 0,
+            "210": 0,
+            "211": 0,
+            "212": 0,
+            "213": 0,
+            "214": 0
+          },
+          "Branches": [
+            {
+              "Line": 202,
+              "Offset": 2,
+              "EndOffset": 4,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 202,
+              "Offset": 2,
+              "EndOffset": 17,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void Rocket.Surgery.Cake.TfsTasks.Tfs::ReportTestResults(Rocket.Surgery.Cake.TfsTasks.ReportTestResultsOptions)": {
+          "Lines": {
+            "218": 0,
+            "220": 0,
+            "221": 0,
+            "224": 0,
+            "225": 0
+          },
+          "Branches": [
+            {
+              "Line": 218,
+              "Offset": 7,
+              "EndOffset": 9,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 218,
+              "Offset": 7,
+              "EndOffset": 13,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 218,
+              "Offset": 18,
+              "EndOffset": 20,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 218,
+              "Offset": 18,
+              "EndOffset": 49,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void Rocket.Surgery.Cake.TfsTasks.Tfs::WriteLoggingCommand(System.String,System.Object,System.String)": {
+          "Lines": {
+            "232": 0,
+            "233": 0,
+            "235": 0,
+            "236": 0,
+            "237": 0,
+            "238": 0,
+            "239": 0,
+            "240": 0,
+            "241": 0,
+            "242": 0,
+            "244": 0,
+            "245": 0
+          },
+          "Branches": [
+            {
+              "Line": 235,
+              "Offset": 30,
+              "EndOffset": 32,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 235,
+              "Offset": 30,
+              "EndOffset": 55,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void Rocket.Surgery.Cake.TfsTasks.Tfs::.ctor(Cake.Core.ICakeContext)": {
+          "Lines": {
+            "20": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0
+          },
+          "Branches": []
+        },
+        "Cake.Core.IO.FilePath Rocket.Surgery.Cake.TfsTasks.Tfs::<ReportCodeCoverage>b__14_0(Cake.Core.IO.FilePath)": {
+          "Lines": {},
+          "Branches": [
+            {
+              "Line": 156,
+              "Offset": 6,
+              "EndOffset": 8,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 156,
+              "Offset": 6,
+              "EndOffset": 10,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "Cake.Core.IO.FilePath Rocket.Surgery.Cake.TfsTasks.Tfs::<ReportTestResults>b__18_0(Cake.Core.IO.FilePath)": {
+          "Lines": {},
+          "Branches": [
+            {
+              "Line": 221,
+              "Offset": 6,
+              "EndOffset": 8,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 221,
+              "Offset": 6,
+              "EndOffset": 10,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      },
+      "Rocket.Surgery.Cake.TfsTasks.Tfs/<>c": {
+        "System.String Rocket.Surgery.Cake.TfsTasks.Tfs/<>c::<WriteLoggingCommand>b__21_0(System.Collections.Generic.KeyValuePair`2<System.String,Newtonsoft.Json.Linq.JToken>)": {
+          "Lines": {},
+          "Branches": [
+            {
+              "Line": 237,
+              "Offset": 14,
+              "EndOffset": 16,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 237,
+              "Offset": 14,
+              "EndOffset": 50,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "D:\\Development\\ReadySelect\\rocketsurgery\\Cake\\src\\Cake\\TfsTasks\\UploadArtifactsOptions.cs": {
+      "Rocket.Surgery.Cake.TfsTasks.UploadArtifactsOptions": {
+        "Rocket.Surgery.Cake.TfsTasks.ArtifactType Rocket.Surgery.Cake.TfsTasks.UploadArtifactsOptions::get_Type()": {
+          "Lines": {
+            "10": 0
+          },
+          "Branches": []
+        },
+        "System.String Rocket.Surgery.Cake.TfsTasks.UploadArtifactsOptions::get_Name()": {
+          "Lines": {
+            "13": 0
+          },
+          "Branches": []
+        },
+        "System.String Rocket.Surgery.Cake.TfsTasks.UploadArtifactsOptions::get_ContainerFolder()": {
+          "Lines": {
+            "16": 0
+          },
+          "Branches": []
+        },
+        "Cake.Core.IO.Path Rocket.Surgery.Cake.TfsTasks.UploadArtifactsOptions::get_LocalPath()": {
+          "Lines": {
+            "19": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Development\\ReadySelect\\rocketsurgery\\Cake\\src\\Cake\\LcovConverter\\BranchCondition.cs": {
+      "Rocket.Surgery.Cake.LcovConverter.BranchCondition": {
+        "System.Int64 Rocket.Surgery.Cake.LcovConverter.BranchCondition::get_Number()": {
+          "Lines": {
+            "5": 0
+          },
+          "Branches": []
+        },
+        "System.String Rocket.Surgery.Cake.LcovConverter.BranchCondition::get_Type()": {
+          "Lines": {
+            "6": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean Rocket.Surgery.Cake.LcovConverter.BranchCondition::get_Covered()": {
+          "Lines": {
+            "7": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Development\\ReadySelect\\rocketsurgery\\Cake\\src\\Cake\\LcovConverter\\Class.cs": {
+      "Rocket.Surgery.Cake.LcovConverter.Class": {
+        "System.String Rocket.Surgery.Cake.LcovConverter.Class::get_Name()": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        },
+        "System.Int64 Rocket.Surgery.Cake.LcovConverter.Class::get_LinesTotal()": {
+          "Lines": {
+            "13": 0
+          },
+          "Branches": []
+        },
+        "System.Int64 Rocket.Surgery.Cake.LcovConverter.Class::get_LinesCovered()": {
+          "Lines": {
+            "14": 0
+          },
+          "Branches": []
+        },
+        "System.Decimal Rocket.Surgery.Cake.LcovConverter.Class::get_LineRate()": {
+          "Lines": {
+            "15": 0
+          },
+          "Branches": []
+        },
+        "System.Int64 Rocket.Surgery.Cake.LcovConverter.Class::get_BranchesTotal()": {
+          "Lines": {
+            "17": 0
+          },
+          "Branches": []
+        },
+        "System.Int64 Rocket.Surgery.Cake.LcovConverter.Class::get_BranchesCovered()": {
+          "Lines": {
+            "18": 0
+          },
+          "Branches": []
+        },
+        "System.Decimal Rocket.Surgery.Cake.LcovConverter.Class::get_BranchRate()": {
+          "Lines": {
+            "19": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.IDictionary`2<System.Int64,Rocket.Surgery.Cake.LcovConverter.FileLine> Rocket.Surgery.Cake.LcovConverter.Class::get_Lines()": {
+          "Lines": {
+            "21": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.IDictionary`2<System.String,Rocket.Surgery.Cake.LcovConverter.FileMethod> Rocket.Surgery.Cake.LcovConverter.Class::get_Methods()": {
+          "Lines": {
+            "22": 0
+          },
+          "Branches": []
+        },
+        "System.Void Rocket.Surgery.Cake.LcovConverter.Class::.ctor(System.String)": {
+          "Lines": {
+            "7": 0,
+            "9": 0,
+            "10": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Development\\ReadySelect\\rocketsurgery\\Cake\\src\\Cake\\LcovConverter\\CoverageData.cs": {
+      "Rocket.Surgery.Cake.LcovConverter.CoverageData": {
+        "System.Collections.Generic.IDictionary`2<System.String,Rocket.Surgery.Cake.LcovConverter.Package> Rocket.Surgery.Cake.LcovConverter.CoverageData::get_Packages()": {
+          "Lines": {
+            "8": 0
+          },
+          "Branches": []
+        },
+        "System.Int64 Rocket.Surgery.Cake.LcovConverter.CoverageData::get_LinesTotal()": {
+          "Lines": {
+            "9": 0
+          },
+          "Branches": []
+        },
+        "System.Int64 Rocket.Surgery.Cake.LcovConverter.CoverageData::get_LinesCovered()": {
+          "Lines": {
+            "10": 0
+          },
+          "Branches": []
+        },
+        "System.Decimal Rocket.Surgery.Cake.LcovConverter.CoverageData::get_LineRate()": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        },
+        "System.Int64 Rocket.Surgery.Cake.LcovConverter.CoverageData::get_BranchesTotal()": {
+          "Lines": {
+            "13": 0
+          },
+          "Branches": []
+        },
+        "System.Int64 Rocket.Surgery.Cake.LcovConverter.CoverageData::get_BranchesCovered()": {
+          "Lines": {
+            "14": 0
+          },
+          "Branches": []
+        },
+        "System.Decimal Rocket.Surgery.Cake.LcovConverter.CoverageData::get_BranchRate()": {
+          "Lines": {
+            "15": 0
+          },
+          "Branches": []
+        },
+        "System.Int64 Rocket.Surgery.Cake.LcovConverter.CoverageData::get_Timestamp()": {
+          "Lines": {
+            "17": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Development\\ReadySelect\\rocketsurgery\\Cake\\src\\Cake\\LcovConverter\\FileLine.cs": {
+      "Rocket.Surgery.Cake.LcovConverter.FileLine": {
+        "System.Boolean Rocket.Surgery.Cake.LcovConverter.FileLine::get_Branch()": {
+          "Lines": {
+            "8": 0
+          },
+          "Branches": []
+        },
+        "System.Int64 Rocket.Surgery.Cake.LcovConverter.FileLine::get_BranchesTotal()": {
+          "Lines": {
+            "9": 0
+          },
+          "Branches": []
+        },
+        "System.Int64 Rocket.Surgery.Cake.LcovConverter.FileLine::get_BranchesCovered()": {
+          "Lines": {
+            "10": 0
+          },
+          "Branches": []
+        },
+        "System.Decimal Rocket.Surgery.Cake.LcovConverter.FileLine::get_BranchRate()": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        },
+        "System.Int64 Rocket.Surgery.Cake.LcovConverter.FileLine::get_Hits()": {
+          "Lines": {
+            "12": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.List`1<Rocket.Surgery.Cake.LcovConverter.BranchCondition> Rocket.Surgery.Cake.LcovConverter.FileLine::get_Conditions()": {
+          "Lines": {
+            "13": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Development\\ReadySelect\\rocketsurgery\\Cake\\src\\Cake\\LcovConverter\\FileMethod.cs": {
+      "Rocket.Surgery.Cake.LcovConverter.FileMethod": {
+        "System.Int64 Rocket.Surgery.Cake.LcovConverter.FileMethod::get_Line()": {
+          "Lines": {
+            "7": 0
+          },
+          "Branches": []
+        },
+        "System.Int64 Rocket.Surgery.Cake.LcovConverter.FileMethod::get_Hits()": {
+          "Lines": {
+            "8": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.List`1<Rocket.Surgery.Cake.LcovConverter.BranchCondition> Rocket.Surgery.Cake.LcovConverter.FileMethod::get_Conditions()": {
+          "Lines": {
+            "9": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Development\\ReadySelect\\rocketsurgery\\Cake\\src\\Cake\\LcovConverter\\Helpers.cs": {
+      "Rocket.Surgery.Cake.LcovConverter.Helpers": {
+        "System.Decimal Rocket.Surgery.Cake.LcovConverter.Helpers::Percent(System.Int64,System.Int64)": {
+          "Lines": {
+            "7": 0,
+            "9": 0,
+            "11": 0
+          },
+          "Branches": [
+            {
+              "Line": 7,
+              "Offset": 1,
+              "EndOffset": 3,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 7,
+              "Offset": 1,
+              "EndOffset": 14,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "D:\\Development\\ReadySelect\\rocketsurgery\\Cake\\src\\Cake\\LcovConverter\\LcovToCoberturaConverter.cs": {
+      "Rocket.Surgery.Cake.LcovConverter.LcovToCoberturaConverter": {
+        "System.Xml.Linq.XDocument Rocket.Surgery.Cake.LcovConverter.LcovToCoberturaConverter::Convert(System.String)": {
+          "Lines": {
+            "24": 0
+          },
+          "Branches": []
+        },
+        "Rocket.Surgery.Cake.LcovConverter.CoverageData Rocket.Surgery.Cake.LcovConverter.LcovToCoberturaConverter::GetCoverageData(System.String)": {
+          "Lines": {
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "38": 0,
+            "39": 0,
+            "41": 0,
+            "43": 0,
+            "46": 0,
+            "47": 0,
+            "48": 0,
+            "49": 0,
+            "50": 0,
+            "52": 0,
+            "53": 0,
+            "54": 0,
+            "55": 0,
+            "56": 0,
+            "57": 0,
+            "58": 0,
+            "59": 0,
+            "60": 0,
+            "62": 0,
+            "63": 0,
+            "64": 0,
+            "65": 0,
+            "66": 0,
+            "69": 0,
+            "72": 0,
+            "73": 0,
+            "74": 0,
+            "76": 0,
+            "79": 0,
+            "81": 0,
+            "82": 0,
+            "83": 0,
+            "85": 0,
+            "87": 0,
+            "88": 0,
+            "91": 0,
+            "93": 0,
+            "94": 0,
+            "95": 0,
+            "96": 0,
+            "97": 0,
+            "98": 0,
+            "99": 0,
+            "100": 0,
+            "101": 0,
+            "106": 0,
+            "107": 0,
+            "109": 0,
+            "111": 0,
+            "112": 0,
+            "115": 0,
+            "117": 0,
+            "118": 0,
+            "120": 0,
+            "123": 0,
+            "125": 0,
+            "130": 0,
+            "131": 0,
+            "132": 0,
+            "133": 0,
+            "135": 0,
+            "137": 0,
+            "138": 0,
+            "141": 0,
+            "142": 0,
+            "143": 0,
+            "145": 0,
+            "147": 0,
+            "149": 0,
+            "150": 0,
+            "151": 0,
+            "153": 0,
+            "154": 0,
+            "155": 0,
+            "156": 0,
+            "157": 0,
+            "159": 0,
+            "163": 0,
+            "165": 0,
+            "169": 0,
+            "171": 0,
+            "177": 0,
+            "178": 0,
+            "180": 0,
+            "181": 0,
+            "182": 0,
+            "183": 0,
+            "184": 0,
+            "186": 0,
+            "191": 0,
+            "192": 0,
+            "194": 0,
+            "196": 0,
+            "197": 0,
+            "200": 0,
+            "206": 0
+          },
+          "Branches": [
+            {
+              "Line": 41,
+              "Offset": 1390,
+              "EndOffset": 66,
+              "Path": 1,
+              "Ordinal": 59,
+              "Hits": 0
+            },
+            {
+              "Line": 43,
+              "Offset": 90,
+              "EndOffset": 95,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 43,
+              "Offset": 96,
+              "EndOffset": 101,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 57,
+              "Offset": 261,
+              "EndOffset": 231,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 57,
+              "Offset": 261,
+              "EndOffset": 263,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 59,
+              "Offset": 320,
+              "EndOffset": 290,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 59,
+              "Offset": 320,
+              "EndOffset": 322,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 43,
+              "Offset": 90,
+              "EndOffset": 402,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 43,
+              "Offset": 96,
+              "EndOffset": 402,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 69,
+              "Offset": 409,
+              "EndOffset": 414,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 76,
+              "Offset": 500,
+              "EndOffset": 502,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 0
+            },
+            {
+              "Line": 76,
+              "Offset": 509,
+              "EndOffset": 514,
+              "Path": 0,
+              "Ordinal": 12,
+              "Hits": 0
+            },
+            {
+              "Line": 76,
+              "Offset": 521,
+              "EndOffset": 523,
+              "Path": 0,
+              "Ordinal": 14,
+              "Hits": 0
+            },
+            {
+              "Line": 76,
+              "Offset": 500,
+              "EndOffset": 537,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 0
+            },
+            {
+              "Line": 76,
+              "Offset": 544,
+              "EndOffset": 546,
+              "Path": 0,
+              "Ordinal": 18,
+              "Hits": 0
+            },
+            {
+              "Line": 76,
+              "Offset": 553,
+              "EndOffset": 555,
+              "Path": 0,
+              "Ordinal": 20,
+              "Hits": 0
+            },
+            {
+              "Line": 76,
+              "Offset": 544,
+              "EndOffset": 572,
+              "Path": 1,
+              "Ordinal": 19,
+              "Hits": 0
+            },
+            {
+              "Line": 76,
+              "Offset": 579,
+              "EndOffset": 581,
+              "Path": 0,
+              "Ordinal": 24,
+              "Hits": 0
+            },
+            {
+              "Line": 76,
+              "Offset": 553,
+              "EndOffset": 595,
+              "Path": 1,
+              "Ordinal": 21,
+              "Hits": 0
+            },
+            {
+              "Line": 76,
+              "Offset": 530,
+              "EndOffset": 617,
+              "Path": 1,
+              "Ordinal": 17,
+              "Hits": 0
+            },
+            {
+              "Line": 76,
+              "Offset": 521,
+              "EndOffset": 639,
+              "Path": 1,
+              "Ordinal": 15,
+              "Hits": 0
+            },
+            {
+              "Line": 76,
+              "Offset": 588,
+              "EndOffset": 661,
+              "Path": 1,
+              "Ordinal": 27,
+              "Hits": 0
+            },
+            {
+              "Line": 76,
+              "Offset": 509,
+              "EndOffset": 683,
+              "Path": 1,
+              "Ordinal": 13,
+              "Hits": 0
+            },
+            {
+              "Line": 76,
+              "Offset": 579,
+              "EndOffset": 705,
+              "Path": 1,
+              "Ordinal": 25,
+              "Hits": 0
+            },
+            {
+              "Line": 76,
+              "Offset": 562,
+              "EndOffset": 727,
+              "Path": 1,
+              "Ordinal": 23,
+              "Hits": 0
+            },
+            {
+              "Line": 76,
+              "Offset": 607,
+              "EndOffset": 749,
+              "Path": 1,
+              "Ordinal": 29,
+              "Hits": 0
+            },
+            {
+              "Line": 85,
+              "Offset": 842,
+              "EndOffset": 844,
+              "Path": 0,
+              "Ordinal": 42,
+              "Hits": 0
+            },
+            {
+              "Line": 85,
+              "Offset": 842,
+              "EndOffset": 866,
+              "Path": 1,
+              "Ordinal": 43,
+              "Hits": 0
+            },
+            {
+              "Line": 76,
+              "Offset": 629,
+              "EndOffset": 937,
+              "Path": 1,
+              "Ordinal": 31,
+              "Hits": 0
+            },
+            {
+              "Line": 109,
+              "Offset": 963,
+              "EndOffset": 965,
+              "Path": 0,
+              "Ordinal": 44,
+              "Hits": 0
+            },
+            {
+              "Line": 109,
+              "Offset": 963,
+              "EndOffset": 983,
+              "Path": 1,
+              "Ordinal": 45,
+              "Hits": 0
+            },
+            {
+              "Line": 115,
+              "Offset": 990,
+              "EndOffset": 992,
+              "Path": 0,
+              "Ordinal": 46,
+              "Hits": 0
+            },
+            {
+              "Line": 118,
+              "Offset": 1012,
+              "EndOffset": 1014,
+              "Path": 0,
+              "Ordinal": 48,
+              "Hits": 0
+            },
+            {
+              "Line": 115,
+              "Offset": 990,
+              "EndOffset": 1021,
+              "Path": 1,
+              "Ordinal": 47,
+              "Hits": 0
+            },
+            {
+              "Line": 118,
+              "Offset": 1012,
+              "EndOffset": 1021,
+              "Path": 1,
+              "Ordinal": 49,
+              "Hits": 0
+            },
+            {
+              "Line": 76,
+              "Offset": 651,
+              "EndOffset": 1031,
+              "Path": 1,
+              "Ordinal": 33,
+              "Hits": 0
+            },
+            {
+              "Line": 135,
+              "Offset": 1080,
+              "EndOffset": 1082,
+              "Path": 0,
+              "Ordinal": 50,
+              "Hits": 0
+            },
+            {
+              "Line": 135,
+              "Offset": 1080,
+              "EndOffset": 1100,
+              "Path": 1,
+              "Ordinal": 51,
+              "Hits": 0
+            },
+            {
+              "Line": 147,
+              "Offset": 1150,
+              "EndOffset": 1152,
+              "Path": 0,
+              "Ordinal": 52,
+              "Hits": 0
+            },
+            {
+              "Line": 147,
+              "Offset": 1161,
+              "EndOffset": 1163,
+              "Path": 0,
+              "Ordinal": 54,
+              "Hits": 0
+            },
+            {
+              "Line": 147,
+              "Offset": 1150,
+              "EndOffset": 1193,
+              "Path": 1,
+              "Ordinal": 53,
+              "Hits": 0
+            },
+            {
+              "Line": 147,
+              "Offset": 1161,
+              "EndOffset": 1193,
+              "Path": 1,
+              "Ordinal": 55,
+              "Hits": 0
+            },
+            {
+              "Line": 76,
+              "Offset": 673,
+              "EndOffset": 1231,
+              "Path": 1,
+              "Ordinal": 35,
+              "Hits": 0
+            },
+            {
+              "Line": 76,
+              "Offset": 695,
+              "EndOffset": 1245,
+              "Path": 1,
+              "Ordinal": 37,
+              "Hits": 0
+            },
+            {
+              "Line": 76,
+              "Offset": 717,
+              "EndOffset": 1256,
+              "Path": 1,
+              "Ordinal": 39,
+              "Hits": 0
+            },
+            {
+              "Line": 76,
+              "Offset": 739,
+              "EndOffset": 1305,
+              "Path": 1,
+              "Ordinal": 41,
+              "Hits": 0
+            },
+            {
+              "Line": 194,
+              "Offset": 1333,
+              "EndOffset": 1335,
+              "Path": 0,
+              "Ordinal": 56,
+              "Hits": 0
+            },
+            {
+              "Line": 194,
+              "Offset": 1333,
+              "EndOffset": 1369,
+              "Path": 1,
+              "Ordinal": 57,
+              "Hits": 0
+            },
+            {
+              "Line": 69,
+              "Offset": 409,
+              "EndOffset": 1378,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 0
+            },
+            {
+              "Line": 76,
+              "Offset": 530,
+              "EndOffset": 1378,
+              "Path": 0,
+              "Ordinal": 16,
+              "Hits": 0
+            },
+            {
+              "Line": 76,
+              "Offset": 562,
+              "EndOffset": 1378,
+              "Path": 0,
+              "Ordinal": 22,
+              "Hits": 0
+            },
+            {
+              "Line": 76,
+              "Offset": 588,
+              "EndOffset": 1378,
+              "Path": 0,
+              "Ordinal": 26,
+              "Hits": 0
+            },
+            {
+              "Line": 76,
+              "Offset": 607,
+              "EndOffset": 1378,
+              "Path": 0,
+              "Ordinal": 28,
+              "Hits": 0
+            },
+            {
+              "Line": 76,
+              "Offset": 629,
+              "EndOffset": 1378,
+              "Path": 0,
+              "Ordinal": 30,
+              "Hits": 0
+            },
+            {
+              "Line": 76,
+              "Offset": 651,
+              "EndOffset": 1378,
+              "Path": 0,
+              "Ordinal": 32,
+              "Hits": 0
+            },
+            {
+              "Line": 76,
+              "Offset": 673,
+              "EndOffset": 1378,
+              "Path": 0,
+              "Ordinal": 34,
+              "Hits": 0
+            },
+            {
+              "Line": 76,
+              "Offset": 695,
+              "EndOffset": 1378,
+              "Path": 0,
+              "Ordinal": 36,
+              "Hits": 0
+            },
+            {
+              "Line": 76,
+              "Offset": 717,
+              "EndOffset": 1378,
+              "Path": 0,
+              "Ordinal": 38,
+              "Hits": 0
+            },
+            {
+              "Line": 76,
+              "Offset": 739,
+              "EndOffset": 1378,
+              "Path": 0,
+              "Ordinal": 40,
+              "Hits": 0
+            },
+            {
+              "Line": 41,
+              "Offset": 1390,
+              "EndOffset": 1395,
+              "Path": 0,
+              "Ordinal": 58,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Xml.Linq.XDocument Rocket.Surgery.Cake.LcovConverter.LcovToCoberturaConverter::GenerateCoberturaXml(Rocket.Surgery.Cake.LcovConverter.CoverageData)": {
+          "Lines": {
+            "211": 0,
+            "212": 0,
+            "213": 0,
+            "214": 0,
+            "215": 0,
+            "217": 0,
+            "218": 0,
+            "219": 0,
+            "220": 0,
+            "221": 0,
+            "222": 0,
+            "223": 0,
+            "224": 0,
+            "225": 0,
+            "227": 0,
+            "228": 0,
+            "229": 0,
+            "230": 0,
+            "232": 0,
+            "234": 0,
+            "235": 0,
+            "237": 0,
+            "239": 0,
+            "240": 0,
+            "242": 0,
+            "243": 0,
+            "244": 0,
+            "245": 0,
+            "247": 0,
+            "248": 0,
+            "250": 0,
+            "252": 0,
+            "253": 0,
+            "255": 0,
+            "256": 0,
+            "257": 0,
+            "258": 0,
+            "259": 0,
+            "261": 0,
+            "262": 0,
+            "264": 0,
+            "266": 0,
+            "267": 0,
+            "269": 0,
+            "270": 0,
+            "271": 0,
+            "272": 0,
+            "274": 0,
+            "275": 0,
+            "277": 0,
+            "278": 0,
+            "280": 0,
+            "281": 0,
+            "282": 0,
+            "286": 0,
+            "287": 0,
+            "289": 0,
+            "291": 0,
+            "292": 0,
+            "293": 0,
+            "294": 0,
+            "295": 0,
+            "296": 0,
+            "298": 0,
+            "299": 0,
+            "301": 0,
+            "302": 0,
+            "304": 0,
+            "306": 0,
+            "307": 0,
+            "309": 0,
+            "310": 0,
+            "311": 0,
+            "313": 0,
+            "314": 0,
+            "315": 0,
+            "318": 0,
+            "327": 0
+          },
+          "Branches": [
+            {
+              "Line": 237,
+              "Offset": 1848,
+              "EndOffset": 420,
+              "Path": 1,
+              "Ordinal": 19,
+              "Hits": 0
+            },
+            {
+              "Line": 250,
+              "Offset": 1822,
+              "EndOffset": 619,
+              "Path": 1,
+              "Ordinal": 17,
+              "Hits": 0
+            },
+            {
+              "Line": 264,
+              "Offset": 1167,
+              "EndOffset": 847,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 271,
+              "Offset": 954,
+              "EndOffset": 956,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 271,
+              "Offset": 954,
+              "EndOffset": 963,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 272,
+              "Offset": 999,
+              "EndOffset": 1001,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 272,
+              "Offset": 999,
+              "EndOffset": 1008,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 264,
+              "Offset": 1167,
+              "EndOffset": 1172,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 289,
+              "Offset": 1230,
+              "EndOffset": 1232,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 289,
+              "Offset": 1230,
+              "EndOffset": 1255,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 289,
+              "Offset": 1796,
+              "EndOffset": 1272,
+              "Path": 1,
+              "Ordinal": 15,
+              "Hits": 0
+            },
+            {
+              "Line": 296,
+              "Offset": 1416,
+              "EndOffset": 1421,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 304,
+              "Offset": 1768,
+              "EndOffset": 1561,
+              "Path": 1,
+              "Ordinal": 13,
+              "Hits": 0
+            },
+            {
+              "Line": 311,
+              "Offset": 1656,
+              "EndOffset": 1658,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 0
+            },
+            {
+              "Line": 311,
+              "Offset": 1656,
+              "EndOffset": 1739,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 0
+            },
+            {
+              "Line": 304,
+              "Offset": 1768,
+              "EndOffset": 1773,
+              "Path": 0,
+              "Ordinal": 12,
+              "Hits": 0
+            },
+            {
+              "Line": 296,
+              "Offset": 1416,
+              "EndOffset": 1789,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 0
+            },
+            {
+              "Line": 289,
+              "Offset": 1796,
+              "EndOffset": 1801,
+              "Path": 0,
+              "Ordinal": 14,
+              "Hits": 0
+            },
+            {
+              "Line": 250,
+              "Offset": 1822,
+              "EndOffset": 1827,
+              "Path": 0,
+              "Ordinal": 16,
+              "Hits": 0
+            },
+            {
+              "Line": 237,
+              "Offset": 1848,
+              "EndOffset": 1853,
+              "Path": 0,
+              "Ordinal": 18,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void Rocket.Surgery.Cake.LcovConverter.LcovToCoberturaConverter::.ctor(Cake.Core.ICakeContext,Cake.Core.IO.DirectoryPath)": {
+          "Lines": {
+            "16": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Development\\ReadySelect\\rocketsurgery\\Cake\\src\\Cake\\LcovConverter\\Package.cs": {
+      "Rocket.Surgery.Cake.LcovConverter.Package": {
+        "System.Int64 Rocket.Surgery.Cake.LcovConverter.Package::get_LinesTotal()": {
+          "Lines": {
+            "7": 0
+          },
+          "Branches": []
+        },
+        "System.Int64 Rocket.Surgery.Cake.LcovConverter.Package::get_LinesCovered()": {
+          "Lines": {
+            "8": 0
+          },
+          "Branches": []
+        },
+        "System.Decimal Rocket.Surgery.Cake.LcovConverter.Package::get_LineRate()": {
+          "Lines": {
+            "9": 0
+          },
+          "Branches": []
+        },
+        "System.Int64 Rocket.Surgery.Cake.LcovConverter.Package::get_BranchesTotal()": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        },
+        "System.Int64 Rocket.Surgery.Cake.LcovConverter.Package::get_BranchesCovered()": {
+          "Lines": {
+            "12": 0
+          },
+          "Branches": []
+        },
+        "System.Decimal Rocket.Surgery.Cake.LcovConverter.Package::get_BranchRate()": {
+          "Lines": {
+            "13": 0
+          },
+          "Branches": []
+        },
+        "System.Collections.Generic.IDictionary`2<System.String,Rocket.Surgery.Cake.LcovConverter.Class> Rocket.Surgery.Cake.LcovConverter.Package::get_Classes()": {
+          "Lines": {
+            "15": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Development\\ReadySelect\\rocketsurgery\\Cake\\src\\Cake\\Internal\\DirectoryPathConverter.cs": {
+      "Rocket.Surgery.Cake.Internal.DirectoryPathConverter": {
+        "System.Void Rocket.Surgery.Cake.Internal.DirectoryPathConverter::WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)": {
+          "Lines": {
+            "11": 0,
+            "12": 0,
+            "13": 0
+          },
+          "Branches": []
+        },
+        "System.Object Rocket.Surgery.Cake.Internal.DirectoryPathConverter::ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)": {
+          "Lines": {
+            "17": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean Rocket.Surgery.Cake.Internal.DirectoryPathConverter::CanConvert(System.Type)": {
+          "Lines": {
+            "22": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Development\\ReadySelect\\rocketsurgery\\Cake\\src\\Cake\\Internal\\FilePathConverter.cs": {
+      "Rocket.Surgery.Cake.Internal.FilePathConverter": {
+        "System.Void Rocket.Surgery.Cake.Internal.FilePathConverter::WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)": {
+          "Lines": {
+            "11": 0,
+            "12": 0,
+            "13": 0
+          },
+          "Branches": []
+        },
+        "System.Object Rocket.Surgery.Cake.Internal.FilePathConverter::ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)": {
+          "Lines": {
+            "17": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean Rocket.Surgery.Cake.Internal.FilePathConverter::CanConvert(System.Type)": {
+          "Lines": {
+            "22": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Development\\ReadySelect\\rocketsurgery\\Cake\\src\\Cake\\Internal\\LowercaseNamesContractResolver.cs": {
+      "Rocket.Surgery.Cake.Internal.LowercaseNamesContractResolver": {
+        "System.Void Rocket.Surgery.Cake.Internal.LowercaseNamesContractResolver::.ctor()": {
+          "Lines": {
+            "7": 0,
+            "9": 0,
+            "10": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Development\\ReadySelect\\rocketsurgery\\Cake\\src\\Cake\\Internal\\LowercaseNamingStrategy.cs": {
+      "Rocket.Surgery.Cake.Internal.LowercaseNamingStrategy": {
+        "System.String Rocket.Surgery.Cake.Internal.LowercaseNamingStrategy::ResolvePropertyName(System.String)": {
+          "Lines": {
+            "7": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "D:\\Development\\ReadySelect\\rocketsurgery\\Cake\\src\\Cake\\Internal\\TfsEnumConverter.cs": {
+      "Rocket.Surgery.Cake.Internal.TfsEnumConverter": {
+        "System.Void Rocket.Surgery.Cake.Internal.TfsEnumConverter::WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)": {
+          "Lines": {
+            "11": 0,
+            "12": 0
+          },
+          "Branches": []
+        },
+        "System.Object Rocket.Surgery.Cake.Internal.TfsEnumConverter::ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)": {
+          "Lines": {
+            "16": 0
+          },
+          "Branches": []
+        },
+        "System.Boolean Rocket.Surgery.Cake.Internal.TfsEnumConverter::CanConvert(System.Type)": {
+          "Lines": {
+            "21": 0
+          },
+          "Branches": []
+        }
+      }
+    }
+  }
+}
