@@ -19,10 +19,65 @@ variables:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: "true"
 
 jobs:
-  - template: pipeline/cake.yml@rsg
-    parameters:
-      Configuration: $(Configuration)
-      Verbosity: $(Verbosity)
-      DotNetVersion: $(DotNetVersion)
-      CakeVersion: $(CakeVersion)
-      NuGetVersion: $(NuGetVersion)
+
+jobs:
+  - job: GitVersion
+    pool:
+      vmImage: "VS2017-Win2016"
+    steps:
+      - template: gitversion/store.yml@rsg
+        parameters:
+          NuGetVersion: $(NuGetVersion)
+
+  - job: macOS
+    dependsOn: GitVersion
+    pool:
+      vmImage: "macOS-10.13"
+    steps:
+      - template: gitversion/restore.yml@rsg
+      - template: cake/install.yml@rsg
+        parameters:
+          CakeVersion: $(CakeVersion)
+          DotNetVersion: $(DotNetVersion)
+      - template: cake/run.yml@rsg
+        parameters:
+          Configuration: $(Configuration)
+          Verbosity: $(Verbosity)
+
+  - job: Linux
+    dependsOn: GitVersion
+    pool:
+      vmImage: "Ubuntu-16.04"
+    steps:
+      - template: gitversion/restore.yml@rsg
+      - template: cake/install.yml@rsg
+        parameters:
+          CakeVersion: $(CakeVersion)
+          DotNetVersion: $(DotNetVersion)
+      - template: cake/run.yml@rsg
+        parameters:
+          Configuration: $(Configuration)
+          Verbosity: $(Verbosity)
+
+  - job: Windows
+    dependsOn: GitVersion
+    pool:
+      vmImage: "VS2017-Win2016"
+    steps:
+      - template: gitversion/restore.yml@rsg
+      - template: cake/install.yml@rsg
+        parameters:
+          CakeVersion: $(CakeVersion)
+          DotNetVersion: $(DotNetVersion)
+      # Nuget is required for test scripts below
+      - task: NuGetToolInstaller@0
+        displayName: "Get NuGet"
+        inputs:
+          versionSpec: $(NuGetVersion)
+      - template: cake/run.yml@rsg
+        parameters:
+          Configuration: $(Configuration)
+          Verbosity: $(Verbosity)
+      - template: standard/nuget.yml@rsg
+        parameters:
+          NuGetVersion: $(NuGetVersion)
