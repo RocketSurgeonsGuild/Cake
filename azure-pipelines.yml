@@ -28,28 +28,28 @@ jobs:
           NuGetVersion: $(NuGetVersion)
 
   - template: pipeline/cake-job.yml@rsg
-      parameters:
-        name: 'macOS'
-        dependsOn: GitVersion
-        vmImage: "macOS-10.13"
-        pushNuget: false
-        Configuration: ${{ parameters.Configuration }}
-        Verbosity: ${{ parameters.Verbosity }}
-        CakeVersion: ${{ parameters.CakeVersion }}
-        DotNetVersion: ${{ parameters.DotNetVersion }}
-        NuGetVersion: ${{ parameters.NuGetVersion }}
+    parameters:
+      name: 'macOS'
+      dependsOn: GitVersion
+      vmImage: "macOS-10.13"
+      pushNuget: false
+      Configuration: ${{ parameters.Configuration }}
+      Verbosity: ${{ parameters.Verbosity }}
+      CakeVersion: ${{ parameters.CakeVersion }}
+      DotNetVersion: ${{ parameters.DotNetVersion }}
+      NuGetVersion: ${{ parameters.NuGetVersion }}
 
   - template: pipeline/cake-job.yml@rsg
-      parameters:
-        name: 'Linux'
-        dependsOn: GitVersion
-        vmImage: "Ubuntu-16.04"
-        pushNuget: false
-        Configuration: ${{ parameters.Configuration }}
-        Verbosity: ${{ parameters.Verbosity }}
-        CakeVersion: ${{ parameters.CakeVersion }}
-        DotNetVersion: ${{ parameters.DotNetVersion }}
-        NuGetVersion: ${{ parameters.NuGetVersion }}
+    parameters:
+      name: 'Linux'
+      dependsOn: GitVersion
+      vmImage: "Ubuntu-16.04"
+      pushNuget: false
+      Configuration: ${{ parameters.Configuration }}
+      Verbosity: ${{ parameters.Verbosity }}
+      CakeVersion: ${{ parameters.CakeVersion }}
+      DotNetVersion: ${{ parameters.DotNetVersion }}
+      NuGetVersion: ${{ parameters.NuGetVersion }}
 
   - job: Windows
     dependsOn: GitVersion
