@@ -141,7 +141,8 @@ namespace Rocket.Surgery.Cake
         [CakePropertyAlias(Cache = true)]
         public static bool HasGitVer(this ICakeContext context)
         {
-            return GitVersionKeys.Any(z => !string.IsNullOrWhiteSpace( context.EnvironmentVariable(z)));
+            var envVars = context.EnvironmentVariables();
+            return envVars.Keys.Join(GitVersionKeys, z => z, z => z, (a, b) => a, StringComparer.OrdinalIgnoreCase).Any();
         }
 
         internal static GitVersion _gitVersion;
@@ -152,37 +153,49 @@ namespace Rocket.Surgery.Cake
             var environmentVariables = context.Environment.GetEnvironmentVariables();
             if (HasGitVer(context))
             {
-                return _gitVersion ?? ( _gitVersion = new GitVersion()
+                return _gitVersion ?? (_gitVersion = new GitVersion()
                 {
-                    Major = int.Parse(environmentVariables["GitVersion_Major"]),
-                    Minor = int.Parse(environmentVariables["GitVersion_Minor"]),
-                    Patch = int.Parse(environmentVariables["GitVersion_Patch"]),
-                    PreReleaseTag = environmentVariables["GitVersion_PreReleaseTag"],
-                    PreReleaseTagWithDash = environmentVariables["GitVersion_PreReleaseTagWithDash"],
-                    PreReleaseLabel = environmentVariables["GitVersion_PreReleaseLabel"],
-                    PreReleaseNumber = string.IsNullOrWhiteSpace(environmentVariables["GitVersion_PreReleaseNumber"]) ? null : int.Parse(environmentVariables["GitVersion_PreReleaseNumber"]) as int?,
-                    BuildMetaData = environmentVariables["GitVersion_BuildMetaData"],
-                    BuildMetaDataPadded = environmentVariables["GitVersion_BuildMetaDataPadded"],
-                    FullBuildMetaData = environmentVariables["GitVersion_FullBuildMetaData"],
-                    MajorMinorPatch = environmentVariables["GitVersion_MajorMinorPatch"],
-                    SemVer = environmentVariables["GitVersion_SemVer"],
-                    LegacySemVer = environmentVariables["GitVersion_LegacySemVer"],
-                    LegacySemVerPadded = environmentVariables["GitVersion_LegacySemVerPadded"],
-                    AssemblySemVer = environmentVariables["GitVersion_AssemblySemVer"],
-                    FullSemVer = environmentVariables["GitVersion_FullSemVer"],
-                    InformationalVersion = environmentVariables["GitVersion_InformationalVersion"],
-                    BranchName = environmentVariables["GitVersion_BranchName"],
-                    Sha = environmentVariables["GitVersion_Sha"],
-                    NuGetVersion = environmentVariables["GitVersion_NuGetVersion"],
-                    CommitsSinceVersionSource = string.IsNullOrWhiteSpace(environmentVariables["GitVersion_CommitsSinceVersionSource"]) ? null : int.Parse(environmentVariables["GitVersion_CommitsSinceVersionSource"]) as int?,
-                    CommitsSinceVersionSourcePadded = environmentVariables["GitVersion_CommitsSinceVersionSourcePadded"],
-                    CommitDate = environmentVariables["GitVersion_CommitDate"],
+                    Major = int.Parse(GetGitVersionValue(environmentVariables, "Major")),
+                    Minor = int.Parse(GetGitVersionValue(environmentVariables, "Minor")),
+                    Patch = int.Parse(GetGitVersionValue(environmentVariables, "Patch")),
+                    PreReleaseTag = GetGitVersionValue(environmentVariables, "PreReleaseTag"),
+                    PreReleaseTagWithDash = GetGitVersionValue(environmentVariables, "PreReleaseTagWithDash"),
+                    PreReleaseLabel = GetGitVersionValue(environmentVariables, "PreReleaseLabel"),
+                    PreReleaseNumber = GetGitVersionNullableInt(environmentVariables, "PreReleaseNumber"),
+                    BuildMetaData = GetGitVersionValue(environmentVariables, "BuildMetaData"),
+                    BuildMetaDataPadded = GetGitVersionValue(environmentVariables, "BuildMetaDataPadded"),
+                    FullBuildMetaData = GetGitVersionValue(environmentVariables, "FullBuildMetaData"),
+                    MajorMinorPatch = GetGitVersionValue(environmentVariables, "MajorMinorPatch"),
+                    SemVer = GetGitVersionValue(environmentVariables, "SemVer"),
+                    LegacySemVer = GetGitVersionValue(environmentVariables, "LegacySemVer"),
+                    LegacySemVerPadded = GetGitVersionValue(environmentVariables, "LegacySemVerPadded"),
+                    AssemblySemVer = GetGitVersionValue(environmentVariables, "AssemblySemVer"),
+                    FullSemVer = GetGitVersionValue(environmentVariables, "FullSemVer"),
+                    InformationalVersion = GetGitVersionValue(environmentVariables, "InformationalVersion"),
+                    BranchName = GetGitVersionValue(environmentVariables, "BranchName"),
+                    Sha = GetGitVersionValue(environmentVariables, "Sha"),
+                    NuGetVersion = GetGitVersionValue(environmentVariables, "NuGetVersion"),
+                    CommitsSinceVersionSource = GetGitVersionNullableInt(environmentVariables, "CommitsSinceVersionSource"),
+                    CommitsSinceVersionSourcePadded = GetGitVersionValue(environmentVariables, "CommitsSinceVersionSourcePadded"),
+                    CommitDate = GetGitVersionValue(environmentVariables, "CommitDate"),
                 });
             }
             else
             {
                 return _gitVersion ?? (_gitVersion = context.GitVersion());
             }
+        }
+
+        private static string GetGitVersionValue(IDictionary<string, string> environmentVariables, string key)
+        {
+            var value = environmentVariables.FirstOrDefault(x => x.Key.Equals($"GitVersion_{key}", StringComparison.OrdinalIgnoreCase));
+            return value.Value;
+        }
+
+        private static int? GetGitVersionNullableInt(IDictionary<string, string> environmentVariables, string key)
+        {
+            var value = GetGitVersionValue(environmentVariables, key);
+            return string.IsNullOrWhiteSpace(value) ? null : int.Parse(value) as int?;
         }
 
         [CakeMethodAlias]
