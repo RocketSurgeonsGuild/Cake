@@ -1,4 +1,4 @@
-#load "nuget:?package=Rocket.Surgery.Cake.Library&version=0.8.4";
+#load "nuget:?package=Rocket.Surgery.Cake.Library&version=0.8.6-beta.1";
 
 Task("Default")
     .IsDependentOn("PinVersion")
@@ -7,7 +7,7 @@ Task("Default")
     ;
 
 Task("PinVersion")
-    // .WithCriteria(!BuildSystem.IsLocalBuild)
+    .WithCriteria(!BuildSystem.IsLocalBuild)
     .Does(() => {
         foreach (var angel in GetFiles("./src/**/*.cake")) {
             PinVersion(angel, GitVer.SemVer);
