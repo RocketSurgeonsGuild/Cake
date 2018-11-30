@@ -1,5 +1,5 @@
 ﻿#addin "nuget:?package=Rocket.Surgery.Cake&version={version}"
-#addin "nuget:?package=Newtonsoft.Json"
+#addin "nuget:?package=Newtonsoft.Json&version=11.0.2"
 
 Task("Clean")
     .IsDependeeOf("Default")
