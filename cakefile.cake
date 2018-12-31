@@ -1,11 +1,8 @@
-#load "nuget:?package=Rocket.Surgery.Cake.Library&version=0.8.6";
+#load "nuget:?package=Rocket.Surgery.Cake.Library&version=0.8.7-beta.6";
 
 Task("Default")
     .IsDependentOn("PinVersion")
-    // .IsDependentOn("dotnetcore")
-    .IsDependentOn("dotnetcore restore")
-    .IsDependentOn("dotnetcore build")
-    .IsDependentOn("dotnetcore pack")
+    .IsDependentOn("dotnetcore")
     .IsDependentOn("TestScripts")
     ;
 
