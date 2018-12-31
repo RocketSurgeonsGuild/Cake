@@ -88,8 +88,8 @@ namespace Rocket.Surgery.Cake
             // in some cases the file paths are relative, this will normalize
             // them so they will all be absolute
             foreach (var result in xdocs.Descendants(XName.Get("sources"))
-                .Select(x => x.Descendants(XName.Get("source")).Single())
-                .Where(x => x.Value != ".")
+                .Select(x => x.Descendants(XName.Get("source")).FirstOrDefault())
+                .Where(x => x != null && x.Value != ".")
                 .Select(x => new { Source = x.Value, Document = x.Ancestors().Last() }))
             {
                 foreach (var @class in result.Document.Descendants(XName.Get("class")))

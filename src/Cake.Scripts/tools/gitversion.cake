@@ -1,5 +1,4 @@
-#addin "nuget:?package=Rocket.Surgery.Cake&version={version}"
-#tool "nuget:?package=GitVersion.CommandLine&prerelease&version=4.0.0-beta0012"
+#load "tools.cake"
 
 Task("GitVersion")
     .IsDependeeOf("Default")

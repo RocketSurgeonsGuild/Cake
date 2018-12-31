@@ -4,5 +4,7 @@
         <IsPackable>false</IsPackable>
         <PreserveCompilationContext>true</PreserveCompilationContext>
         <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+        <Include>[Rocket.Surgery.*]*</Include>
+        <Exclude>[Bogus*]*,[Autofac.*]*,[FakeItEasy*]*,[xunit*]*,[Microsoft.*]*,[XunitXml*]*,[coverlet.*]*,[System.*]*</Exclude>
     </PropertyGroup>
 </Project>

@@ -2,7 +2,10 @@
 
 Task("Default")
     .IsDependentOn("PinVersion")
-    .IsDependentOn("dotnetcore")
+    // .IsDependentOn("dotnetcore")
+    .IsDependentOn("dotnetcore restore")
+    .IsDependentOn("dotnetcore build")
+    .IsDependentOn("dotnetcore pack")
     .IsDependentOn("TestScripts")
     ;
 
@@ -22,7 +25,7 @@ void PinVersion(FilePath file, string version) {
 }
 
 Task("TestScripts")
-    .IsDependentOn("dotnetcore")
+    .IsDependentOn("dotnetcore build")
     .WithCriteria(IsRunningOnWindows)
     .DoesForEach(GetFiles("src/**/*.cake"), (sourceFile) => {
         var testFolder = Artifacts.Combine("testfolder");
@@ -44,6 +47,8 @@ Task("TestScripts")
         var testFile = testFolder.CombineWithFilePath(sourceFile.GetFilename());
         CopyFile(sourceFile, testFile);
         PinVersion(testFile, GitVer.SemVer);
+        CopyFile("src/Cake.Scripts/tools/tools.cake", testFolder.CombineWithFilePath("tools.cake"));
+        PinVersion(testFolder.CombineWithFilePath("tools.cake"), GitVer.SemVer);
 
         try {
             CakeExecuteScript(testFolder.CombineWithFilePath(sourceFile.GetFilename()), new CakeSettings() {

@@ -1,5 +1,4 @@
-#addin "nuget:?package=Rocket.Surgery.Cake&version={version}"
-#tool "nuget:?package=ReportGenerator&version=4.0.0-rc10"
+#load "tools.cake"
 
 MSBuildSettings CreateMSBuildSettings(string target)
 {
