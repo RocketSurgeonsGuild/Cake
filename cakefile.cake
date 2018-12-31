@@ -27,6 +27,7 @@ void PinVersion(FilePath file, string version) {
 Task("TestScripts")
     .IsDependentOn("dotnetcore build")
     .WithCriteria(IsRunningOnWindows)
+    .WithCriteria(BuildSystem.IsLocalBuild)
     .DoesForEach(GetFiles("src/**/*.cake"), (sourceFile) => {
         var testFolder = Artifacts.Combine("testfolder");
         CleanDirectory(testFolder);
