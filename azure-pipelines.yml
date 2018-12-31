@@ -2,14 +2,14 @@ trigger:
   batch: true
   branches:
     include:
-    - master
+      - master
   tags:
     include:
-    - v*
+      - v*
 pr:
   branches:
     include:
-    - master
+      - master
 
 resources:
   repositories:
@@ -42,7 +42,7 @@ jobs:
 
   - template: pipeline/cake-job.yml@rsg
     parameters:
-      name: 'macOS'
+      name: "macOS"
       dependsOn: GitVersion
       vmImage: "macOS-10.13"
       pushNuget: false
@@ -54,7 +54,7 @@ jobs:
 
   - template: pipeline/cake-job.yml@rsg
     parameters:
-      name: 'Linux'
+      name: "Linux"
       dependsOn: GitVersion
       vmImage: "Ubuntu-16.04"
       pushNuget: false
