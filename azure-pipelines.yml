@@ -1,12 +1,25 @@
+# trigger:
+#   batch: true
+#   branches:
+#     include:
+#       - master
+#   tags:
+#     include:
+#       - "*"
+# pr:
+#   branches:
+#     include:
+#       - master
 trigger:
-  batch: true
   branches:
     include:
       - master
+  batch: true
   tags:
     include:
       - "*"
 pr:
+  autoCancel: true
   branches:
     include:
       - master
