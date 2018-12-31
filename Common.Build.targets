@@ -2,7 +2,7 @@
     <ItemGroup>
         <PackageReference Update="Cake.Common" Version="0.31.0" PrivateAssets="All" />
         <PackageReference Update="Cake.Core" Version="0.31.0" PrivateAssets="All" />
-        <PackageReference Update="Newtonsoft.Json" Version="12.0.1" />
+        <PackageReference Update="Newtonsoft.Json" Version="11.0.2" />
     </ItemGroup>
     <ItemGroup>
         <PackageReference Update="Rocket.Surgery.Build.Metadata" Version="3.0.0" PrivateAssets="All" />
