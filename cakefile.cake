@@ -1,4 +1,5 @@
 #load "nuget:?package=Rocket.Surgery.Cake.Library&version=0.8.7-beta.6";
+#addin "nuget:?package=Newtonsoft.Json&version=12.0.1"
 
 Task("Default")
     .IsDependentOn("PinVersion")
