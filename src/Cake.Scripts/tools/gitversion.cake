@@ -1,4 +1,4 @@
-#load "tools.cake"
+#load "./tools.cake"
 
 Task("GitVersion")
     .IsDependeeOf("Default")

@@ -1,4 +1,4 @@
-#load "tools.cake"
+#load "./tools.cake"
 
 DotNetCoreMSBuildSettings CreateDotNetCoreMsBuildSettings(string target)
 {    return new DotNetCoreMSBuildSettings() {
