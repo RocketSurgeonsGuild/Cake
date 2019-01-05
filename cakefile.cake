@@ -3,7 +3,7 @@
 Task("Default")
     .IsDependentOn("PinVersion")
     .IsDependentOn("dotnetcore")
-    // .IsDependentOn("TestScripts")
+    .IsDependentOn("TestScripts")
     ;
 
 Task("PinVersion")
