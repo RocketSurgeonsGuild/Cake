@@ -1,7 +1,7 @@
 <Project>
     <ItemGroup>
-        <PackageReference Update="Cake.Common" Version="0.31.0" PrivateAssets="All" />
-        <PackageReference Update="Cake.Core" Version="0.31.0" PrivateAssets="All" />
+        <PackageReference Update="Cake.Common" Version="0.32.1" PrivateAssets="All" />
+        <PackageReference Update="Cake.Core" Version="0.32.1" PrivateAssets="All" />
         <PackageReference Update="Newtonsoft.Json" Version="11.0.2" />
     </ItemGroup>
     <ItemGroup>
