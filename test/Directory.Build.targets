@@ -12,5 +12,9 @@
         <PackageReference Include="xunit.runner.visualstudio" />
         <PackageReference Include="XunitXml.TestLogger" />
     </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Cake.Common" />
+        <PackageReference Include="Cake.Core" />
+    </ItemGroup>
     <Import Project="$([MSBuild]::GetPathOfFileAbove('Common.Build.targets', '$(MSBuildThisFileDirectory)../'))" />
 </Project>
