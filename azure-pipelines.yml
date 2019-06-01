@@ -14,15 +14,16 @@ resources:
     - repository: rsg
       type: github
       name: RocketSurgeonsGuild/AzureDevopsTemplates
-      ref: refs/tags/v0.4.5
+      ref: refs/tags/v0.5.8
       endpoint: github
 
 variables:
   Configuration: Release
   Verbosity: Normal
-  DotNetVersion: "2.2.103"
-  CakeVersion: "0.32.1"
-  NuGetVersion: "4.9.2"
+  DotNetVersion: "2.2.300"
+  DotNet3Version: "3.0.100-preview5-011568"
+  CakeVersion: "0.33.0"
+  NuGetVersion: "5.1.0"
   Coverage: "$(Agent.BuildDirectory)/c"
   VstsCoverage: "$(Coverage)"
   Artifacts: $(Build.ArtifactStagingDirectory)
@@ -48,6 +49,7 @@ jobs:
       Verbosity: $(Verbosity)
       CakeVersion: $(CakeVersion)
       DotNetVersion: $(DotNetVersion)
+      DotNet3Version: $(DotNet3Version)
       NuGetVersion: $(NuGetVersion)
 
   - template: pipeline/cake-job.yml@rsg
@@ -60,6 +62,7 @@ jobs:
       Verbosity: $(Verbosity)
       CakeVersion: $(CakeVersion)
       DotNetVersion: $(DotNetVersion)
+      DotNet3Version: $(DotNet3Version)
       NuGetVersion: $(NuGetVersion)
 
   - job: Windows
@@ -72,8 +75,9 @@ jobs:
         parameters:
           CakeVersion: $(CakeVersion)
           DotNetVersion: $(DotNetVersion)
+          DotNet3Version: $(DotNet3Version)
       # Nuget is required for test scripts below
-      - task: NuGetToolInstaller@0
+      - task: NuGetToolInstaller@1
         displayName: "Get NuGet"
         inputs:
           versionSpec: $(NuGetVersion)

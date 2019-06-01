@@ -7,7 +7,7 @@ MSBuildSettings CreateMSBuildSettings(string target)
         EnvironmentVariables = Settings.Environment,
         Configuration = Settings.Configuration,
         DetailedSummary = Settings.Diagnostic,
-        Verbosity = Verbosity.Minimal,
+        Verbosity = Settings.Verbosity,
         FileLoggers = {
             new MSBuildFileLogger {
                 AppendToLogFile = false,
@@ -32,14 +32,14 @@ Task("dotnet");
 Task("dotnet restore")
     .IsDependeeOf("dotnet")
     .DoesForEach(GetFiles("*.sln"), (solution) => {
-        MSBuild(solution, CreateMSBuildSettings("Restore").SetVerbosity(Verbosity.Minimal));
+        MSBuild(solution, CreateMSBuildSettings("Restore").SetVerbosity(Settings.Verbosity));
     });
 
 Task("dotnet build")
     .IsDependeeOf("dotnet")
     .IsDependentOn("dotnet restore")
     .DoesForEach(GetFiles("*.sln"), (solution) => {
-        MSBuild(solution, CreateMSBuildSettings("Build").SetVerbosity(Verbosity.Minimal));
+        MSBuild(solution, CreateMSBuildSettings("Build").SetVerbosity(Settings.Verbosity));
     });
 
 Task("dotnet test")
