@@ -32,13 +32,31 @@ namespace Rocket.Surgery.Cake
         public GitVersion Version { get; }
         public Dictionary<string, string> Environment { get; }
         public string Configuration { get; }
-        public Verbosity Verbosity { get; set; }
+        public Verbosity Verbosity { get; }
+
+        public Verbosity MsBuildVerbosity
+        {
+            get
+            {
+                if (Diagnostic)
+                {
+                    return Verbosity;
+                }
+
+                if (Verbosity == Verbosity.Normal)
+                {
+                    return Verbosity.Minimal;
+                }
+
+                return Verbosity;
+            }
+        }
 
         public DotNetCoreVerbosity DotNetCoreVerbosity
         {
             get
             {
-                switch (Verbosity)
+                switch (MsBuildVerbosity)
                 {
                     case Verbosity.Quiet: return DotNetCoreVerbosity.Quiet;
                     case Verbosity.Minimal: return DotNetCoreVerbosity.Minimal;
@@ -46,7 +64,7 @@ namespace Rocket.Surgery.Cake
                     case Verbosity.Verbose: return DotNetCoreVerbosity.Detailed;
                     case Verbosity.Diagnostic: return DotNetCoreVerbosity.Diagnostic;
                 }
-                return DotNetCoreVerbosity.Normal;
+                return DotNetCoreVerbosity.Minimal;
             }
         }
         public bool Diagnostic { get; set; }
@@ -54,8 +72,8 @@ namespace Rocket.Surgery.Cake
         public class XUnitSettings
         {
             public bool Enabled { get; set; } = true;
-            public bool Build { get; set; } = false;
-            public bool Restore { get; set; } = false;
+            public bool Build { get; set; } = true;
+            public bool Restore { get; set; } = true;
             public bool Shadow { get; set; }
         }
 

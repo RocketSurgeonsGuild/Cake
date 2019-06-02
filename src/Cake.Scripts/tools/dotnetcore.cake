@@ -5,6 +5,7 @@ DotNetCoreMSBuildSettings CreateDotNetCoreMsBuildSettings(string target)
         DiagnosticOutput = Settings.Diagnostic,
         DetailedSummary = Settings.Diagnostic,
         EnvironmentVariables = Settings.Environment,
+        Verbosity = Settings.DotNetCoreVerbosity,
         FileLoggers = {
             new MSBuildFileLoggerSettings {
                 AppendToLogFile = false,
@@ -108,6 +109,7 @@ Task("dotnetcore pack")
         DotNetCorePack(
             solution.FullPath,
             new DotNetCorePackSettings() {
+                DiagnosticOutput = Settings.Diagnostic,
                 Verbosity = Settings.DotNetCoreVerbosity,
                 Configuration = Settings.Configuration,
                 EnvironmentVariables = Settings.Environment,

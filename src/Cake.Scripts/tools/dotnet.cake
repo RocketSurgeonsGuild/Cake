@@ -7,13 +7,13 @@ MSBuildSettings CreateMSBuildSettings(string target)
         EnvironmentVariables = Settings.Environment,
         Configuration = Settings.Configuration,
         DetailedSummary = Settings.Diagnostic,
-        Verbosity = Settings.Verbosity,
+        Verbosity = Settings.MsBuildVerbosity,
         FileLoggers = {
             new MSBuildFileLogger {
                 AppendToLogFile = false,
                 LogFile = Artifact($"logs/{target.ToLower()}.log"),
                 ShowTimestamp = true,
-                Verbosity = Settings.Verbosity,
+                Verbosity = Settings.MsBuildVerbosity,
                 PerformanceSummaryEnabled = Settings.Diagnostic,
                 SummaryDisabled = Settings.Diagnostic,
                 ShowCommandLine = Settings.Diagnostic,
@@ -36,14 +36,14 @@ Task("dotnet");
 Task("dotnet restore")
     .IsDependeeOf("dotnet")
     .DoesForEach(GetFiles("*.sln"), (solution) => {
-        MSBuild(solution, CreateMSBuildSettings("Restore").SetVerbosity(Settings.Verbosity));
+        MSBuild(solution, CreateMSBuildSettings("Restore").SetVerbosity(Settings.MsBuildVerbosity));
     });
 
 Task("dotnet build")
     .IsDependeeOf("dotnet")
     .IsDependentOn("dotnet restore")
     .DoesForEach(GetFiles("*.sln"), (solution) => {
-        MSBuild(solution, CreateMSBuildSettings("Build").SetVerbosity(Settings.Verbosity));
+        MSBuild(solution, CreateMSBuildSettings("Build").SetVerbosity(Settings.MsBuildVerbosity));
     });
 
 Task("dotnet test")
