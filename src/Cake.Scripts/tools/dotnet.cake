@@ -59,6 +59,7 @@ Task("dotnet test")
             DotNetCoreTest(file.FullPath, new DotNetCoreTestSettings() {
                 Configuration = Settings.Configuration,
                 DiagnosticOutput = Settings.Diagnostic,
+                Verbosity = Settings.DotNetCoreVerbosity,
                 NoBuild = !Settings.XUnit.Build,
                 NoRestore = !Settings.XUnit.Restore,
                 TestAdapterPath = ".",
