@@ -23,6 +23,7 @@ namespace Rocket.Surgery.Cake
             Environment = environment;
             Configuration = configuration;
             Verbosity = verbosity;
+            Diagnostic = verbosity > Verbosity.Normal;
         }
 
         public XUnitSettings XUnit { get; } = new XUnitSettings();
@@ -31,28 +32,7 @@ namespace Rocket.Surgery.Cake
         public GitVersion Version { get; }
         public Dictionary<string, string> Environment { get; }
         public string Configuration { get; }
-        private Verbosity _verbosity;
-        public Verbosity Verbosity
-        {
-            get
-            {
-                if (Diagnostic)
-                {
-                    if (_verbosity > Verbosity.Normal)
-                    {
-                        return _verbosity;
-                    }
-                    return Verbosity.Normal;
-                }
-
-                if (_verbosity > Verbosity.Normal)
-                {
-                    return Verbosity.Normal;
-                }
-                return Verbosity.Minimal;
-            }
-            set => _verbosity = value;
-        }
+        public Verbosity Verbosity { get; set; }
 
         public DotNetCoreVerbosity DotNetCoreVerbosity
         {

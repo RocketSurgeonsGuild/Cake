@@ -63,8 +63,8 @@ Task("dotnet test")
             DotNetCoreTest(
                 solution.FullPath,
                 new DotNetCoreTestSettings() {
-                    // Configuration = Settings.Configuration,
-                    Configuration = "Debug",
+                    Configuration = Settings.Configuration,
+                    // Configuration = "Debug",
                     DiagnosticOutput = Settings.Diagnostic,
                     Verbosity = Settings.DotNetCoreVerbosity,
                     // NoBuild = !Settings.XUnit.Build,
