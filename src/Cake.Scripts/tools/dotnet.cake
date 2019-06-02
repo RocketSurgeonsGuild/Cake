@@ -27,6 +27,10 @@ MSBuildSettings CreateMSBuildSettings(string target)
     };
 }
 
+ProcessArgumentBuilder CreateBinLogger2(ProcessArgumentBuilder a, string target) {
+    return a.Append($"/bl:{Artifact($"logs/{target.ToLower()}.binlog")};ProjectImports={(!BuildSystem.IsLocalBuild || Settings.Diagnostic ? MSBuildBinaryLogImports.Embed : MSBuildBinaryLogImports.None)}");
+}
+
 Task("dotnet");
 
 Task("dotnet restore")
@@ -66,7 +70,7 @@ Task("dotnet test")
                     // NoRestore = !Settings.XUnit.Restore,
                     TestAdapterPath = ".",
                     Logger = $"\"xunit;LogFilePath={unitTestReport}\"",
-                    ArgumentCustomization = args => CreateBinLogger(args, $"test")
+                    ArgumentCustomization = args => CreateBinLogger2(args, $"test")
                         .AppendSwitchQuoted("/p:CollectCoverage", "=", "true")
                         .AppendSwitchQuoted("/p:CoverageDirectory", "=", Coverage.FullPath)
                 }
