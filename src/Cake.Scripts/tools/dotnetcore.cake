@@ -64,21 +64,21 @@ Task("dotnetcore test")
         EnsureDirectoryExists(CoverageDirectoryPath("report"));
     })
     .DoesForEach(
-        GetFiles("test/*/*.csproj"), (file) => {
-            var unitTestReport = ArtifactFilePath($"test/{file.GetFilenameWithoutExtension().ToString()}.xml")
+        GetFiles("*.sln"), (solution) => {
+            var unitTestReport = ArtifactFilePath($"test/solution.xml")
                 .MakeAbsolute(Context.Environment).FullPath;
 
             DotNetCoreTest(
-                file.FullPath,
+                solution.FullPath,
                 new DotNetCoreTestSettings() {
                     Configuration = Settings.Configuration,
                     DiagnosticOutput = Settings.Diagnostic,
                     Verbosity = Settings.DotNetCoreVerbosity,
-                    NoBuild = !Settings.XUnit.Build,
-                    NoRestore = !Settings.XUnit.Restore,
+                    // NoBuild = !Settings.XUnit.Build,
+                    // NoRestore = !Settings.XUnit.Restore,
                     TestAdapterPath = ".",
                     Logger = $"\"xunit;LogFilePath={unitTestReport}\"",
-                    ArgumentCustomization = args => CreateBinLogger(args, $"test-{file.GetFilenameWithoutExtension()}")
+                    ArgumentCustomization = args => CreateBinLogger(args, $"test")
                         .AppendSwitchQuoted("/p:CollectCoverage", "=", "true")
                         .AppendSwitchQuoted("/p:CoverageDirectory", "=", Coverage.FullPath)
                 }

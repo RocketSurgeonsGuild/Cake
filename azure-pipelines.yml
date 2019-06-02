@@ -43,7 +43,7 @@ jobs:
     parameters:
       name: "macOS"
       dependsOn: GitVersion
-      vmImage: "macOS-10.13"
+      vmImage: "macOS-10.14"
       pushNuget: false
       Configuration: $(Configuration)
       Verbosity: $(Verbosity)
@@ -68,7 +68,7 @@ jobs:
   - job: Windows
     dependsOn: GitVersion
     pool:
-      vmImage: "VS2017-Win2016"
+      vmImage: "windows-2019"
     steps:
       - template: gitversion/restore.yml@rsg
       - template: cake/install.yml@rsg
@@ -88,6 +88,21 @@ jobs:
       - template: publish-artifacts.yml@rsg
         parameters:
           Configuration: $(Configuration)
+
+  - job: Publish
+    dependsOn:
+      - macOS
+      - Linux
+      - Windows
+    steps:
+      - task: DownloadBuildArtifacts@0
+        displayName: "Download NuGet Packages"
+        inputs:
+          specificBuildWithTriggering: true
+          downloadType: single
+          artifactName: 'Nupkg - Windows'
+          downloadPath: $(Build.ArtifactStagingDirectory)/nuget/
       - template: standard/nuget-push.yml@rsg
         parameters:
           NuGetVersion: $(NuGetVersion)
+
