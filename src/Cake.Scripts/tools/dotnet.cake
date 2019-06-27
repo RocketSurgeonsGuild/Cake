@@ -57,23 +57,17 @@ Task("dotnet test")
     })
     .DoesForEach(
         GetFiles("*.sln"), (solution) => {
-            var unitTestReport = ArtifactFilePath($"test/solution.xml")
-                .MakeAbsolute(Context.Environment).FullPath;
-
             DotNetCoreTest(
                 solution.FullPath,
                 new DotNetCoreTestSettings() {
-                    Configuration = Settings.Configuration,
-                    // Configuration = "Debug",
+                    Configuration = "Debug",
                     DiagnosticOutput = Settings.Diagnostic,
                     Verbosity = Settings.DotNetCoreVerbosity,
-                    // NoBuild = !Settings.XUnit.Build,
-                    // NoRestore = !Settings.XUnit.Restore,
-                    TestAdapterPath = ".",
-                    Logger = $"\"xunit;LogFilePath={unitTestReport}\"",
-                    ArgumentCustomization = args => CreateBinLogger2(args, $"test")
+                    Logger = $"\"trx\"",
+                    ArgumentCustomization = args => CreateBinLogger(args, $"test")
                         .AppendSwitchQuoted("/p:CollectCoverage", "=", "true")
                         .AppendSwitchQuoted("/p:CoverageDirectory", "=", Coverage.FullPath)
+                        .AppendSwitchQuoted("/p:VSTestResultsDirectory", "=", ArtifactFilePath($"test").MakeAbsolute(Context.Environment).FullPath)
                 }
             );
         })
