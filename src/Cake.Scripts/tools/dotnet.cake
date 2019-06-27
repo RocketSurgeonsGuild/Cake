@@ -64,7 +64,7 @@ Task("dotnet test")
                     DiagnosticOutput = Settings.Diagnostic,
                     Verbosity = Settings.DotNetCoreVerbosity,
                     Logger = $"\"trx\"",
-                    ArgumentCustomization = args => CreateBinLogger(args, $"test")
+                    ArgumentCustomization = args => CreateBinLogger2(args, $"test")
                         .AppendSwitchQuoted("/p:CollectCoverage", "=", "true")
                         .AppendSwitchQuoted("/p:CoverageDirectory", "=", Coverage.FullPath)
                         .AppendSwitchQuoted("/p:VSTestResultsDirectory", "=", ArtifactFilePath($"test").MakeAbsolute(Context.Environment).FullPath)
