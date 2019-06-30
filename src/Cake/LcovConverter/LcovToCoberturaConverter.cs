@@ -9,16 +9,29 @@ using Path = System.IO.Path;
 
 namespace Rocket.Surgery.Cake.LcovConverter
 {
+    /// <summary>
+    /// Class LcovToCoberturaConverter.
+    /// </summary>
     class LcovToCoberturaConverter
     {
         private readonly ICakeContext _context;
         private readonly DirectoryPath _baseDirectory;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LcovToCoberturaConverter"/> class.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="baseDirectory">The base directory.</param>
         public LcovToCoberturaConverter(ICakeContext context, DirectoryPath baseDirectory)
         {
             _context = context;
             _baseDirectory = baseDirectory.MakeAbsolute(context.Environment);
         }
 
+        /// <summary>
+        /// Converts the specified lcov data.
+        /// </summary>
+        /// <param name="lcovData">The lcov data.</param>
+        /// <returns>XDocument.</returns>
         public XDocument Convert(string lcovData)
         {
             return GenerateCoberturaXml(GetCoverageData(lcovData));

@@ -10,14 +10,27 @@ using Cake.Core.IO;
 
 namespace Rocket.Surgery.Cake
 {
+    /// <summary>
+    /// Class LocalCakeAliases.
+    /// </summary>
     public static class LocalCakeAliases
     {
+        /// <summary>
+        /// Targets the specified context.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <returns>System.String.</returns>
         [CakePropertyAlias(Cache = true)]
         public static string Target(this ICakeContext context)
         {
             return context.Argument("target", "Build");
         }
 
+        /// <summary>
+        /// Settingses the specified context.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <returns>Settings.</returns>
         [CakePropertyAlias(Cache = true)]
         public static Settings Settings(this ICakeContext context)
         {
@@ -64,48 +77,93 @@ namespace Rocket.Surgery.Cake
             };
         }
 
+        /// <summary>
+        /// Configurations the specified context.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <returns>System.String.</returns>
         [CakePropertyAlias(Cache = true)]
         public static string Configuration(this ICakeContext context)
         {
             return context.Argument("configuration", "Debug");
         }
 
+        /// <summary>
+        /// Artifacts the specified path.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="path">The path.</param>
+        /// <returns>System.String.</returns>
         [CakeMethodAlias]
         public static string Artifact(this ICakeContext context, string path)
         {
             return Artifacts(context) + "/" + path.TrimStart('/', '\\');
         }
 
+        /// <summary>
+        /// Artifactses the specified context.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <returns>DirectoryPath.</returns>
         [CakePropertyAlias(Cache = true)]
         public static DirectoryPath Artifacts(this ICakeContext context)
         {
             return DirectoryPath.FromString(context.Argument("artifacts", "./artifacts")).MakeAbsolute(context.Environment);
         }
 
+        /// <summary>
+        /// Artifacts the file path.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="path">The path.</param>
+        /// <returns>FilePath.</returns>
         [CakeMethodAlias]
         public static FilePath ArtifactFilePath(this ICakeContext context, string path)
         {
             return FilePath.FromString(Artifacts(context) + "/" + path.TrimStart('/', '\\')).MakeAbsolute(context.Environment);
         }
 
+        /// <summary>
+        /// Artifacts the directory path.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="path">The path.</param>
+        /// <returns>DirectoryPath.</returns>
         [CakeMethodAlias]
         public static DirectoryPath ArtifactDirectoryPath(this ICakeContext context, string path)
         {
             return DirectoryPath.FromString(Artifacts(context) + "/" + path.TrimStart('/', '\\')).MakeAbsolute(context.Environment);
         }
 
+        /// <summary>
+        /// Coverages the specified context.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <returns>DirectoryPath.</returns>
         [CakePropertyAlias(Cache = true)]
         public static DirectoryPath Coverage(this ICakeContext context)
         {
             return DirectoryPath.FromString(context.Argument("coverage", "./coverage")).MakeAbsolute(context.Environment);
         }
 
+        /// <summary>
+        /// Coverages the file path.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="path">The path.</param>
+        /// <returns>FilePath.</returns>
         [CakeMethodAlias]
         public static FilePath CoverageFilePath(this ICakeContext context, string path)
         {
             return FilePath.FromString(Coverage(context) + "/" + path.TrimStart('/', '\\')).MakeAbsolute(context.Environment);
         }
 
+        /// <summary>
+        /// Coverages the directory path.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="path">The path.</param>
+        /// <returns>DirectoryPath.</returns>
         [CakeMethodAlias]
         public static DirectoryPath CoverageDirectoryPath(this ICakeContext context, string path)
         {
@@ -138,6 +196,11 @@ namespace Rocket.Surgery.Cake
             "GITVERSION_COMMITDATE",
         };
 
+        /// <summary>
+        /// Determines whether [has git ver] [the specified context].
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <returns><c>true</c> if [has git ver] [the specified context]; otherwise, <c>false</c>.</returns>
         [CakePropertyAlias(Cache = true)]
         public static bool HasGitVer(this ICakeContext context)
         {
@@ -145,8 +208,16 @@ namespace Rocket.Surgery.Cake
             return envVars.Keys.Join(GitVersionKeys, z => z, z => z, (a, b) => a, StringComparer.OrdinalIgnoreCase).Any();
         }
 
+        /// <summary>
+        /// The git version
+        /// </summary>
         internal static GitVersion _gitVersion;
 
+        /// <summary>
+        /// Gits the ver.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <returns>GitVersion.</returns>
         [CakePropertyAlias(Cache = true)]
         public static GitVersion GitVer(this ICakeContext context)
         {
@@ -198,12 +269,24 @@ namespace Rocket.Surgery.Cake
             return string.IsNullOrWhiteSpace(value) ? null : int.Parse(value) as int?;
         }
 
+        /// <summary>
+        /// Gets the artifacts.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="glob">The glob.</param>
+        /// <returns>IEnumerable&lt;FilePath&gt;.</returns>
         [CakeMethodAlias]
         public static IEnumerable<FilePath> GetArtifacts(this ICakeContext context, string glob)
         {
             return context.GetFiles($"{context.Artifacts()}/{glob}");
         }
 
+        /// <summary>
+        /// Gets the coverage.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="glob">The glob.</param>
+        /// <returns>IEnumerable&lt;FilePath&gt;.</returns>
         [CakeMethodAlias]
         public static IEnumerable<FilePath> GetCoverage(this ICakeContext context, string glob)
         {

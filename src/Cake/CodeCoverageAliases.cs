@@ -20,8 +20,18 @@ using Rocket.Surgery.Cake.LcovConverter;
 
 namespace Rocket.Surgery.Cake
 {
+    /// <summary>
+    /// Class CodeCoverageAliases.
+    /// </summary>
     public static class CodeCoverageAliases
     {
+        /// <summary>
+        /// Converts the lcov to cobertura.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="baseDirectory">The base directory.</param>
+        /// <param name="lcovFile">The lcov file.</param>
+        /// <param name="coberturaFile">The cobertura file.</param>
         [CakeMethodAlias]
         public static void ConvertLcovToCobertura(this ICakeContext context, DirectoryPath baseDirectory, FilePath lcovFile, FilePath coberturaFile)
         {
@@ -30,6 +40,12 @@ namespace Rocket.Surgery.Cake
             document.Save(context.FileSystem.GetFile(coberturaFile.MakeAbsolute(context.Environment)).OpenWrite());
         }
 
+        /// <summary>
+        /// Dots the cover to cobertura summary.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="xmlFile">The XML file.</param>
+        /// <param name="coberturaFile">The cobertura file.</param>
         [CakeMethodAlias]
         public static void DotCoverToCoberturaSummary(this ICakeContext context, FilePath xmlFile, FilePath coberturaFile)
         {
@@ -72,12 +88,24 @@ namespace Rocket.Surgery.Cake
             newDoc.Save(context.FileSystem.GetFile(coberturaFile).OpenWrite());
         }
 
+        /// <summary>
+        /// Merges the cobertura files.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="files">The files.</param>
+        /// <param name="outputFile">The output file.</param>
         [CakeMethodAlias]
         public static void MergeCoberturaFiles(this ICakeContext context, string files, FilePath outputFile)
         {
             MergeCoberturaFiles(context, context.GetFiles(files), outputFile);
         }
 
+        /// <summary>
+        /// Merges the cobertura files.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="files">The files.</param>
+        /// <param name="outputFile">The output file.</param>
         [CakeMethodAlias]
         public static void MergeCoberturaFiles(this ICakeContext context, IEnumerable<FilePath> files, FilePath outputFile)
         {
@@ -152,6 +180,14 @@ namespace Rocket.Surgery.Cake
             newDoc.Save(context.FileSystem.GetFile(outputFile).OpenWrite());
         }
 
+        /// <summary>
+        /// Dots the cover cobertura.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="inputProject">The input project.</param>
+        /// <param name="outputDirectory">The output directory.</param>
+        /// <param name="tool">The tool.</param>
+        /// <param name="settings">The settings.</param>
         [CakeMethodAlias]
         [CakeNamespaceImport("Cake.Common.Tools.DotCover.Cover")]
         public static void DotCoverCobertura(this ICakeContext context, FilePath inputProject, DirectoryPath outputDirectory, Action<ICakeContext> tool, DotCoverCoverSettings settings)
@@ -166,6 +202,13 @@ namespace Rocket.Surgery.Cake
             context.DotCoverCover(tool, reportPath, settings);
         }
 
+        /// <summary>
+        /// Dots the cover reports.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="inputFiles">The input files.</param>
+        /// <param name="outputDirectory">The output directory.</param>
+        /// <param name="reportTypes">The report types.</param>
         [CakeMethodAlias]
         [CakeNamespaceImport("Rocket.Surgery.Cake")]
         [CakeNamespaceImport("Cake.Common.Tools.DotCover")]
@@ -178,6 +221,13 @@ namespace Rocket.Surgery.Cake
             });
         }
 
+        /// <summary>
+        /// Dots the cover reports.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="inputFiles">The input files.</param>
+        /// <param name="outputDirectory">The output directory.</param>
+        /// <param name="reportTypes">The report types.</param>
         [CakeMethodAlias]
         [CakeNamespaceImport("Rocket.Surgery.Cake")]
         [CakeNamespaceImport("Cake.Common.Tools.DotCover")]
@@ -190,6 +240,12 @@ namespace Rocket.Surgery.Cake
             });
         }
 
+        /// <summary>
+        /// Dots the cover reports.
+        /// </summary>
+        /// <param name="context">The context.</param>
+        /// <param name="inputFiles">The input files.</param>
+        /// <param name="settings">The settings.</param>
         [CakeMethodAlias]
         [CakeNamespaceImport("Rocket.Surgery.Cake")]
         [CakeNamespaceImport("Cake.Common.Tools.DotCover")]
@@ -228,11 +284,28 @@ namespace Rocket.Surgery.Cake
         }
     }
 
+    /// <summary>
+    /// Class DotCoverReportsSettings.
+    /// Implements the <see cref="Cake.Core.Tooling.ToolSettings" />
+    /// </summary>
+    /// <seealso cref="Cake.Core.Tooling.ToolSettings" />
     public class DotCoverReportsSettings : ToolSettings
     {
+        /// <summary>
+        /// Gets or sets the output directory.
+        /// </summary>
+        /// <value>The output directory.</value>
         public DirectoryPath OutputDirectory { get; set; }
+        /// <summary>
+        /// Gets or sets the name of the report.
+        /// </summary>
+        /// <value>The name of the report.</value>
         public string ReportName { get; set; } = "solution.dcvr";
         private IEnumerable<DotCoverReportType> _reportTypes = Array.Empty<DotCoverReportType>();
+        /// <summary>
+        /// Gets or sets the report types.
+        /// </summary>
+        /// <value>The report types.</value>
         public IEnumerable<DotCoverReportType> ReportTypes
         {
             get => _reportTypes.Concat(new[] { DotCoverReportType.XML }).Distinct();

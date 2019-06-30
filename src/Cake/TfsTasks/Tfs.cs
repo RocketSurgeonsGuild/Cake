@@ -12,11 +12,18 @@ using Rocket.Surgery.Cake.Internal;
 
 namespace Rocket.Surgery.Cake.TfsTasks
 {
+    /// <summary>
+    /// Class Tfs.
+    /// </summary>
     public class Tfs
     {
         private readonly ICakeContext _context;
         private readonly JsonSerializerSettings _settings;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Tfs"/> class.
+        /// </summary>
+        /// <param name="context">The context.</param>
         public Tfs(ICakeContext context)
         {
             _context = context;
@@ -30,6 +37,12 @@ namespace Rocket.Surgery.Cake.TfsTasks
             _settings.Converters.Add(new TfsEnumConverter());
         }
 
+        /// <summary>
+        /// Uploads the artifacts.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="containerFolder">The container folder.</param>
+        /// <param name="localPath">The local path.</param>
         public void UploadArtifacts(string name, string containerFolder, string localPath)
         {
             UploadArtifacts(new UploadArtifactsOptions()
@@ -40,6 +53,12 @@ namespace Rocket.Surgery.Cake.TfsTasks
             });
         }
 
+        /// <summary>
+        /// Uploads the artifacts.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="containerFolder">The container folder.</param>
+        /// <param name="localPath">The local path.</param>
         public void UploadArtifacts(string name, string containerFolder, DirectoryPath localPath)
         {
             UploadArtifacts(new UploadArtifactsOptions()
@@ -50,6 +69,12 @@ namespace Rocket.Surgery.Cake.TfsTasks
             });
         }
 
+        /// <summary>
+        /// Uploads the artifacts.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="containerFolder">The container folder.</param>
+        /// <param name="localPath">The local path.</param>
         public void UploadArtifacts(string name, string containerFolder, FilePath localPath)
         {
             UploadArtifacts(new UploadArtifactsOptions()
@@ -60,6 +85,10 @@ namespace Rocket.Surgery.Cake.TfsTasks
             });
         }
 
+        /// <summary>
+        /// Uploads the artifacts.
+        /// </summary>
+        /// <param name="options">The options.</param>
         public void UploadArtifacts(UploadArtifactsOptions options)
         {
             if (options.LocalPath?.IsRelative == true)
@@ -78,16 +107,31 @@ namespace Rocket.Surgery.Cake.TfsTasks
             WriteLoggingCommand("artifact.upload", options, options.LocalPath.FullPath);
         }
 
+        /// <summary>
+        /// Adds the summary item.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <param name="attachmentPath">The attachment path.</param>
         public void AddSummaryItem(string name, FilePath attachmentPath)
         {
             AddAttachment("Distributedtask.Core.Summary", name, attachmentPath);
         }
 
+        /// <summary>
+        /// Adds the attachment.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <param name="name">The name.</param>
+        /// <param name="attachmentPath">The attachment path.</param>
         public void AddAttachment(string type, string name, FilePath attachmentPath)
         {
             WriteLoggingCommand("task.addattachment", new { type, name }, attachmentPath.MakeAbsolute(_context.Environment).FullPath);
         }
 
+        /// <summary>
+        /// Reports the code coverage.
+        /// </summary>
+        /// <param name="summaryFile">The summary file.</param>
         public void ReportCodeCoverage(FilePath summaryFile)
         {
             ReportCodeCoverage(new ReportCodeCoverageOptions()
@@ -96,6 +140,11 @@ namespace Rocket.Surgery.Cake.TfsTasks
             });
         }
 
+        /// <summary>
+        /// Reports the code coverage.
+        /// </summary>
+        /// <param name="summaryFile">The summary file.</param>
+        /// <param name="reportDirectory">The report directory.</param>
         public void ReportCodeCoverage(FilePath summaryFile, DirectoryPath reportDirectory)
         {
             ReportCodeCoverage(new ReportCodeCoverageOptions()
@@ -105,6 +154,12 @@ namespace Rocket.Surgery.Cake.TfsTasks
             });
         }
 
+        /// <summary>
+        /// Reports the code coverage.
+        /// </summary>
+        /// <param name="summaryFile">The summary file.</param>
+        /// <param name="reportDirectory">The report directory.</param>
+        /// <param name="additionalCodeCoverageFiles">The additional code coverage files.</param>
         public void ReportCodeCoverage(FilePath summaryFile,
             DirectoryPath reportDirectory, string additionalCodeCoverageFiles)
         {
@@ -116,6 +171,12 @@ namespace Rocket.Surgery.Cake.TfsTasks
             });
         }
 
+        /// <summary>
+        /// Reports the code coverage.
+        /// </summary>
+        /// <param name="summaryFile">The summary file.</param>
+        /// <param name="reportDirectory">The report directory.</param>
+        /// <param name="additionalCodeCoverageFiles">The additional code coverage files.</param>
         public void ReportCodeCoverage(FilePath summaryFile,
             DirectoryPath reportDirectory, IEnumerable<FilePath> additionalCodeCoverageFiles)
         {
@@ -127,6 +188,12 @@ namespace Rocket.Surgery.Cake.TfsTasks
             });
         }
 
+        /// <summary>
+        /// Reports the code coverage.
+        /// </summary>
+        /// <param name="summaryFile">The summary file.</param>
+        /// <param name="reportDirectory">The report directory.</param>
+        /// <param name="additionalCodeCoverageFiles">The additional code coverage files.</param>
         public void ReportCodeCoverage(FilePath summaryFile,
             DirectoryPath reportDirectory, IEnumerable<string> additionalCodeCoverageFiles)
         {
@@ -138,6 +205,10 @@ namespace Rocket.Surgery.Cake.TfsTasks
             });
         }
 
+        /// <summary>
+        /// Reports the code coverage.
+        /// </summary>
+        /// <param name="options">The options.</param>
         public void ReportCodeCoverage(ReportCodeCoverageOptions options)
         {
             if (options.SummaryFile?.IsRelative == true)
@@ -159,6 +230,16 @@ namespace Rocket.Surgery.Cake.TfsTasks
             WriteLoggingCommand("codecoverage.publish", options, "");
         }
 
+        /// <summary>
+        /// Reports the test results.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <param name="title">The title.</param>
+        /// <param name="files">The files.</param>
+        /// <param name="configuration">The configuration.</param>
+        /// <param name="platform">The platform.</param>
+        /// <param name="mergeResults">if set to <c>true</c> [merge results].</param>
+        /// <param name="publishRunAttachments">if set to <c>true</c> [publish run attachments].</param>
         public void ReportTestResults(TestResultsType type, string title,
             string files, string configuration = null, string platform = null, bool mergeResults = true,
             bool publishRunAttachments = true)
@@ -177,6 +258,16 @@ namespace Rocket.Surgery.Cake.TfsTasks
             });
         }
 
+        /// <summary>
+        /// Reports the test results.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <param name="title">The title.</param>
+        /// <param name="files">The files.</param>
+        /// <param name="configuration">The configuration.</param>
+        /// <param name="platform">The platform.</param>
+        /// <param name="mergeResults">if set to <c>true</c> [merge results].</param>
+        /// <param name="publishRunAttachments">if set to <c>true</c> [publish run attachments].</param>
         public void ReportTestResults(TestResultsType type, string title,
             IEnumerable<FilePath> files, string configuration = null, string platform = null, bool mergeResults = true,
             bool publishRunAttachments = true)
@@ -195,6 +286,16 @@ namespace Rocket.Surgery.Cake.TfsTasks
             });
         }
 
+        /// <summary>
+        /// Reports the test results.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <param name="title">The title.</param>
+        /// <param name="files">The files.</param>
+        /// <param name="configuration">The configuration.</param>
+        /// <param name="platform">The platform.</param>
+        /// <param name="mergeResults">if set to <c>true</c> [merge results].</param>
+        /// <param name="publishRunAttachments">if set to <c>true</c> [publish run attachments].</param>
         public void ReportTestResults(TestResultsType type, string title,
             IEnumerable<string> files, string configuration = null, string platform = null, bool mergeResults = true,
             bool publishRunAttachments = true)
@@ -213,6 +314,10 @@ namespace Rocket.Surgery.Cake.TfsTasks
             });
         }
 
+        /// <summary>
+        /// Reports the test results.
+        /// </summary>
+        /// <param name="options">The options.</param>
         public void ReportTestResults(ReportTestResultsOptions options)
         {
             if (options.Files?.Any() == true)
