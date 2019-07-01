@@ -1,7 +1,7 @@
 namespace Rocket.Surgery.Cake.LcovConverter
 {
     /// <summary>
-    /// Class Helpers.
+    /// Helpers.
     /// </summary>
     static class Helpers
     {

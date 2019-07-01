@@ -1,7 +1,7 @@
 namespace Rocket.Surgery.Cake.LcovConverter
 {
     /// <summary>
-    /// Class BranchCondition.
+    /// BranchCondition.
     /// </summary>
     class BranchCondition
     {

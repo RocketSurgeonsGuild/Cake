@@ -7,7 +7,7 @@ using Cake.Core.Annotations;
 namespace Rocket.Surgery.Cake
 {
     /// <summary>
-    /// Class TFBuildCakeAliases.
+    /// TFBuildCakeAliases.
     /// </summary>
     public static class TFBuildCakeAliases
     {
@@ -47,7 +47,7 @@ namespace Rocket.Surgery.Cake
     }
 
     /// <summary>
-    /// Class TFBuildPullRequestInfo.
+    /// TFBuildPullRequestInfo.
     /// </summary>
     public class TFBuildPullRequestInfo
     {

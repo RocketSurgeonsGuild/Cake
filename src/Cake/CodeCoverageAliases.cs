@@ -21,7 +21,7 @@ using Rocket.Surgery.Cake.LcovConverter;
 namespace Rocket.Surgery.Cake
 {
     /// <summary>
-    /// Class CodeCoverageAliases.
+    /// CodeCoverageAliases.
     /// </summary>
     public static class CodeCoverageAliases
     {
@@ -285,7 +285,7 @@ namespace Rocket.Surgery.Cake
     }
 
     /// <summary>
-    /// Class DotCoverReportsSettings.
+    /// DotCoverReportsSettings.
     /// Implements the <see cref="Cake.Core.Tooling.ToolSettings" />
     /// </summary>
     /// <seealso cref="Cake.Core.Tooling.ToolSettings" />

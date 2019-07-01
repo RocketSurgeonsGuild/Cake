@@ -7,7 +7,7 @@
     <GlobalPackageReference Include="Roslynator.Analyzers" Version="2.1.0-rc" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Update="Cake.Common" Version="0.33.0" PrivateAssets="All"/>
+    <PackageReference Update="Cake.Common" Version="0.33.0" PrivateAssets="All" />
     <PackageReference Update="Cake.Core" Version="0.33.0" PrivateAssets="All" />
     <PackageReference Update="Newtonsoft.Json" Version="11.0.2" />
   </ItemGroup>
@@ -21,7 +21,7 @@
     <PackageReference Update="FakeItEasy.Analyzer.CSharp" Version="5.1.1" />
     <PackageReference Update="FluentAssertions" Version="5.7.0" />
     <PackageReference Update="FluentAssertions.Analyzers" Version="0.11.4" />
-    <PackageReference Update="Microsoft.NET.Test.Sdk" Version="16.1.1" />
+    <PackageReference Update="Microsoft.NET.Test.Sdk" Version="16.2.0" />
     <PackageReference Update="xunit" Version="2.4.1" />
     <PackageReference Update="xunit.analyzers" Version="0.10.0" />
     <PackageReference Update="xunit.runner.visualstudio" Version="2.4.1" />

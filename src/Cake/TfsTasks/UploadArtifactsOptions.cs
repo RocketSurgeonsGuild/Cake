@@ -5,7 +5,7 @@ using Rocket.Surgery.Cake.Internal;
 namespace Rocket.Surgery.Cake.TfsTasks
 {
     /// <summary>
-    /// Class UploadArtifactsOptions.
+    /// UploadArtifactsOptions.
     /// </summary>
     public class UploadArtifactsOptions
     {

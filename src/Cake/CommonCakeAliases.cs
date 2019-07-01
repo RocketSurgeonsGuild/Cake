@@ -9,7 +9,7 @@ namespace Rocket.Surgery.Cake
 {
 
     /// <summary>
-    /// Class CommonCakeAliases.
+    /// CommonCakeAliases.
     /// </summary>
     public static class CommonCakeAliases
     {

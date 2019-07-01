@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace Rocket.Surgery.Cake.Internal
 {
     /// <summary>
-    /// Class TfsEnumConverter.
+    /// TfsEnumConverter.
     /// Implements the <see cref="Newtonsoft.Json.JsonConverter" />
     /// </summary>
     /// <seealso cref="Newtonsoft.Json.JsonConverter" />

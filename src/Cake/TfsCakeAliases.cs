@@ -6,7 +6,7 @@ using Rocket.Surgery.Cake.TfsTasks;
 namespace Rocket.Surgery.Cake
 {
     /// <summary>
-    /// Class TfsCakeAliases.
+    /// TfsCakeAliases.
     /// </summary>
     public static class TfsCakeAliases
     {

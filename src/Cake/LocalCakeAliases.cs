@@ -11,7 +11,7 @@ using Cake.Core.IO;
 namespace Rocket.Surgery.Cake
 {
     /// <summary>
-    /// Class LocalCakeAliases.
+    /// LocalCakeAliases.
     /// </summary>
     public static class LocalCakeAliases
     {

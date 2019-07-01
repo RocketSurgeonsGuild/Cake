@@ -13,7 +13,7 @@ using Rocket.Surgery.Cake.Internal;
 namespace Rocket.Surgery.Cake.TfsTasks
 {
     /// <summary>
-    /// Class Tfs.
+    /// Tfs.
     /// </summary>
     public class Tfs
     {

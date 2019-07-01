@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Rocket.Surgery.Cake.LcovConverter
 {
     /// <summary>
-    /// Class FileLine.
+    /// FileLine.
     /// </summary>
     class FileLine
     {

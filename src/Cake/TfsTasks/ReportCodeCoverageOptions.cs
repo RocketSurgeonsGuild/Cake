@@ -7,7 +7,7 @@ using Rocket.Surgery.Cake.Internal;
 namespace Rocket.Surgery.Cake.TfsTasks
 {
     /// <summary>
-    /// Class ReportCodeCoverageOptions.
+    /// ReportCodeCoverageOptions.
     /// </summary>
     public class ReportCodeCoverageOptions
     {

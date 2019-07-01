@@ -3,7 +3,7 @@ using System.Collections.Generic;
 namespace Rocket.Surgery.Cake.LcovConverter
 {
     /// <summary>
-    /// Class Package.
+    /// Package.
     /// </summary>
     class Package
     {

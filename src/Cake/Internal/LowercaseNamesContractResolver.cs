@@ -3,7 +3,7 @@ using Newtonsoft.Json.Serialization;
 namespace Rocket.Surgery.Cake.Internal
 {
     /// <summary>
-    /// Class LowercaseNamesContractResolver.
+    /// LowercaseNamesContractResolver.
     /// Implements the <see cref="Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver" />
     /// </summary>
     /// <seealso cref="Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver" />

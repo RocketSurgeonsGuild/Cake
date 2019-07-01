@@ -11,7 +11,7 @@ using Cake.Common.Tools.MSBuild;
 namespace Rocket.Surgery.Cake
 {
     /// <summary>
-    /// Class Settings.
+    /// Settings.
     /// </summary>
     public class Settings
     {
@@ -120,7 +120,7 @@ namespace Rocket.Surgery.Cake
         public bool Diagnostic { get; set; }
 
         /// <summary>
-        /// Class XUnitSettings.
+        /// XUnitSettings.
         /// </summary>
         public class XUnitSettings
         {
@@ -147,7 +147,7 @@ namespace Rocket.Surgery.Cake
         }
 
         /// <summary>
-        /// Class CoverageSettings.
+        /// CoverageSettings.
         /// </summary>
         public class CoverageSettings
         {
@@ -190,7 +190,7 @@ namespace Rocket.Surgery.Cake
         }
 
         /// <summary>
-        /// Class PackSettings.
+        /// PackSettings.
         /// </summary>
         public class PackSettings
         {

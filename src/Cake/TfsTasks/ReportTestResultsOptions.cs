@@ -6,7 +6,7 @@ using Newtonsoft.Json.Converters;
 namespace Rocket.Surgery.Cake.TfsTasks
 {
     /// <summary>
-    /// Class ReportTestResultsOptions.
+    /// ReportTestResultsOptions.
     /// </summary>
     public class ReportTestResultsOptions
     {

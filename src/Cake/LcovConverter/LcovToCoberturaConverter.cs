@@ -10,7 +10,7 @@ using Path = System.IO.Path;
 namespace Rocket.Surgery.Cake.LcovConverter
 {
     /// <summary>
-    /// Class LcovToCoberturaConverter.
+    /// LcovToCoberturaConverter.
     /// </summary>
     class LcovToCoberturaConverter
     {
