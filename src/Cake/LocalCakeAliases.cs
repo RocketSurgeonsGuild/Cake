@@ -274,7 +274,7 @@ namespace Rocket.Surgery.Cake
         /// </summary>
         /// <param name="context">The context.</param>
         /// <param name="glob">The glob.</param>
-        /// <returns>IEnumerable&lt;FilePath&gt;.</returns>
+        /// <returns>IEnumerable{FilePath}.</returns>
         [CakeMethodAlias]
         public static IEnumerable<FilePath> GetArtifacts(this ICakeContext context, string glob)
         {
@@ -286,7 +286,7 @@ namespace Rocket.Surgery.Cake
         /// </summary>
         /// <param name="context">The context.</param>
         /// <param name="glob">The glob.</param>
-        /// <returns>IEnumerable&lt;FilePath&gt;.</returns>
+        /// <returns>IEnumerable{FilePath}.</returns>
         [CakeMethodAlias]
         public static IEnumerable<FilePath> GetCoverage(this ICakeContext context, string glob)
         {
