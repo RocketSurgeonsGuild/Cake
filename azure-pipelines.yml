@@ -18,18 +18,19 @@ resources:
       endpoint: github
 
 variables:
-  Configuration: Release
-  Verbosity: Normal
-  DotNetVersion: "2.2.300"
-  DotNet3Version: "3.0.100-preview6-012264"
-  CakeVersion: "0.33.0"
-  NuGetVersion: "5.1.0"
-  Coverage: "$(Agent.BuildDirectory)/c"
-  VstsCoverage: "$(Coverage)"
-  Artifacts: $(Build.ArtifactStagingDirectory)
-  VstsArtifacts: "$(Artifacts)"
-  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: "true"
-  CodeCovToken: 'e79b91ca-8b9d-4490-b679-a7583193a6d0'
+  - group: rsg-bot
+  - name: CONFIGURATION
+    value: Release
+  - name: VERBOSITY
+    value: Normal
+  - name: COVERAGE
+    value: "$(Agent.BuildDirectory)/c"
+  - name: ARTIFACTS
+    value: $(Build.ArtifactStagingDirectory)
+  - name: DOTNET_SKIP_FIRST_TIME_EXPERIENCE
+    value: "true"
+  - name: CodeCovToken
+    value: 'e79b91ca-8b9d-4490-b679-a7583193a6d0'
 
 jobs:
   - job: GitVersion
@@ -38,7 +39,7 @@ jobs:
     steps:
       - template: gitversion/store.yml@rsg
         parameters:
-          NuGetVersion: $(NuGetVersion)
+          NuGetVersion: "5.1.0"
 
   - template: pipeline/cake-job.yml@rsg
     parameters:
@@ -48,10 +49,9 @@ jobs:
       pushNuget: false
       Configuration: $(Configuration)
       Verbosity: $(Verbosity)
-      CakeVersion: $(CakeVersion)
-      DotNetVersion: $(DotNetVersion)
-      DotNet3Version: $(DotNet3Version)
-      NuGetVersion: $(NuGetVersion)
+      DotNetVersion: "2.2.300"
+      DotNet3Version: "3.0.100-preview6-012264"
+      NuGetVersion: "5.1.0"
 
   - template: pipeline/cake-job.yml@rsg
     parameters:
@@ -61,10 +61,9 @@ jobs:
       pushNuget: false
       Configuration: $(Configuration)
       Verbosity: $(Verbosity)
-      CakeVersion: $(CakeVersion)
-      DotNetVersion: $(DotNetVersion)
-      DotNet3Version: $(DotNet3Version)
-      NuGetVersion: $(NuGetVersion)
+      DotNetVersion: "2.2.300"
+      DotNet3Version: "3.0.100-preview6-012264"
+      NuGetVersion: "5.1.0"
 
   - job: Windows
     dependsOn: GitVersion
@@ -74,14 +73,14 @@ jobs:
       - template: gitversion/restore.yml@rsg
       - template: cake/install.yml@rsg
         parameters:
-          CakeVersion: $(CakeVersion)
-          DotNetVersion: $(DotNetVersion)
-          DotNet3Version: $(DotNet3Version)
+          DotNetVersion: "2.2.300"
+          DotNet3Version: "3.0.100-preview6-012264"
+          NuGetVersion: "5.1.0"
       # Nuget is required for test scripts below
       - task: NuGetToolInstaller@1
         displayName: "Get NuGet"
         inputs:
-          versionSpec: $(NuGetVersion)
+          versionSpec: "5.1.0"
       - template: cake/run.yml@rsg
         parameters:
           Configuration: $(Configuration)
@@ -90,20 +89,38 @@ jobs:
         parameters:
           Configuration: $(Configuration)
 
-  - job: Publish
-    dependsOn:
-      - macOS
-      - Linux
-      - Windows
-    steps:
-      - task: DownloadBuildArtifacts@0
-        displayName: "Download NuGet Packages"
-        inputs:
-          specificBuildWithTriggering: true
-          downloadType: single
-          artifactName: 'Nupkg - Windows'
-          downloadPath: $(Build.ArtifactStagingDirectory)/nuget/
-      - template: standard/nuget-push.yml@rsg
-        parameters:
-          NuGetVersion: $(NuGetVersion)
+  - ${{ if ne(variables['System.PullRequest.IsFork'], 'true') }}:
+    - job: Publish
+      pool:
+        vmImage: "windows-2019"
+      dependsOn:
+        - macOS
+        - Linux
+        - Windows
+      steps:
+        - task: DownloadBuildArtifacts@0
+          displayName: "Download NuGet Packages"
+          inputs:
+            specificBuildWithTriggering: true
+            downloadType: single
+            artifactName: 'Nupkg - Windows'
+            downloadPath: $(Build.ArtifactStagingDirectory)/nuget/
+        - template: standard/nuget-push.yml@rsg
+          parameters:
+            NuGetVersion: "5.1.0"
+            GitHubPackages: false
+
+    - job: Release
+      pool:
+        vmImage: "windows-2019"
+      dependsOn:
+        - macOS
+        - Linux
+        - Windows
+      steps:
+        - template: gitversion/restore.yml@rsg
+        - template: standard/github-release.yml@rsg
+          parameters:
+            DotNetVersion: "2.2.300"
+            DotNet3Version: "3.0.100-preview6-012264"
 
