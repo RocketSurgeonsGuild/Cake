@@ -97,11 +97,11 @@ jobs:
         - GitVersion
       steps:
         # - checkout: none
-        - template: ../gitversion/restore.yml
+        - template: gitversion/restore.yml@rsg
         - template: standard/github-draft-release.yml@rsg
           parameters:
-            DotNetVersion: ${{ parameters.DotNetVersion }}
-            DotNet3Version: ${{ parameters.DotNet3Version }}
+            DotNetVersion: "2.2.300"
+            DotNet3Version: "3.0.100-preview6-012264"
 
     - job: Publish
       pool:
