@@ -98,11 +98,10 @@ jobs:
       steps:
         # - checkout: none
         - template: ../gitversion/restore.yml
-        - ${{ if eq(parameters.GitHub, 'true') }}:
-          - template: standard/github-draft-release.yml@rsg
-            parameters:
-              DotNetVersion: ${{ parameters.DotNetVersion }}
-              DotNet3Version: ${{ parameters.DotNet3Version }}
+        - template: standard/github-draft-release.yml@rsg
+          parameters:
+            DotNetVersion: ${{ parameters.DotNetVersion }}
+            DotNet3Version: ${{ parameters.DotNet3Version }}
 
     - job: Publish
       pool:
