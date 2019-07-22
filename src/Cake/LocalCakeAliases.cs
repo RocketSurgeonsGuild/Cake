@@ -66,6 +66,7 @@ namespace Rocket.Surgery.Cake
                 { "GitVersion_InformationalVersion", version.InformationalVersion },
                 { "GitVersion_BranchName", version.BranchName },
                 { "GitVersion_Sha", version.Sha },
+                // { "GitVersion_ShortSha", version.ShortSha },
                 { "GitVersion_NuGetVersion", version.NuGetVersion },
                 { "GitVersion_CommitsSinceVersionSource", version.CommitsSinceVersionSource.ToString() },
                 { "GitVersion_CommitsSinceVersionSourcePadded", version.CommitsSinceVersionSourcePadded },
