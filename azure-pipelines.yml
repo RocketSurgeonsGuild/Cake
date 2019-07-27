@@ -14,7 +14,7 @@ resources:
     - repository: rsg
       type: github
       name: RocketSurgeonsGuild/AzureDevopsTemplates
-      ref: refs/tags/v0.7.12
+      ref: refs/tags/v0.8.4
       endpoint: github
 
 variables:
@@ -39,7 +39,7 @@ jobs:
     steps:
       - template: gitversion/store.yml@rsg
         parameters:
-          NuGetVersion: "5.1.0"
+          NuGetVersion: "5.2.0"
 
   - template: pipeline/cake-job.yml@rsg
     parameters:
@@ -49,9 +49,9 @@ jobs:
       pushNuget: false
       Configuration: $(Configuration)
       Verbosity: $(Verbosity)
-      DotNetVersion: "2.2.300"
-      DotNet3Version: "3.0.100-preview6-012264"
-      NuGetVersion: "5.1.0"
+      DotNetVersion: "2.2.301"
+      DotNet3Version: "3.0.100-preview7-012821"
+      NuGetVersion: "5.2.0"
 
   - template: pipeline/cake-job.yml@rsg
     parameters:
@@ -61,9 +61,9 @@ jobs:
       pushNuget: false
       Configuration: $(Configuration)
       Verbosity: $(Verbosity)
-      DotNetVersion: "2.2.300"
-      DotNet3Version: "3.0.100-preview6-012264"
-      NuGetVersion: "5.1.0"
+      DotNetVersion: "2.2.301"
+      DotNet3Version: "3.0.100-preview7-012821"
+      NuGetVersion: "5.2.0"
 
   - job: Windows
     dependsOn: GitVersion
@@ -73,14 +73,14 @@ jobs:
       - template: gitversion/restore.yml@rsg
       - template: cake/install.yml@rsg
         parameters:
-          DotNetVersion: "2.2.300"
-          DotNet3Version: "3.0.100-preview6-012264"
-          NuGetVersion: "5.1.0"
+          DotNetVersion: "2.2.301"
+          DotNet3Version: "3.0.100-preview7-012821"
+          NuGetVersion: "5.2.0"
       # Nuget is required for test scripts below
       - task: NuGetToolInstaller@1
         displayName: "Get NuGet"
         inputs:
-          versionSpec: "5.1.0"
+          versionSpec: "5.2.0"
       - template: cake/run.yml@rsg
         parameters:
           Configuration: $(Configuration)
@@ -100,8 +100,8 @@ jobs:
         - template: gitversion/restore.yml@rsg
         - template: standard/github-draft-release.yml@rsg
           parameters:
-            DotNetVersion: "2.2.300"
-            DotNet3Version: "3.0.100-preview6-012264"
+            DotNetVersion: "2.2.301"
+            DotNet3Version: "3.0.100-preview7-012821"
 
     - job: Publish
       pool:
@@ -112,16 +112,11 @@ jobs:
         - Windows
         - GitHub_Draft_Release
       steps:
-        - task: DownloadBuildArtifacts@0
-          displayName: "Download NuGet Packages"
-          inputs:
-            specificBuildWithTriggering: true
-            downloadType: single
-            artifactName: 'Nupkg - Windows'
-            downloadPath: $(Build.ArtifactStagingDirectory)/nuget/
+        - download: current
+          artifact: 'Nupkg - Windows'
         - template: standard/nuget-push.yml@rsg
           parameters:
-            NuGetVersion: "5.1.0"
+            NuGetVersion: "5.2.0"
             GitHubPackages: false
 
     - job: GitHub_Release
@@ -136,6 +131,6 @@ jobs:
         - template: gitversion/restore.yml@rsg
         - template: standard/github-release.yml@rsg
           parameters:
-            DotNetVersion: "2.2.300"
-            DotNet3Version: "3.0.100-preview6-012264"
+            DotNetVersion: "2.2.301"
+            DotNet3Version: "3.0.100-preview7-012821"
 
