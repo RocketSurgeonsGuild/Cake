@@ -14,7 +14,7 @@ resources:
     - repository: rsg
       type: github
       name: RocketSurgeonsGuild/AzureDevopsTemplates
-      ref: refs/tags/v0.8.5
+      ref: refs/tags/v0.8.6
       endpoint: github
 
 variables:
@@ -35,7 +35,7 @@ variables:
 jobs:
   - job: GitVersion
     pool:
-      vmImage: "VS2017-Win2016"
+      vmImage: "windows-2019"
     steps:
       - template: gitversion/store.yml@rsg
         parameters:
@@ -49,8 +49,9 @@ jobs:
       pushNuget: false
       Configuration: $(Configuration)
       Verbosity: $(Verbosity)
-      DotNetVersion: "2.2.301"
-      DotNet3Version: "3.0.100-preview7-012821"
+      DotNet21Version: "2.1.801"
+      DotNetVersion: "2.2.401"
+      DotNet3Version: "3.0.100-preview8-013656"
       NuGetVersion: "5.2.0"
 
   - template: pipeline/cake-job.yml@rsg
@@ -61,8 +62,9 @@ jobs:
       pushNuget: false
       Configuration: $(Configuration)
       Verbosity: $(Verbosity)
-      DotNetVersion: "2.2.301"
-      DotNet3Version: "3.0.100-preview7-012821"
+      DotNet21Version: "2.1.801"
+      DotNetVersion: "2.2.401"
+      DotNet3Version: "3.0.100-preview8-013656"
       NuGetVersion: "5.2.0"
 
   - job: Windows
@@ -73,8 +75,9 @@ jobs:
       - template: gitversion/restore.yml@rsg
       - template: cake/install.yml@rsg
         parameters:
-          DotNetVersion: "2.2.301"
-          DotNet3Version: "3.0.100-preview7-012821"
+          DotNet21Version: "2.1.801"
+          DotNetVersion: "2.2.401"
+          DotNet3Version: "3.0.100-preview8-013656"
           NuGetVersion: "5.2.0"
       # Nuget is required for test scripts below
       - task: NuGetToolInstaller@1
@@ -100,8 +103,9 @@ jobs:
         - template: gitversion/restore.yml@rsg
         - template: standard/github-draft-release.yml@rsg
           parameters:
-            DotNetVersion: "2.2.301"
-            DotNet3Version: "3.0.100-preview7-012821"
+            DotNet21Version: "2.1.801"
+            DotNetVersion: "2.2.401"
+            DotNet3Version: "3.0.100-preview8-013656"
 
     - job: Publish
       pool:
@@ -132,6 +136,7 @@ jobs:
         - template: gitversion/restore.yml@rsg
         - template: standard/github-release.yml@rsg
           parameters:
-            DotNetVersion: "2.2.301"
-            DotNet3Version: "3.0.100-preview7-012821"
+            DotNet21Version: "2.1.801"
+            DotNetVersion: "2.2.401"
+            DotNet3Version: "3.0.100-preview8-013656"
 
