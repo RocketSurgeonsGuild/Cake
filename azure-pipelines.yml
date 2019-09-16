@@ -14,7 +14,7 @@ resources:
     - repository: rsg
       type: github
       name: RocketSurgeonsGuild/AzureDevopsTemplates
-      ref: refs/tags/v0.8.6
+      ref: refs/rags/v0.9.0
       endpoint: github
 
 variables:
@@ -49,22 +49,22 @@ jobs:
       pushNuget: false
       Configuration: $(Configuration)
       Verbosity: $(Verbosity)
-      DotNet21Version: "2.1.801"
-      DotNetVersion: "2.2.401"
-      DotNet3Version: "3.0.100-preview8-013656"
+      DotNet21Version: "2.1.x"
+      DotNetVersion: "2.2.x"
+      DotNet3Version: "3.0.100-preview9-014004"
       NuGetVersion: "5.2.0"
 
   - template: pipeline/cake-job.yml@rsg
     parameters:
       name: "Linux"
       dependsOn: GitVersion
-      vmImage: "Ubuntu-16.04"
+      vmImage: "ubuntu-latest"
       pushNuget: false
       Configuration: $(Configuration)
       Verbosity: $(Verbosity)
-      DotNet21Version: "2.1.801"
-      DotNetVersion: "2.2.401"
-      DotNet3Version: "3.0.100-preview8-013656"
+      DotNet21Version: "2.1.x"
+      DotNetVersion: "2.2.x"
+      DotNet3Version: "3.0.100-preview9-014004"
       NuGetVersion: "5.2.0"
 
   - job: Windows
@@ -75,9 +75,9 @@ jobs:
       - template: gitversion/restore.yml@rsg
       - template: cake/install.yml@rsg
         parameters:
-          DotNet21Version: "2.1.801"
-          DotNetVersion: "2.2.401"
-          DotNet3Version: "3.0.100-preview8-013656"
+          DotNet21Version: "2.1.x"
+          DotNetVersion: "2.2.x"
+          DotNet3Version: "3.0.100-preview9-014004"
           NuGetVersion: "5.2.0"
       # Nuget is required for test scripts below
       - task: NuGetToolInstaller@1
@@ -103,9 +103,9 @@ jobs:
         - template: gitversion/restore.yml@rsg
         - template: standard/github-draft-release.yml@rsg
           parameters:
-            DotNet21Version: "2.1.801"
-            DotNetVersion: "2.2.401"
-            DotNet3Version: "3.0.100-preview8-013656"
+            DotNet21Version: "2.1.x"
+            DotNetVersion: "2.2.x"
+            DotNet3Version: "3.0.100-preview9-014004"
 
     - job: Publish
       pool:
@@ -136,7 +136,7 @@ jobs:
         - template: gitversion/restore.yml@rsg
         - template: standard/github-release.yml@rsg
           parameters:
-            DotNet21Version: "2.1.801"
-            DotNetVersion: "2.2.401"
-            DotNet3Version: "3.0.100-preview8-013656"
+            DotNet21Version: "2.1.x"
+            DotNetVersion: "2.2.x"
+            DotNet3Version: "3.0.100-preview9-014004"
 
