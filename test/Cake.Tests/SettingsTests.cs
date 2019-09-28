@@ -8,7 +8,7 @@ using Cake.Core.Diagnostics;
 
 namespace Rocket.Surgery.Cake.Tests
 {
-    public class SettingsTests : AutoTestBase
+    public class SettingsTests : AutoFakeTest
     {
         public SettingsTests(ITestOutputHelper outputHelper) : base(outputHelper) { }
 

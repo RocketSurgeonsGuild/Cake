@@ -14,7 +14,7 @@ resources:
     - repository: rsg
       type: github
       name: RocketSurgeonsGuild/AzureDevopsTemplates
-      ref: refs/tags/v0.9.4
+      ref: refs/tags/v0.10.9
       endpoint: github
 
 variables:
@@ -32,110 +32,15 @@ variables:
     value: 'e79b91ca-8b9d-4490-b679-a7583193a6d0'
 
 jobs:
-  - job: GitVersion
-    pool:
-      vmImage: "windows-2019"
-    steps:
-      - template: gitversion/store.yml@rsg
-        parameters:
-          NuGetVersion: "5.2.0"
-
-  - template: pipeline/cake-job.yml@rsg
+  - template: pipeline/cake.yml@rsg
     parameters:
-      name: "macOS"
-      dependsOn: GitVersion
-      vmImage: "macOS-10.14"
-      pushNuget: false
+      GithubAuthVariableGroup: rsg-bot
       Configuration: $(Configuration)
       Verbosity: $(Verbosity)
-      DotNet21Version: "2.1.x"
-      DotNetVersion: "2.2.x"
-      DotNet3Version: "3.0.100-rc1-014190"
+      GitHub: true
+      GitHubPackages: true
+      DotNetSdk:
+        - "2.2.x"
+        - "3.0.x"
       NuGetVersion: "5.2.0"
-
-  - template: pipeline/cake-job.yml@rsg
-    parameters:
-      name: "Linux"
-      dependsOn: GitVersion
-      vmImage: "ubuntu-latest"
-      pushNuget: false
-      Configuration: $(Configuration)
-      Verbosity: $(Verbosity)
-      DotNet21Version: "2.1.x"
-      DotNetVersion: "2.2.x"
-      DotNet3Version: "3.0.100-rc1-014190"
-      NuGetVersion: "5.2.0"
-
-  - job: Windows
-    dependsOn: GitVersion
-    pool:
-      vmImage: "windows-2019"
-    steps:
-      - template: gitversion/restore.yml@rsg
-      - template: cake/install.yml@rsg
-        parameters:
-          DotNet21Version: "2.1.x"
-          DotNetVersion: "2.2.x"
-          DotNet3Version: "3.0.100-rc1-014190"
-          NuGetVersion: "5.2.0"
-      # Nuget is required for test scripts below
-      - task: NuGetToolInstaller@1
-        displayName: "Get NuGet"
-        inputs:
-          versionSpec: "5.2.0"
-      - template: cake/run.yml@rsg
-        parameters:
-          Configuration: $(Configuration)
-          Verbosity: $(Verbosity)
-      - template: publish-artifacts.yml@rsg
-        parameters:
-          Configuration: $(Configuration)
-
-  - ${{ if ne(variables['System.PullRequest.IsFork'], 'true') }}:
-    - job: GitHub_Draft_Release
-      pool:
-        vmImage: "windows-2019"
-      dependsOn:
-        - GitVersion
-      variables:
-        - group: rsg-bot
-      steps:
-        # - checkout: none
-        - template: gitversion/restore.yml@rsg
-        - template: standard/github-draft-release.yml@rsg
-
-    - job: Publish
-      pool:
-        vmImage: "windows-2019"
-      dependsOn:
-        - macOS
-        - Linux
-        - Windows
-        - GitHub_Draft_Release
-      steps:
-        - download: current
-          artifact: 'Nupkg - Windows'
-        - template: standard/nuget-push.yml@rsg
-          parameters:
-            Artifacts: "$(Pipeline.Workspace)/Nupkg - Windows/"
-            NuGetVersion: "5.2.0"
-            GitHubPackages: false
-
-    - job: GitHub_Release
-      pool:
-        vmImage: "windows-2019"
-      dependsOn:
-        - macOS
-        - Linux
-        - Windows
-        - GitHub_Draft_Release
-      variables:
-        - group: rsg-bot
-      steps:
-        - template: gitversion/restore.yml@rsg
-        - template: standard/github-release.yml@rsg
-          parameters:
-            DotNet21Version: "2.1.x"
-            DotNetVersion: "2.2.x"
-            DotNet3Version: "3.0.100-rc1-014190"
 
