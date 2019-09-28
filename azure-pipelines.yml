@@ -14,11 +14,10 @@ resources:
     - repository: rsg
       type: github
       name: RocketSurgeonsGuild/AzureDevopsTemplates
-      ref: refs/tags/v0.9.0
+      ref: refs/tags/v0.9.4
       endpoint: github
 
 variables:
-  - group: rsg-bot
   - name: CONFIGURATION
     value: Release
   - name: VERBOSITY
@@ -51,7 +50,7 @@ jobs:
       Verbosity: $(Verbosity)
       DotNet21Version: "2.1.x"
       DotNetVersion: "2.2.x"
-      DotNet3Version: "3.0.100-preview9-014004"
+      DotNet3Version: "3.0.100-rc1-014190"
       NuGetVersion: "5.2.0"
 
   - template: pipeline/cake-job.yml@rsg
@@ -64,7 +63,7 @@ jobs:
       Verbosity: $(Verbosity)
       DotNet21Version: "2.1.x"
       DotNetVersion: "2.2.x"
-      DotNet3Version: "3.0.100-preview9-014004"
+      DotNet3Version: "3.0.100-rc1-014190"
       NuGetVersion: "5.2.0"
 
   - job: Windows
@@ -77,7 +76,7 @@ jobs:
         parameters:
           DotNet21Version: "2.1.x"
           DotNetVersion: "2.2.x"
-          DotNet3Version: "3.0.100-preview9-014004"
+          DotNet3Version: "3.0.100-rc1-014190"
           NuGetVersion: "5.2.0"
       # Nuget is required for test scripts below
       - task: NuGetToolInstaller@1
@@ -98,14 +97,12 @@ jobs:
         vmImage: "windows-2019"
       dependsOn:
         - GitVersion
+      variables:
+        - group: rsg-bot
       steps:
         # - checkout: none
         - template: gitversion/restore.yml@rsg
         - template: standard/github-draft-release.yml@rsg
-          parameters:
-            DotNet21Version: "2.1.x"
-            DotNetVersion: "2.2.x"
-            DotNet3Version: "3.0.100-preview9-014004"
 
     - job: Publish
       pool:
@@ -132,11 +129,13 @@ jobs:
         - Linux
         - Windows
         - GitHub_Draft_Release
+      variables:
+        - group: rsg-bot
       steps:
         - template: gitversion/restore.yml@rsg
         - template: standard/github-release.yml@rsg
           parameters:
             DotNet21Version: "2.1.x"
             DotNetVersion: "2.2.x"
-            DotNet3Version: "3.0.100-preview9-014004"
+            DotNet3Version: "3.0.100-rc1-014190"
 
