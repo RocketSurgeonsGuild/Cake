@@ -1,10 +1,16 @@
 <Project>
     <PropertyGroup>
         <Company>Rocket Surgeons Guild</Company>
-        <Copyright>Copyright David Driscoll © 2017</Copyright>
-        <Authors>David Driscoll</Authors>
+        <Copyright>Copyright Rocket Surgeons Guild © $([System.DateTime]::Now.ToString('yyyy'))</Copyright>
+        <Authors>David Driscoll,Rocket Surgeons Guild contributors</Authors>
         <LangVersion>8.0</LangVersion>
         <!-- <Nullable>enable</Nullable> -->
         <PackageIconUrl>https://raw.githubusercontent.com/RocketSurgeonsGuild/graphics/master/png/rsg-patch-circle-color.png</PackageIconUrl>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <PackageProjectUrl>https://rocketsurgeonsguild.github.io/</PackageProjectUrl>
     </PropertyGroup>
+    <ItemGroup>
+        <None Include="$(MSBuildThisFileDirectory)/LICENSE" Pack="true" PackagePath="/" />
+    </ItemGroup>
 </Project>
